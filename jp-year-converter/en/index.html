@@ -17,7 +17,7 @@
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" hreflang="ko" rel="alternate"/>
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html" hreflang="en" rel="alternate"/>
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/vi/index.html" hreflang="vi" rel="alternate"/>
-<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/index.html" hreflang="x-default" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/jp/index.html" hreflang="x-default" rel="alternate"/>
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html" rel="canonical"/>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ED4W9VBFJ"></script>
@@ -49,7 +49,7 @@
     ];
     if (!alreadyLocalized.includes(current)) {
       const shortLang = lang.toLowerCase().slice(0, 2);
-      const redirectTo = map[shortLang] || map['ja'];
+      const redirectTo = map[shortLang] || map['en'];
       window.location.replace(redirectTo);
     }
   })();

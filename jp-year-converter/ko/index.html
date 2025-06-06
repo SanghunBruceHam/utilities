@@ -9,16 +9,16 @@
 <meta content="연호, 일본 연호, 서기, 레이와, 헤이세이, 쇼와, 다이쇼, 메이지, 변환 도구" name="keywords"/>
 <meta content="일본 연호 ⇄ 서기 변환기" property="og:title"/>
 <meta content="클릭 한 번으로 일본 연호와 서기를 변환해보세요." property="og:description"/>
-<meta content="https://wp.mahalohana-bruce.com/Jap_year_converter/ko.html" property="og:url"/>
-<meta content="https://wp.mahalohana-bruce.com/og-image.png" property="og:image"/>
+<meta content="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" property="og:url"/>
+<meta content="https://utilities.mahalohana-bruce.com/og-image.png" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="#4a90e2" name="theme-color"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/index.html" hreflang="ja" rel="alternate"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/ko.html" hreflang="ko" rel="alternate"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/en.html" hreflang="en" rel="alternate"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/vi.html" hreflang="vi" rel="alternate"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/index.html" hreflang="x-default" rel="alternate"/>
-<link href="https://wp.mahalohana-bruce.com/Jap_year_converter/ko.html" rel="canonical"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/jp/index.html" hreflang="ja" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" hreflang="ko" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html" hreflang="en" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/vi/index.html" hreflang="vi" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/jp/index.html" hreflang="x-default" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" rel="canonical"/>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0ED4W9VBFJ"></script>
 <script>
@@ -32,23 +32,23 @@
 <script>
     (function () {
       const lang = navigator.language || navigator.userLanguage;
-      const map = {
-        'ja': '/Jap_year_converter/index.html',
-        'ko': '/Jap_year_converter/ko.html',
-        'en': '/Jap_year_converter/en.html',
-        'vi': '/Jap_year_converter/vi.html',
-        'zh': '/Jap_year_converter/index.html'
-      };
-      const current = window.location.pathname;
-      const alreadyLocalized = [
-        '/Jap_year_converter/index.html',
-        '/Jap_year_converter/ko.html',
-        '/Jap_year_converter/en.html',
-        '/Jap_year_converter/vi.html'
-      ];
+    const map = {
+      'ja': '/jp-year-converter/ja/jindex.html',
+      'ko': '/jp-year-converter/ko/jindex.html',
+      'en': '/jp-year-converter/en/jindex.html',
+      'vi': '/jp-year-converter/vi/jindex.html',
+      'zh': '/jp-year-converter/ja/jindex.html'
+    };
+    const current = window.location.pathname;
+    const alreadyLocalized = [
+      '/jp-year-converter/jp/index.html',
+      '/jp-year-converter/ko/index.html',
+      '/jp-year-converter/en/index.html',
+      '/jp-year-converter/vi/index.html'
+    ];
       if (!alreadyLocalized.includes(current)) {
         const shortLang = lang.toLowerCase().slice(0, 2);
-        const redirectTo = map[shortLang] || map['ja'];
+        const redirectTo = map[shortLang] || map['ko'];
         window.location.replace(redirectTo);
       }
     })();
@@ -153,11 +153,11 @@
 <body>
 <div class="container">
 <div class="language-switcher">
-<a href="/Jap_year_converter/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
-      <a class="active" href="/Jap_year_converter/ko.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
-      <a href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
-      <a href="https://utilities.mahalohana-bruce.com/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
-      <a href="/Jap_year_converter/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
+<a href="/jp-year-converter/ja/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
+      <a href="/jp-year-converter/ko/index.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
+      <a class="active" href="/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
+      <a href="/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
+      <a href="/jp-year-converter/ja/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
 </div>
 <h1>일본 연호 변환기｜서기 ⇄ 연호</h1>
 <label for="mode">변환 방향 선택:</label>
