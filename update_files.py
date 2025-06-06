@@ -4,7 +4,7 @@ from datetime import datetime
 robots_txt = """User-agent: *
 Allow: /
 
-Sitemap: https://www.mahalohana-bruce.com/sitemap.xml
+Sitemap: https://utilities.mahalohana-bruce.com/sitemap.xml
 """
 
 with open("robots.txt", "w", encoding="utf-8") as f:
