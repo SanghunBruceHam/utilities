@@ -11,12 +11,12 @@
   <meta name="keywords" content="eto, zodiac, birthday, Japanese zodiac, eto calculator, 12 animals">
   <meta property="og:title" content="Zodiac Calculator">
   <meta property="og:description" content="Find your Eto (Japanese zodiac) using your birthdate. Free and accurate.">
-  <meta property="og:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/ja/belt-convert.png">
+  <meta property="og:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/en/belt-convert.png">
   <meta property="og:url" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/en/index.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Zodiac Calculator | Check Your Japanese Zodiac Sign by Birthday">
   <meta name="twitter:description" content="Check your zodiac animal easily by entering your birthday.">
-  <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/ja/belt-convert.png">
+  <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/en/belt-convert.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -123,7 +123,20 @@
       * Note: If born before February 4 (Risshun: the first day of spring in the traditional Japanese calendar), the previous year's zodiac is applied.<br>
       <em style="font-size: 0.85em; color: #888;">Bookmark this page for future reference!</em>
     </div>
-    <!-- Inputs and script remain the same as in Japanese version, but messages should be translated in JS. -->
+    <div class="input-row">
+      <input type="date" id="birthDate">
+      <button id="convertBtn" style="padding: 0.6em 1em; font-size: 1em; border-radius: 8px; border: none; background-color: #00796b; color: white; cursor: pointer;">Convert</button>
+    </div>
+    <div class="input-row">
+      <select id="birthYear"></select>
+      <select id="birthMonth"></select>
+      <select id="birthDay"></select>
+    </div>
+    <div class="result" id="result"></div>
+    <div class="history" id="history"></div>
+    <div class="popular" id="popular"></div>
+    <div class="share" id="share"></div>
+    <div class="fortune" id="fortune"></div>
   </div>
 
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV6LHBP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -135,7 +148,100 @@
        data-ad-format="auto"
        data-full-width-responsive="true"></ins>
   <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script>
+    const etoList = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Boar"];
+    const fortuneList = [
+      "Great fortune! Today will be a very good day!",
+      "Good fortune. Expect a peaceful and calm day.",
+      "Moderate fortune. Be cautious and things will go well.",
+      "Small fortune. Stay relaxed and natural.",
+      "Bad luck. Stay alert and careful today."
+    ];
+
+    const resultDiv = document.getElementById('result');
+    const historyDiv = document.getElementById('history');
+    const popularDiv = document.getElementById('popular');
+    const shareDiv = document.getElementById('share');
+    const fortuneDiv = document.getElementById('fortune');
+    const dateInput = document.getElementById('birthDate');
+    const yearSel = document.getElementById('birthYear');
+    const monthSel = document.getElementById('birthMonth');
+    const daySel = document.getElementById('birthDay');
+    const countMap = new Array(12).fill(0);
+    const historyLog = [];
+
+    for (let y = 1900; y <= new Date().getFullYear(); y++) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yearSel.appendChild(opt);
+    }
+    for (let m = 1; m <= 12; m++) {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      monthSel.appendChild(opt);
+    }
+    function updateDays() {
+      daySel.innerHTML = '';
+      const year = parseInt(yearSel.value);
+      const month = parseInt(monthSel.value);
+      const daysInMonth = new Date(year, month, 0).getDate();
+      for (let d = 1; d <= daysInMonth; d++) {
+        const opt = document.createElement('option');
+        opt.value = d;
+        opt.textContent = d;
+        daySel.appendChild(opt);
+      }
+    }
+
+    function showResult(dateStr) {
+      if (!dateStr) return;
+      const date = new Date(dateStr);
+      const risshun = new Date(date.getFullYear(), 1, 4);
+      const etoYear = date < risshun ? date.getFullYear() - 1 : date.getFullYear();
+      const index = (etoYear - 1984 + 12) % 12;
+      const eto = etoList[index];
+      resultDiv.innerHTML = `${etoYear}'s zodiac sign is <span style="color:#e74c3c; font-size:1.4em;">"${eto}"</span><br><span style="font-size: 0.9em; color: #2e7d32;">Today's fortune: ${fortuneList[Math.floor(Math.random() * fortuneList.length)]}</span>`;
+      historyLog.unshift(`${etoYear} - ${eto}`);
+      if (historyLog.length > 3) historyLog.pop();
+      historyDiv.innerHTML = 'Recent Results:<br>' + historyLog.map(h => `• ${h}`).join('<br>');
+      countMap[index]++;
+      const ranked = countMap.map((v, i) => ({ eto: etoList[i], count: v })).sort((a, b) => b.count - a.count);
+      popularDiv.innerHTML = 'Most Viewed Zodiac Signs:<br>' + ranked.slice(0, 3).map(r => `• ${r.eto} (${r.count} times)`).join('<br>');
+
+      const sharedMsg = encodeURIComponent(`${etoYear}'s zodiac sign is "${eto}"!`);
+      const sharedURL = 'https://utilities.mahalohana-bruce.com/jp-eto-calculator/en/index.html';
+      shareDiv.innerHTML = `
+        <a href="https://twitter.com/intent/tweet?text=${sharedMsg}&url=${sharedURL}" target="_blank">Share on X</a>
+        <br><a href="https://www.facebook.com/sharer/sharer.php?u=${sharedURL}" target="_blank">Share on Facebook</a>
+      `;
+    }
+
+    yearSel.addEventListener('change', updateDays);
+    monthSel.addEventListener('change', updateDays);
+    daySel.addEventListener('change', () => {
+      const year = yearSel.value;
+      const month = ('0' + monthSel.value).slice(-2);
+      const day = ('0' + daySel.value).slice(-2);
+      showResult(`${year}-${month}-${day}`);
+    });
+    dateInput.addEventListener('change', () => showResult(dateInput.value));
+    document.getElementById('convertBtn').addEventListener('click', () => showResult(dateInput.value));
+    dateInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        showResult(dateInput.value);
+      }
+    });
+
+    yearSel.value = 2000;
+    monthSel.value = 1;
+    updateDays();
+    daySel.value = 1;
+    showResult('2000-01-01');
   </script>
 </body>
 </html>
