@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Máy tính Can Chi | Tra cứu tuổi theo ngày sinh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+  <link rel="icon" href="/jp-eto-calculator/favicon.png" type="image/png">
+  <link rel="canonical" href="https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/index.html">
+  <meta name="description" content="Công cụ miễn phí giúp tra cứu con giáp (Can Chi) Nhật Bản từ ngày sinh. Hỗ trợ mốc tiết Lập Xuân.">
+  <meta name="keywords" content="Can Chi, con giáp, tuổi, ngày sinh, máy tính Can Chi, 12 con giáp Nhật Bản">
+  <meta property="og:title" content="Máy tính Can Chi">
+  <meta property="og:description" content="Tra cứu con giáp Nhật Bản (Can Chi) từ ngày sinh. Chính xác và miễn phí.">
+  <meta property="og:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/belt-convert.png">
+  <meta property="og:url" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/index.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Máy tính Can Chi | Tra cứu tuổi theo ngày sinh">
+  <meta name="twitter:description" content="Tra cứu tuổi con giáp dễ dàng chỉ với ngày sinh của bạn.">
+  <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/belt-convert.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Máy tính Can Chi",
+    "url": "https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/index.html",
+    "applicationCategory": "Calculator",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WF8ZL9QJHF');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+      margin: 0;
+      padding: 0;
+    }
+    .calculator {
+      background: white;
+      padding: 2em;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+      margin: 2em auto;
+    }
+    h1 {
+      font-family: 'Kosugi Maru', sans-serif;
+      font-size: 1.8em;
+      margin-bottom: 0.6em;
+      color: #00796b;
+    }
+    .description-box {
+      background-color: #f1f8e9;
+      border-left: 6px solid #8bc34a;
+      padding: 1em;
+      font-size: 0.95em;
+      color: #4e5c41;
+      margin-bottom: 1.5em;
+      line-height: 1.6em;
+      border-radius: 6px;
+    }
+    .input-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    input, select {
+      padding: 0.6em;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #bbb;
+    }
+    .result {
+      margin-top: 1.2em;
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #2c3e50;
+      background: #e0f2f1;
+      padding: 0.8em 1em;
+      border-radius: 12px;
+    }
+    .history, .popular, .share, .fortune {
+      margin-top: 16px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Tra cứu con giáp Nhật Bản</h1>
+    <div class="description-box">
+      <strong>Cách sử dụng:</strong><br>
+      1. Nhập ngày sinh của bạn (dạng lịch hoặc chọn thủ công).<br>
+      2. Nhấn nút "Chuyển đổi" hoặc phím Enter.<br>
+      3. Kết quả con giáp, con giáp phổ biến và vận may hôm nay sẽ hiển thị.<br>
+      * Lưu ý: Nếu sinh trước ngày 4 tháng 2 (Lập Xuân), sẽ tính theo năm trước đó.<br>
+      <em style="font-size: 0.85em; color: #888;">Hãy đánh dấu trang này để tra cứu nhanh!</em>
+    </div>
+    <div class="input-row">
+      <input type="date" id="birthDate">
+      <button id="convertBtn" style="padding: 0.6em 1em; font-size: 1em; border-radius: 8px; border: none; background-color: #00796b; color: white; cursor: pointer;">Chuyển đổi</button>
+    </div>
+    <div class="input-row">
+      <select id="birthYear"></select>
+      <select id="birthMonth"></select>
+      <select id="birthDay"></select>
+    </div>
+    <div class="result" id="result"></div>
+    <div class="history" id="history"></div>
+    <div class="popular" id="popular"></div>
+    <div class="share" id="share"></div>
+    <div class="fortune" id="fortune"></div>
+  </div>
+
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV6LHBP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-5508768187151867"
+       data-ad-slot="8394292465"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <script>
+    const etoList = ["Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi"];
+    const fortuneList = [
+      "Đại cát! Hôm nay là một ngày tuyệt vời!",
+      "Trung cát. Ngày yên bình và êm ả.",
+      "Tiểu cát. Cẩn trọng sẽ mang lại may mắn.",
+      "Cuối cát. Cứ tự nhiên, đừng ép bản thân.",
+      "Hung. Hãy cẩn thận trong mọi việc hôm nay."
+    ];
+
+    const resultDiv = document.getElementById('result');
+    const historyDiv = document.getElementById('history');
+    const popularDiv = document.getElementById('popular');
+    const shareDiv = document.getElementById('share');
+    const fortuneDiv = document.getElementById('fortune');
+    const dateInput = document.getElementById('birthDate');
+    const yearSel = document.getElementById('birthYear');
+    const monthSel = document.getElementById('birthMonth');
+    const daySel = document.getElementById('birthDay');
+    const countMap = new Array(12).fill(0);
+    const historyLog = [];
+
+    for (let y = 1900; y <= new Date().getFullYear(); y++) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yearSel.appendChild(opt);
+    }
+    for (let m = 1; m <= 12; m++) {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      monthSel.appendChild(opt);
+    }
+    function updateDays() {
+      daySel.innerHTML = '';
+      const year = parseInt(yearSel.value);
+      const month = parseInt(monthSel.value);
+      const daysInMonth = new Date(year, month, 0).getDate();
+      for (let d = 1; d <= daysInMonth; d++) {
+        const opt = document.createElement('option');
+        opt.value = d;
+        opt.textContent = d;
+        daySel.appendChild(opt);
+      }
+    }
+
+    function showResult(dateStr) {
+      if (!dateStr) return;
+      const date = new Date(dateStr);
+      const risshun = new Date(date.getFullYear(), 1, 4);
+      const etoYear = date < risshun ? date.getFullYear() - 1 : date.getFullYear();
+      const index = (etoYear - 1984 + 12) % 12;
+      const eto = etoList[index];
+      resultDiv.innerHTML = `Năm ${etoYear} là tuổi <span style="color:#e74c3c; font-size:1.4em;">"${eto}"</span><br><span style="font-size: 0.9em; color: #2e7d32;">Vận may hôm nay: ${fortuneList[Math.floor(Math.random() * fortuneList.length)]}</span>`;
+      historyLog.unshift(`${etoYear} - ${eto}`);
+      if (historyLog.length > 3) historyLog.pop();
+      historyDiv.innerHTML = 'Kết quả gần đây:<br>' + historyLog.map(h => `• ${h}`).join('<br>');
+      countMap[index]++;
+      const ranked = countMap.map((v, i) => ({ eto: etoList[i], count: v })).sort((a, b) => b.count - a.count);
+      popularDiv.innerHTML = 'Con giáp được xem nhiều nhất:<br>' + ranked.slice(0, 3).map(r => `• ${r.eto} (${r.count} lần)`).join('<br>');
+
+      const sharedMsg = encodeURIComponent(`Năm ${etoYear} là tuổi "${eto}"!`);
+      const sharedURL = 'https://utilities.mahalohana-bruce.com/jp-eto-calculator/vi/index.html';
+      shareDiv.innerHTML = `
+        <a href="https://twitter.com/intent/tweet?text=${sharedMsg}&url=${sharedURL}" target="_blank">Chia sẻ trên X</a>
+        <br><a href="https://www.facebook.com/sharer/sharer.php?u=${sharedURL}" target="_blank">Chia sẻ trên Facebook</a>
+      `;
+    }
+
+    yearSel.addEventListener('change', updateDays);
+    monthSel.addEventListener('change', updateDays);
+    daySel.addEventListener('change', () => {
+      const year = yearSel.value;
+      const month = ('0' + monthSel.value).slice(-2);
+      const day = ('0' + daySel.value).slice(-2);
+      showResult(`${year}-${month}-${day}`);
+    });
+    dateInput.addEventListener('change', () => showResult(dateInput.value));
+    document.getElementById('convertBtn').addEventListener('click', () => showResult(dateInput.value));
+    dateInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        showResult(dateInput.value);
+      }
+    });
+
+    yearSel.value = 2000;
+    monthSel.value = 1;
+    updateDays();
+    daySel.value = 1;
+    showResult('2000-01-01');
+  </script>
+</body>
+</html>
