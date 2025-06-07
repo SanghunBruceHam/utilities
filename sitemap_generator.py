@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-BASE_URL = "https://utilities.mahalohana-bruce.com"  # 커스텀 도메인
+BASE_URL = "https://games.mahalohana-bruce.com"  # 커스텀 도메인
 SITEMAP_FILE = "sitemap.xml"
 
 def find_html_files(directory="."):
@@ -25,7 +25,7 @@ def generate_sitemap():
         sitemap.append("  <url>")
         sitemap.append(f"    <loc>{url}</loc>")
         sitemap.append(f"    <lastmod>{now}</lastmod>")
-        sitemap.append("    <changefreq>weekly</changefreq>")
+        sitemap.append("    <changefreq>daily</changefreq>")
         sitemap.append("    <priority>0.8</priority>")
         sitemap.append("  </url>")
     sitemap.append("</urlset>")
