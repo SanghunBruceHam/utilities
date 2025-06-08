@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://utilities.mahalohana-bruce.com/sitemap.xml
+
+#DaumWebMasterTool:06ec5b3b3e807287f44da74810bfcd31a377925e3b327b76cbcc8b3d013127a0:NnJbOlYdct0Jzm/G1OzHmA==
