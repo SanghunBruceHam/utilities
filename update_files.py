@@ -4,9 +4,11 @@ from datetime import datetime
 robots_txt = """User-agent: *
 Allow: /
 
-Sitemap: https://utilities.mahalohana-bruce.com/sitemap.xml
+Sitemap: https://tests.mahalohana-bruce.com/sitemap.xml
 
-#DaumWebMasterTool:06ec5b3b3e807287f44da74810bfcd31a377925e3b327b76cbcc8b3d013127a0:NnJbOlYdct0Jzm/G1OzHmA==
+#DaumWebMasterTool:9add863220c94ce5ce0e5e7ff689b22964cfdbd2b97303e6ad356185fffba89e:NnJbOlYdct0Jzm/G1OzHmA==
+#naver-site-verification:9623a2fff5ba40ea03991297345b560b39f1c4b1
+
 """
 
 with open("robots.txt", "w", encoding="utf-8") as f:
