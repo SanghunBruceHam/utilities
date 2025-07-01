@@ -198,22 +198,42 @@
 </div>
 <h1>Japanese Era Converter｜Gregorian ⇄ Japanese Era</h1>
 
-<section>
-<h2>Japanese Era to Gregorian Year Conversion Tool</h2>
-<p>Free online tool to convert between traditional Japanese eras (Reiwa, Heisei, Showa, Taisho, Meiji) and Gregorian years. Get accurate conversion results with simple operations.</p>
+<p style="text-align: center; margin: 1rem 0; font-size: 1.1rem; color: #4a5568;">Free online tool to convert between traditional Japanese eras (Reiwa, Heisei, Showa, Taisho, Meiji) and Gregorian years.</p>
 
-<h3>Supported Japanese Eras</h3>
-<ul>
-<li><strong>Reiwa (令和)</strong>: 2019~Present</li>
-<li><strong>Heisei (平成)</strong>: 1989~2019</li>
-<li><strong>Showa (昭和)</strong>: 1926~1989</li>
-<li><strong>Taisho (大正)</strong>: 1912~1926</li>
-<li><strong>Meiji (明治)</strong>: 1868~1912</li>
-</ul>
-</section>
+<!-- Collapsible Usage Section -->
+<details style="margin: 1.5rem 0; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+<summary style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; cursor: pointer; font-weight: 600; font-size: 1.1rem; outline: none;">📖 View Instructions & Supported Eras</summary>
+<div style="padding: 1.5rem; background: #f8f9ff;">
+<h3 style="margin-top: 0; color: #4a5568;">📋 How to Use</h3>
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.6;">
+<li>Select the conversion direction (Gregorian→Era or Era→Gregorian)</li>
+<li>Choose the corresponding year or era</li>
+<li>Click the convert button to see the result</li>
+</ol>
+
+<h3 style="color: #4a5568;">🗾 Supported Japanese Eras</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #e53935;">
+<strong>Reiwa (令和)</strong><br><small>2019~Present</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+<strong>Heisei (平成)</strong><br><small>1989~2019</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #388e3c;">
+<strong>Showa (昭和)</strong><br><small>1926~1989</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #f57c00;">
+<strong>Taisho (大正)</strong><br><small>1912~1926</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<strong>Meiji (明治)</strong><br><small>1868~1912</small>
+</div>
+</div>
+</div>
+</details>
 
 <section>
-<h3>Conversion Method</h3>
+<h3>🔄 Convert</h3>
 <label for="mode">Select conversion direction:</label>
 <select id="mode">
 <option value="toWareki">Gregorian → Japanese Era</option>
@@ -232,19 +252,18 @@
 <button id="convertBtn">Convert</button>
 <div id="result"></div>
 
-<section>
-<h3>How to Use</h3>
-<ol>
-<li>Select the conversion direction (Gregorian→Era or Era→Gregorian)</li>
-<li>Choose the corresponding year or era</li>
-<li>Click the convert button to see the result</li>
-</ol>
-
-<h3>About Japanese Era System</h3>
-<p>Japanese eras change with the enthronement of emperors, and each era has its unique meaning and history. The current era, Reiwa, began on May 1, 2019, and means "beautiful harmony".</p>
-
-<h3>Accurate Conversion Results</h3>
-<p>This tool provides accurate conversions based on official Japanese government era standards. It's useful for document preparation, historical research, or learning Japanese culture.</p>
+<section style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9ff 0%, #fff3e0 100%); border-radius: 16px; border: 1px solid #e2e8f0;">
+<h3 style="color: #4a5568; margin-top: 0;">ℹ️ About Era Conversion</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">📜 Era System</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Japanese eras change with the enthronement of emperors, each having unique meaning and history. The current Reiwa means "beautiful harmony".</p>
+</div>
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">✅ Accurate Results</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Based on official Japanese government era standards. Useful for document preparation, historical research, and learning Japanese culture.</p>
+</div>
+</div>
 </section>
 </div>
 <script>

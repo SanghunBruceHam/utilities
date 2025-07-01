@@ -270,22 +270,42 @@
 </div>
 <h1>일본 연호 변환기｜서기 ⇄ 연호</h1>
 
-<section>
-<h2>일본 연호와 서기 변환 도구</h2>
-<p>일본의 전통 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)를 서기와 상호 변환할 수 있는 무료 온라인 도구입니다. 간단한 조작으로 정확한 변환 결과를 확인하실 수 있습니다.</p>
+<p style="text-align: center; margin: 1rem 0; font-size: 1.1rem; color: #4a5568;">일본의 전통 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)를 서기와 상호 변환할 수 있는 무료 온라인 도구입니다.</p>
 
-<h3>지원하는 일본 연호</h3>
-<ul>
-<li><strong>레이와(令和)</strong>: 2019년~현재</li>
-<li><strong>헤이세이(平成)</strong>: 1989년~2019년</li>
-<li><strong>쇼와(昭和)</strong>: 1926년~1989년</li>
-<li><strong>다이쇼(大正)</strong>: 1912년~1926년</li>
-<li><strong>메이지(明治)</strong>: 1868년~1912년</li>
-</ul>
-</section>
+<!-- 접을 수 있는 사용법 섹션 -->
+<details style="margin: 1.5rem 0; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+<summary style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; cursor: pointer; font-weight: 600; font-size: 1.1rem; outline: none;">📖 사용법 및 지원 연호 보기</summary>
+<div style="padding: 1.5rem; background: #f8f9ff;">
+<h3 style="margin-top: 0; color: #4a5568;">📋 사용 방법</h3>
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.6;">
+<li>변환 방향을 선택하세요 (서기→연호 또는 연호→서기)</li>
+<li>해당하는 연도나 연호를 선택하세요</li>
+<li>변환 버튼을 클릭하여 결과를 확인하세요</li>
+</ol>
+
+<h3 style="color: #4a5568;">🗾 지원하는 일본 연호</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #e53935;">
+<strong>레이와(令和)</strong><br><small>2019년~현재</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+<strong>헤이세이(平成)</strong><br><small>1989년~2019년</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #388e3c;">
+<strong>쇼와(昭和)</strong><br><small>1926년~1989년</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #f57c00;">
+<strong>다이쇼(大正)</strong><br><small>1912년~1926년</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<strong>메이지(明治)</strong><br><small>1868년~1912년</small>
+</div>
+</div>
+</div>
+</details>
 
 <section>
-<h3>변환 방법</h3>
+<h3>🔄 변환하기</h3>
 <label for="mode">변환 방향 선택:</label>
 <select id="mode">
 <option value="toWareki">서기 → 연호</option>
@@ -304,19 +324,18 @@
 <button id="convertBtn">변환</button>
 <div id="result"></div>
 
-<section>
-<h3>사용법</h3>
-<ol>
-<li>변환 방향을 선택하세요 (서기→연호 또는 연호→서기)</li>
-<li>해당하는 연도나 연호를 선택하세요</li>
-<li>변환 버튼을 클릭하여 결과를 확인하세요</li>
-</ol>
-
-<h3>일본 연호 변환의 특징</h3>
-<p>일본의 연호는 천황의 즉위와 함께 변경되며, 각 연호마다 고유한 의미와 역사를 가지고 있습니다. 현재 사용되는 레이와는 2019년 5월 1일부터 시작되었으며, "아름다운 조화"라는 의미를 담고 있습니다.</p>
-
-<h3>정확한 변환 결과</h3>
-<p>이 도구는 일본 정부의 공식 연호 기준에 따라 정확한 변환을 제공합니다. 문서 작성, 역사 연구, 또는 일본 문화 학습에 유용하게 활용하실 수 있습니다.</p>
+<section style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9ff 0%, #fff3e0 100%); border-radius: 16px; border: 1px solid #e2e8f0;">
+<h3 style="color: #4a5568; margin-top: 0;">ℹ️ 연호 변환에 대해</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">📜 연호의 특징</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">일본의 연호는 천황의 즉위와 함께 변경되며, 각 연호마다 고유한 의미와 역사를 가지고 있습니다. 현재 레이와는 "아름다운 조화"를 의미합니다.</p>
+</div>
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">✅ 정확한 변환</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">일본 정부의 공식 연호 기준에 따라 정확한 변환을 제공합니다. 문서 작성, 역사 연구, 일본 문화 학습에 유용합니다.</p>
+</div>
+</div>
 </section>
 </div>
 <script>
