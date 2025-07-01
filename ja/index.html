@@ -49,6 +49,23 @@
             padding: 20px;
         }
         
+        .language-switcher {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .language-switcher a {
+            transition: color 0.3s ease;
+        }
+        
+        .language-switcher a:hover {
+            color: #4a90e2 !important;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -187,6 +204,15 @@
 </head>
 <body>
     <div class="container">
+        <div class="language-switcher">
+            <a href="/" style="color: #666; text-decoration: none; margin: 0 10px;">🌍 言語選択</a>
+            <span style="color: #ccc;">|</span>
+            <a href="/en/" style="color: #666; text-decoration: none; margin: 0 10px;">🇺🇸 English</a>
+            <a href="/ja/" style="color: #e53935; font-weight: bold; text-decoration: none; margin: 0 10px;">🇯🇵 日本語</a>
+            <a href="/ko/" style="color: #666; text-decoration: none; margin: 0 10px;">🇰🇷 한국어</a>
+            <a href="/vi/" style="color: #666; text-decoration: none; margin: 0 10px;">🇻🇳 Tiếng Việt</a>
+        </div>
+        
         <div class="header">
             <h1>🛠️ ユーティリティ計算機コレクション</h1>
             <p>和暦変換器、干支計算機、選挙年齢確認器など便利なツール集</p>
