@@ -1,34 +1,259 @@
-<!DOCTYPE html>
-<html>
-  <head>
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유틸리티 계산기 모음 | Utilities Collection</title>
+    <meta name="description" content="다양한 계산기와 유틸리티 도구 모음집. 일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 도구들을 제공합니다.">
+    <meta name="keywords" content="계산기, 유틸리티, 일본 연호, 간지, 선거 연령, 변환기">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="유틸리티 계산기 모음">
+    <meta property="og:description" content="다양한 계산기와 유틸리티 도구 모음집">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico?v=2">
+    <link rel="icon" type="image/png" href="/favicon.png?v=2">
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WF8ZL9QJHF');
+    </script>
+    
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ry3utftm89");
-</script>
+    </script>
     
-  <meta property="og:url" content="https://utilities.mahalohana-bruce.com" />
-
-    <title>utilities.mahalohana-bruce.com Redirecting...</title>
-<link rel="canonical" href="https://utilities.mahalohana-bruce.com" />
-<link rel="icon" href="/favicon.ico?v=2">
-<link rel="icon" type="image/png" href="/favicon.png?v=2">
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WF8ZL9QJHF');
-</script>
-  </head>
-  
-  <body>
-    <p>Redirecting to <a href="https://utilities.mahalohana-bruce.com">https://utilities.mahalohana-bruce.com</a></p>
-  </body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .language-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .language-link {
+            padding: 5px 12px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #555;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        
+        .language-link:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ 유틸리티 계산기 모음</h1>
+            <p>다양한 계산기와 변환 도구들을 한 곳에서 사용해보세요</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- 일본 간지 계산기 -->
+            <div class="tool-card">
+                <div class="tool-icon">🐉</div>
+                <div class="tool-title">일본 간지 계산기</div>
+                <div class="tool-description">
+                    생년월일을 입력하여 일본 십이지(간지)를 확인할 수 있습니다. 
+                    입춘 기준으로 정확한 계산을 제공합니다.
+                </div>
+                <div class="language-links">
+                    <a href="/jp-eto-calculator/ja/index.html" class="language-link">🇯🇵 일본어</a>
+                    <a href="/jp-eto-calculator/en/index.html" class="language-link">🇺🇸 English</a>
+                    <a href="/jp-eto-calculator/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
+                </div>
+            </div>
+            
+            <!-- 일본 연호 변환기 -->
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <div class="tool-title">일본 연호 변환기</div>
+                <div class="tool-description">
+                    서기를 일본 연호(레이와, 헤이세이, 쇼와 등)로 변환하거나 
+                    그 반대로 변환할 수 있는 도구입니다.
+                </div>
+                <div class="language-links">
+                    <a href="/jp-year-converter/ja/index.html" class="language-link">🇯🇵 일본어</a>
+                    <a href="/jp-year-converter/en/index.html" class="language-link">🇺🇸 English</a>
+                    <a href="/jp-year-converter/ko/index.html" class="language-link">🇰🇷 한국어</a>
+                    <a href="/jp-year-converter/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
+                </div>
+            </div>
+            
+            <!-- 선거 연령 확인기 -->
+            <div class="tool-card">
+                <div class="tool-icon">🗳️</div>
+                <div class="tool-title">선거 연령 확인기</div>
+                <div class="tool-description">
+                    2025년 제21대 대통령 선거 기준으로 투표 가능한 
+                    나이(만 18세 이상)인지 확인할 수 있습니다.
+                </div>
+                <div class="language-links">
+                    <a href="/election-age-checker/ko/index.html" class="language-link">🇰🇷 한국어</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Utilities Collection. 모든 도구는 무료로 제공됩니다.</p>
+            <p>궁금한 점이나 제안사항이 있으시면 언제든지 연락주세요.</p>
+        </div>
+    </div>
+    
+    <script>
+        // 카드 클릭 시 애니메이션 효과
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // 언어 링크 클릭 시에는 카드 클릭 이벤트 무시
+                if (e.target.classList.contains('language-link')) {
+                    return;
+                }
+                
+                // 첫 번째 언어 링크로 이동
+                const firstLink = this.querySelector('.language-link');
+                if (firstLink) {
+                    window.location.href = firstLink.href;
+                }
+            });
+        });
+        
+        // 페이지 로드 시 애니메이션
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.tool-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
 </html>
