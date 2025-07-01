@@ -4,13 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>유틸리티 계산기 모음 | 한국어판</title>
-    <meta name="description" content="일본 연호 변환기, 선거 연령 확인기 등 유용한 온라인 도구를 한국어로 제공합니다.">
-    <meta name="keywords" content="연호변환, 선거연령, 계산기, 도구, 한국">
+    <title>유틸리티 계산기 모음 | 일본 연호 변환기, 간지 계산기, 선거 연령 확인기</title>
+    <meta name="description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 계산기 도구들을 무료로 제공합니다. 서력과 일본 연호 변환, 생년월일로 십이지 확인, 투표 연령 계산이 가능합니다.">
+    <meta name="keywords" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기, 십이지, 레이와, 헤이세이, 쇼와, 투표권">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="유틸리티 계산기 모음 - 일본 연호, 간지, 선거 연령 계산기">
+    <meta property="og:description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 계산기 도구들을 무료로 제공합니다.">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ko/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
@@ -29,7 +43,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -53,38 +67,13 @@
         }
         
         .header p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             opacity: 0.9;
-        }
-        
-        .language-switcher {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .language-switcher a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .language-switcher a.active {
-            background: rgba(255,255,255,0.2);
-            border-color: white;
-        }
-        
-        .language-switcher a:hover {
-            background: rgba(255,255,255,0.1);
         }
         
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -92,7 +81,7 @@
         .tool-card {
             background: white;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
@@ -106,45 +95,72 @@
         
         .tool-icon {
             font-size: 3em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
         }
         
         .tool-title {
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #333;
         }
         
         .tool-description {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.05em;
         }
         
         .tool-features {
-            font-size: 0.9em;
+            font-size: 0.95em;
             color: #28a745;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
         
-        .use-button {
+        .tool-link {
+            display: inline-block;
+            padding: 12px 24px;
             background: #667eea;
             color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
+            border-radius: 25px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
-        .use-button:hover {
+        .tool-link:hover {
             background: #5a67d8;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
+        }
+        
+        .seo-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .seo-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .seo-content h3 {
+            color: #555;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .seo-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
         .footer {
@@ -155,8 +171,16 @@
         }
         
         @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
             .tools-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .tool-card {
+                padding: 25px;
             }
         }
     </style>
@@ -164,49 +188,87 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🛠️ 유틸리티 계산기</h1>
-            <p>유용한 계산 도구와 변환 도구의 한국어판</p>
-        </div>
-        
-        <div class="language-switcher">
-            <a href="/" class="language-link">🏠 언어선택</a>
-            <a href="/ja/">🇯🇵 日本語</a>
-            <a href="/ko/" class="active">🇰🇷 한국어</a>
-            <a href="/en/">🇺🇸 English</a>
-            <a href="/vi/">🇻🇳 Tiếng Việt</a>
+            <h1>🛠️ 유틸리티 계산기 모음</h1>
+            <p>일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 도구들</p>
         </div>
         
         <div class="tools-grid">
+            <!-- 일본 연호 변환기 -->
             <div class="tool-card">
                 <div class="tool-icon">📅</div>
                 <div class="tool-title">일본 연호 변환기</div>
                 <div class="tool-description">
-                    서기를 일본 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)로 변환하거나
-                    그 반대로 변환할 수 있는 도구입니다.
+                    서력을 일본 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)로 변환하거나 그 반대로 변환할 수 있는 무료 도구입니다. 정확한 연호 계산으로 문서 작성이나 역사 공부에 유용합니다.
                 </div>
                 <div class="tool-features">
-                    ✓ 5개 연호 지원 ✓ 양방향 변환 ✓ 정확한 연도 계산
+                    ✓ 5개 주요 연호 지원 ✓ 양방향 변환 가능 ✓ 역사적 정확성 보장
                 </div>
-                <a href="/jp-year-converter/ko/" class="use-button">사용하기 →</a>
+                <a href="/jp-year-converter/ko/index.html" class="tool-link">연호 변환기 사용하기</a>
             </div>
             
+            <!-- 일본 간지 계산기 -->
+            <div class="tool-card">
+                <div class="tool-icon">🐉</div>
+                <div class="tool-title">일본 간지 계산기 (십이지)</div>
+                <div class="tool-description">
+                    생년월일을 입력하여 일본 십이지(간지)를 확인할 수 있는 무료 계산기입니다. 입춘 기준으로 정확한 계산을 제공하며, 12가지 동물과 운세 정보도 함께 제공합니다.
+                </div>
+                <div class="tool-features">
+                    ✓ 입춘 기준 정확한 계산 ✓ 12가지 동물 확인 ✓ 운세 정보 제공
+                </div>
+                <a href="/jp-eto-calculator/ja/index.html" class="tool-link">간지 계산기 사용하기</a>
+            </div>
+            
+            <!-- 선거 연령 확인기 -->
             <div class="tool-card">
                 <div class="tool-icon">🗳️</div>
                 <div class="tool-title">선거 연령 확인기</div>
                 <div class="tool-description">
-                    2025년 제21대 대통령 선거 기준으로 투표 가능한
-                    나이(만 18세 이상)인지 확인할 수 있습니다.
+                    2025년 제21대 대통령 선거 기준으로 투표 가능한 나이(만 18세 이상)인지 확인할 수 있는 도구입니다. 정확한 나이 계산으로 투표권을 미리 확인해보세요.
                 </div>
                 <div class="tool-features">
-                    ✓ 2025년 선거 기준 ✓ 정확한 나이 계산 ✓ 투표권 확인
+                    ✓ 2025년 선거 기준 ✓ 정확한 나이 계산 ✓ 투표권 즉시 확인
                 </div>
-                <a href="/election-age-checker/ko/" class="use-button">사용하기 →</a>
+                <a href="/election-age-checker/ko/index.html" class="tool-link">선거 연령 확인하기</a>
             </div>
         </div>
         
+        <div class="seo-content">
+            <h2>유틸리티 계산기 모음 - 무료 온라인 도구</h2>
+            
+            <h3>일본 연호 변환기란?</h3>
+            <p>일본 연호 변환기는 서력(서기)과 일본의 전통 연호 시스템 간의 변환을 도와주는 도구입니다. 현재 레이와(令和), 헤이세이(平成), 쇼와(昭和), 다이쇼(大正), 메이지(明治) 등 5개의 주요 연호를 지원합니다. 일본 관련 문서 작성, 역사 연구, 또는 일본 문화에 관심이 있는 분들에게 매우 유용한 도구입니다.</p>
+            
+            <h3>간지(십이지) 계산기 사용법</h3>
+            <p>간지 계산기는 생년월일을 입력하면 해당하는 십이지(12지지)를 알려주는 도구입니다. 쥐, 소, 호랑이, 토끼, 용, 뱀, 말, 양, 원숭이, 닭, 개, 돼지 등 12가지 동물 중 어느 것에 해당하는지 정확하게 계산해 드립니다. 입춘 기준으로 계산하여 더욱 정확한 결과를 제공합니다.</p>
+            
+            <h3>선거 연령 확인의 중요성</h3>
+            <p>선거 연령 확인기는 만 18세 이상의 투표권 보장을 위해 만들어진 도구입니다. 2025년 제21대 대통령 선거를 기준으로 투표 가능 여부를 미리 확인할 수 있어, 민주주의 참여에 대한 준비를 도와드립니다.</p>
+            
+            <h3>무료 계산기 도구의 장점</h3>
+            <p>저희가 제공하는 모든 계산기는 완전 무료이며, 별도의 회원가입이나 소프트웨어 설치가 필요하지 않습니다. 웹 브라우저만 있으면 언제든지 사용할 수 있으며, 모바일 기기에서도 원활하게 작동합니다. 정확성과 사용 편의성을 최우선으로 개발되었습니다.</p>
+        </div>
+        
         <div class="footer">
-            <p>© 2025 Utilities Collection. 모든 도구는 무료로 제공됩니다.</p>
+            <p>© 2025 유틸리티 계산기 모음. 모든 도구는 무료로 제공됩니다.</p>
+            <p>일본 연호 변환, 간지 계산, 선거 연령 확인을 한 곳에서 쉽고 빠르게 이용하세요.</p>
         </div>
     </div>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "유틸리티 계산기 모음",
+        "url": "https://utilities.mahalohana-bruce.com/ko/",
+        "description": "일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 계산기 도구들을 무료로 제공합니다.",
+        "inLanguage": "ko-KR",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://utilities.mahalohana-bruce.com/ko/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
 </body>
 </html>

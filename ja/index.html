@@ -4,13 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ユーティリティ計算機コレクション | 日本語版</title>
-    <meta name="description" content="日本の元号変換ツール、干支計算機など、便利なオンラインツールを日本語で提供します。">
-    <meta name="keywords" content="元号変換, 干支計算, 計算機, ツール, 日本">
+    <title>ユーティリティ計算機コレクション | 和暦変換器、干支計算機、選挙年齢確認</title>
+    <meta name="description" content="和暦変換器、干支計算機、選挙年齢確認器など便利な計算ツールを無料で提供しています。西暦と日本の元号の変換、生年月日から十二支の確認、投票年齢の計算が可能です。">
+    <meta name="keywords" content="和暦変換, 干支計算機, 選挙年齢, 十二支, 令和, 平成, 昭和, 投票権">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="ユーティリティ計算機コレクション - 和暦、干支、選挙年齢計算機">
+    <meta property="og:description" content="和暦変換器、干支計算機、選挙年齢確認器など便利な計算ツールを無料で提供しています。">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ja/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ja/">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ja/">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
@@ -29,7 +43,7 @@
         }
         
         body {
-            font-family: 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+            font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'Meiryo', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
@@ -53,38 +67,13 @@
         }
         
         .header p {
-            font-size: 1.1em;
+            font-size: 1.2em;
             opacity: 0.9;
-        }
-        
-        .language-switcher {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .language-switcher a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        
-        .language-switcher a.active {
-            background: rgba(255,255,255,0.2);
-            border-color: white;
-        }
-        
-        .language-switcher a:hover {
-            background: rgba(255,255,255,0.1);
         }
         
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
             margin-bottom: 40px;
         }
@@ -92,7 +81,7 @@
         .tool-card {
             background: white;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
@@ -106,45 +95,72 @@
         
         .tool-icon {
             font-size: 3em;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-align: center;
         }
         
         .tool-title {
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #333;
         }
         
         .tool-description {
             color: #666;
             line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.05em;
         }
         
         .tool-features {
-            font-size: 0.9em;
+            font-size: 0.95em;
             color: #28a745;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.5;
         }
         
-        .use-button {
+        .tool-link {
+            display: inline-block;
+            padding: 12px 24px;
             background: #667eea;
             color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
+            border-radius: 25px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
         
-        .use-button:hover {
+        .tool-link:hover {
             background: #5a67d8;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
+        }
+        
+        .seo-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .seo-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .seo-content h3 {
+            color: #555;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .seo-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
         
         .footer {
@@ -155,8 +171,16 @@
         }
         
         @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
             .tools-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .tool-card {
+                padding: 25px;
             }
         }
     </style>
@@ -164,49 +188,71 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🛠️ ユーティリティツール</h1>
-            <p>便利な計算ツールと変換ツールの日本語版</p>
-        </div>
-        
-        <div class="language-switcher">
-            <a href="/" class="language-link">🏠 言語選択</a>
-            <a href="/ja/" class="active">🇯🇵 日本語</a>
-            <a href="/ko/">🇰🇷 한국어</a>
-            <a href="/en/">🇺🇸 English</a>
-            <a href="/vi/">🇻🇳 Tiếng Việt</a>
+            <h1>🛠️ ユーティリティ計算機コレクション</h1>
+            <p>和暦変換器、干支計算機、選挙年齢確認器など便利なツール集</p>
         </div>
         
         <div class="tools-grid">
+            <!-- 和暦変換器 -->
             <div class="tool-card">
                 <div class="tool-icon">📅</div>
-                <div class="tool-title">日本の元号変換ツール</div>
+                <div class="tool-title">和暦変換器</div>
                 <div class="tool-description">
-                    西暦を日本の元号（令和、平成、昭和、大正、明治）に変換したり、
-                    逆に元号から西暦に変換できるツールです。
+                    西暦を日本の元号（令和、平成、昭和、大正、明治）に変換したり、その逆変換ができる無料ツールです。正確な元号計算で文書作成や歴史学習に役立ちます。
                 </div>
                 <div class="tool-features">
-                    ✓ 5つの元号に対応 ✓ 双方向変換 ✓ 正確な年代計算
+                    ✓ 5つの主要元号対応 ✓ 双方向変換可能 ✓ 歴史的正確性保証
                 </div>
-                <a href="/jp-year-converter/ja/" class="use-button">使用する →</a>
+                <a href="/jp-year-converter/ja/index.html" class="tool-link">和暦変換器を使用</a>
             </div>
             
+            <!-- 干支計算機 -->
             <div class="tool-card">
                 <div class="tool-icon">🐉</div>
-                <div class="tool-title">日本の干支計算機</div>
+                <div class="tool-title">干支計算機（十二支）</div>
                 <div class="tool-description">
-                    生年月日を入力して日本の十二支（干支）を確認できます。
-                    立春基準で正確に計算します。
+                    生年月日を入力して日本の十二支（干支）を確認できる無料計算機です。立春基準での正確な計算を提供し、12種類の動物と運勢情報も一緒に提供します。
                 </div>
                 <div class="tool-features">
-                    ✓ 立春基準の正確計算 ✓ 12の動物確認 ✓ 運勢情報
+                    ✓ 立春基準正確計算 ✓ 12種類の動物確認 ✓ 運勢情報提供
                 </div>
-                <a href="/jp-eto-calculator/ja/" class="use-button">使用する →</a>
+                <a href="/jp-eto-calculator/ja/index.html" class="tool-link">干支計算機を使用</a>
             </div>
         </div>
         
+        <div class="seo-content">
+            <h2>ユーティリティ計算機コレクション - 無料オンラインツール</h2>
+            
+            <h3>和暦変換器とは？</h3>
+            <p>和暦変換器は、西暦（グレゴリオ暦）と日本の伝統的な元号システム間の変換を支援するツールです。現在、令和、平成、昭和、大正、明治など5つの主要元号をサポートしています。日本関連の文書作成、歴史研究、または日本文化に興味のある方に非常に有用なツールです。</p>
+            
+            <h3>干支（十二支）計算機の使用法</h3>
+            <p>干支計算機は、生年月日を入力すると該当する十二支を教えてくれるツールです。子、丑、寅、卯、辰、巳、午、未、申、酉、戌、亥の12種類の動物のうち、どれに該当するかを正確に計算いたします。立春基準で計算してより正確な結果を提供します。</p>
+            
+            <h3>無料計算機ツールの利点</h3>
+            <p>私たちが提供するすべての計算機は完全無料で、別途会員登録やソフトウェアインストールが必要ありません。ウェブブラウザさえあればいつでも使用でき、モバイル機器でもスムーズに動作します。正確性と使いやすさを最優先に開発されました。</p>
+        </div>
+        
         <div class="footer">
-            <p>© 2025 Utilities Collection. すべてのツールは無料でご利用いただけます。</p>
+            <p>© 2025 ユーティリティ計算機コレクション。すべてのツールは無料で提供されています。</p>
+            <p>和暦変換、干支計算を一か所で簡単かつ迅速にご利用ください。</p>
         </div>
     </div>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "ユーティリティ計算機コレクション",
+        "url": "https://utilities.mahalohana-bruce.com/ja/",
+        "description": "和暦変換器、干支計算機など便利な計算ツールを無料で提供しています。",
+        "inLanguage": "ja-JP",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://utilities.mahalohana-bruce.com/ja/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
 </body>
 </html>

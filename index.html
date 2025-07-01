@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,19 +7,26 @@
     <title>유틸리티 계산기 모음 | Utilities Collection</title>
     <meta name="description" content="다양한 계산기와 유틸리티 도구 모음집. 일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 도구들을 제공합니다.">
     <meta name="keywords" content="계산기, 유틸리티, 일본 연호, 간지, 선거 연령, 변환기">
-
+    
     <!-- Open Graph -->
     <meta property="og:title" content="유틸리티 계산기 모음">
     <meta property="og:description" content="다양한 계산기와 유틸리티 도구 모음집">
     <meta property="og:url" content="https://utilities.mahalohana-bruce.com">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
-
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+    
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico?v=2">
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="canonical" href="https://utilities.mahalohana-bruce.com">
-
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
     <script>
@@ -27,7 +35,7 @@
         gtag('js', new Date());
         gtag('config', 'G-WF8ZL9QJHF');
     </script>
-
+    
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -36,14 +44,43 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ry3utftm89");
     </script>
-
+    
+    <!-- Auto Language Detection and Redirect -->
+    <script>
+        (function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const langMap = {
+                'ko': '/ko/',
+                'ja': '/ja/',
+                'en': '/en/',
+                'vi': '/vi/',
+                'zh': '/ja/',
+                'zh-cn': '/ja/',
+                'zh-tw': '/ja/'
+            };
+            
+            const shortLang = userLang.toLowerCase().substring(0, 2);
+            const fullLang = userLang.toLowerCase();
+            
+            // Check if already on a language-specific page
+            if (!window.location.pathname.match(/^\/(ko|ja|en|vi)\//)) {
+                const targetLang = langMap[fullLang] || langMap[shortLang] || '/ko/';
+                
+                // Add a small delay to allow page to load for SEO
+                setTimeout(() => {
+                    window.location.href = targetLang;
+                }, 100);
+            }
+        })();
+    </script>
+    
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -53,179 +90,171 @@
             justify-content: center;
             padding: 20px;
         }
-
-        .container {
-            max-width: 800px;
-            text-align: center;
-            color: white;
-        }
-
-        .header {
-            margin-bottom: 60px;
-        }
-
-        .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.3em;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
+        
         .language-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-
-        .language-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 20px;
-            padding: 30px 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .logo {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .language-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid transparent;
+            border-radius: 12px;
             text-decoration: none;
             color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
-
-        .language-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            background: rgba(255, 255, 255, 1);
+        
+        .language-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
         }
-
-        .language-flag {
-            font-size: 4em;
-            margin-bottom: 15px;
-            display: block;
+        
+        .language-btn .flag {
+            font-size: 1.5em;
+            margin-right: 10px;
         }
-
-        .language-name {
-            font-size: 1.4em;
-            font-weight: bold;
-            margin-bottom: 10px;
+        
+        .language-btn .text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
-
-        .language-description {
-            font-size: 0.95em;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .footer {
-            color: white;
-            opacity: 0.8;
+        
+        .language-btn .lang-name {
             font-size: 0.9em;
+            color: #667eea;
         }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.5em;
-            }
-
-            .header p {
-                font-size: 1.1em;
-            }
-
+        
+        .auto-redirect-notice {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 480px) {
             .language-selector {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 1.6em;
+            }
+            
+            .language-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
-
-            .language-card {
-                padding: 25px 15px;
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .language-btn {
+                padding: 12px 15px;
+                font-size: 1em;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header fade-in">
-            <h1>🛠️ 유틸리티 계산기</h1>
-            <p>다양한 계산기와 변환 도구들을 원하는 언어로 사용해보세요</p>
+    <div class="language-selector">
+        <div class="logo">🛠️</div>
+        <h1 class="title">Choose Your Language</h1>
+        <p class="subtitle">언어를 선택해주세요 / 言語を選択してください</p>
+        
+        <div class="language-grid">
+            <a href="/ko/" class="language-btn">
+                <span class="flag">🇰🇷</span>
+                <span class="text">
+                    <span>한국어</span>
+                    <span class="lang-name">Korean</span>
+                </span>
+            </a>
+            
+            <a href="/ja/" class="language-btn">
+                <span class="flag">🇯🇵</span>
+                <span class="text">
+                    <span>日本語</span>
+                    <span class="lang-name">Japanese</span>
+                </span>
+            </a>
+            
+            <a href="/en/" class="language-btn">
+                <span class="flag">🇺🇸</span>
+                <span class="text">
+                    <span>English</span>
+                    <span class="lang-name">English</span>
+                </span>
+            </a>
+            
+            <a href="/vi/" class="language-btn">
+                <span class="flag">🇻🇳</span>
+                <span class="text">
+                    <span>Tiếng Việt</span>
+                    <span class="lang-name">Vietnamese</span>
+                </span>
+            </a>
         </div>
-
-        <div class="language-selector">
-            <a href="/ja/" class="language-card fade-in" style="animation-delay: 0.2s">
-                <span class="language-flag">🇯🇵</span>
-                <div class="language-name">日本語</div>
-                <div class="language-description">일본 연호 변환기, 간지 계산기<br>一番充実したツール</div>
-            </a>
-
-            <a href="/ko/" class="language-card fade-in" style="animation-delay: 0.4s">
-                <span class="language-flag">🇰🇷</span>
-                <div class="language-name">한국어</div>
-                <div class="language-description">일본 연호 변환기, 선거 연령 확인기<br>한국 사용자를 위한 도구</div>
-            </a>
-
-            <a href="/en/" class="language-card fade-in" style="animation-delay: 0.6s">
-                <span class="language-flag">🇺🇸</span>
-                <div class="language-name">English</div>
-                <div class="language-description">Japanese Era Converter, Zodiac Calculator<br>Tools for international users</div>
-            </a>
-
-            <a href="/vi/" class="language-card fade-in" style="animation-delay: 0.8s">
-                <span class="language-flag">🇻🇳</span>
-                <div class="language-name">Tiếng Việt</div>
-                <div class="language-description">Công cụ chuyển đổi niên hiệu Nhật<br>Dành cho người Việt Nam</div>
-            </a>
-        </div>
-
-        <div class="footer fade-in" style="animation-delay: 1s">
-            <p>© 2025 Utilities Collection. 모든 도구는 무료로 제공됩니다.</p>
+        
+        <div class="auto-redirect-notice">
+            <p>자동으로 브라우저 언어에 맞는 페이지로 이동합니다.</p>
+            <p>Automatically redirecting to your browser's language.</p>
         </div>
     </div>
-
-    <script>
-        // 언어 자동 감지 및 리다이렉션
-        (function() {
-            const lang = navigator.language || navigator.userLanguage;
-            const langMap = {
-                'ja': '/ja/',
-                'ko': '/ko/',
-                'en': '/en/',
-                'vi': '/vi/'
-            };
-
-            // URL 파라미터로 자동 리다이렉션 비활성화 가능
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('no_redirect') === 'true') {
-                return;
-            }
-
-            const shortLang = lang.toLowerCase().slice(0, 2);
-            if (langMap[shortLang] && window.location.pathname === '/') {
-                // 3초 후 자동 리다이렉션
-                setTimeout(() => {
-                    window.location.href = langMap[shortLang];
-                }, 3000);
-
-                // 리다이렉션 안내 표시
-                const header = document.querySelector('.header p');
-                header.innerHTML = `언어가 감지되었습니다. 3초 후 ${shortLang.toUpperCase()} 페이지로 이동합니다.<br><small>자동 이동을 원하지 않으시면 언어를 직접 선택해주세요.</small>`;
-            }
-        })();
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "유틸리티 계산기 모음",
+        "url": "https://utilities.mahalohana-bruce.com",
+        "description": "다양한 계산기와 유틸리티 도구 모음집",
+        "inLanguage": ["ko-KR", "ja-JP", "en-US", "vi-VN"],
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://utilities.mahalohana-bruce.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
     </script>
 </body>
 </html>

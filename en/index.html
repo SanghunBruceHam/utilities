@@ -210,3 +210,260 @@
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Calculator Collection | Japanese Era Converter, Zodiac Calculator, Election Age Checker</title>
+    <meta name="description" content="Free online calculators including Japanese era converter, zodiac calculator, and election age checker. Convert between Gregorian calendar and Japanese eras, find your zodiac sign, and check voting eligibility.">
+    <meta name="keywords" content="japanese era converter, zodiac calculator, election age checker, reiwa, heisei, showa, voting rights">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Utility Calculator Collection - Japanese Era, Zodiac, Election Age Tools">
+    <meta property="og:description" content="Free online calculators including Japanese era converter, zodiac calculator, and election age checker.">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/en/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WF8ZL9QJHF');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.6em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+        
+        .tool-features {
+            font-size: 0.95em;
+            color: #28a745;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .tool-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tool-link:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
+        }
+        
+        .seo-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .seo-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .seo-content h3 {
+            color: #555;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .seo-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ Utility Calculator Collection</h1>
+            <p>Japanese Era Converter, Zodiac Calculator, Election Age Checker and More</p>
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Japanese Era Converter -->
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <div class="tool-title">Japanese Era Converter</div>
+                <div class="tool-description">
+                    Convert between Gregorian calendar and Japanese eras (Reiwa, Heisei, Showa, Taisho, Meiji) with this free online tool. Perfect for document preparation and historical research with accurate era calculations.
+                </div>
+                <div class="tool-features">
+                    ✓ 5 Major Eras Supported ✓ Bidirectional Conversion ✓ Historical Accuracy Guaranteed
+                </div>
+                <a href="/jp-year-converter/en/index.html" class="tool-link">Use Era Converter</a>
+            </div>
+            
+            <!-- Japanese Zodiac Calculator -->
+            <div class="tool-card">
+                <div class="tool-icon">🐉</div>
+                <div class="tool-title">Japanese Zodiac Calculator</div>
+                <div class="tool-description">
+                    Find your Japanese zodiac sign (Eto) by entering your birth date. This free calculator provides accurate results based on the Risshun boundary and includes information about all 12 zodiac animals.
+                </div>
+                <div class="tool-features">
+                    ✓ Risshun-based Calculation ✓ 12 Zodiac Animals ✓ Fortune Information
+                </div>
+                <a href="/jp-eto-calculator/en/index.html" class="tool-link">Use Zodiac Calculator</a>
+            </div>
+        </div>
+        
+        <div class="seo-content">
+            <h2>Utility Calculator Collection - Free Online Tools</h2>
+            
+            <h3>What is a Japanese Era Converter?</h3>
+            <p>A Japanese Era Converter is a tool that helps convert between the Gregorian calendar (Western calendar) and Japan's traditional era system. Currently supporting five major eras: Reiwa, Heisei, Showa, Taisho, and Meiji. This tool is extremely useful for those preparing Japanese-related documents, conducting historical research, or those interested in Japanese culture.</p>
+            
+            <h3>How to Use the Zodiac Calculator</h3>
+            <p>The Zodiac Calculator tells you which of the twelve zodiac signs corresponds to your birth date. It accurately calculates which of the 12 animals (Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog, Pig) you belong to. Calculations are based on the Risshun boundary for more accurate results.</p>
+            
+            <h3>Benefits of Free Calculator Tools</h3>
+            <p>All our calculators are completely free and require no registration or software installation. They can be used anytime with just a web browser and work smoothly on mobile devices. They are developed with accuracy and ease of use as top priorities.</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Utility Calculator Collection. All tools are provided free of charge.</p>
+            <p>Convert Japanese eras and calculate zodiac signs easily and quickly in one place.</p>
+        </div>
+    </div>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Utility Calculator Collection",
+        "url": "https://utilities.mahalohana-bruce.com/en/",
+        "description": "Free online calculators including Japanese era converter, zodiac calculator, and election age checker.",
+        "inLanguage": "en-US",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://utilities.mahalohana-bruce.com/en/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</body>
+</html>
