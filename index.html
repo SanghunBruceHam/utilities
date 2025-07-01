@@ -123,49 +123,53 @@
 
         .language-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .language-btn {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 15px 20px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border: 2px solid transparent;
-            border-radius: 12px;
+            gap: 15px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
             text-decoration: none;
-            color: #333;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .language-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-            border-color: #667eea;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 1);
         }
 
-        .language-btn .flag {
-            font-size: 1.5em;
-            margin-right: 10px;
+        .flag {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
         }
 
-        .language-btn .text {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        .text {
+            flex: 1;
         }
 
-        .language-btn .lang-name {
-            font-size: 0.9em;
-            color: #667eea;
+        .text > span:first-child {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 4px;
+        }
+
+        .lang-name {
+            font-size: 0.9rem;
+            color: #4a5568;
+            font-weight: 500;
         }
 
         .auto-redirect-notice {
@@ -194,6 +198,21 @@
                 padding: 12px 15px;
                 font-size: 1em;
             }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #f7fafc;
+            font-weight: 400;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -278,4 +297,3 @@
     </script>
 </body>
 </html>
-```This completes the addition of the AdSense code to the main index.html file.
