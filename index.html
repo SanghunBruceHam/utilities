@@ -121,19 +121,47 @@
             flex-wrap: wrap;
         }
         
+        .tool-features {
+            font-size: 0.9em;
+            color: #28a745;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .language-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
         .language-link {
-            padding: 5px 12px;
-            background: #f0f0f0;
-            border-radius: 20px;
+            padding: 8px 14px;
+            background: #f8f9fa;
+            border-radius: 25px;
             text-decoration: none;
             color: #555;
             font-size: 0.9em;
-            transition: background 0.3s ease;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .language-link.primary {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
         }
         
         .language-link:hover {
             background: #667eea;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .language-link.primary:hover {
+            background: #5a67d8;
+            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
         }
         
         .footer {
@@ -171,30 +199,36 @@
         
         <div class="tools-grid">
             <!-- 일본 간지 계산기 -->
-            <div class="tool-card">
+            <div class="tool-card" data-category="japanese">
                 <div class="tool-icon">🐉</div>
                 <div class="tool-title">일본 간지 계산기</div>
                 <div class="tool-description">
                     생년월일을 입력하여 일본 십이지(간지)를 확인할 수 있습니다. 
                     입춘 기준으로 정확한 계산을 제공합니다.
                 </div>
+                <div class="tool-features">
+                    ✓ 입춘 기준 정확한 계산 ✓ 12가지 동물 확인 ✓ 운세 정보 제공
+                </div>
                 <div class="language-links">
-                    <a href="/jp-eto-calculator/ja/index.html" class="language-link">🇯🇵 일본어</a>
+                    <a href="/jp-eto-calculator/ja/index.html" class="language-link primary">🇯🇵 일본어</a>
                     <a href="/jp-eto-calculator/en/index.html" class="language-link">🇺🇸 English</a>
                     <a href="/jp-eto-calculator/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
                 </div>
             </div>
             
             <!-- 일본 연호 변환기 -->
-            <div class="tool-card">
+            <div class="tool-card" data-category="japanese">
                 <div class="tool-icon">📅</div>
                 <div class="tool-title">일본 연호 변환기</div>
                 <div class="tool-description">
                     서기를 일본 연호(레이와, 헤이세이, 쇼와 등)로 변환하거나 
                     그 반대로 변환할 수 있는 도구입니다.
                 </div>
+                <div class="tool-features">
+                    ✓ 5개 연호 지원 ✓ 양방향 변환 ✓ 역사적 정확성
+                </div>
                 <div class="language-links">
-                    <a href="/jp-year-converter/ja/index.html" class="language-link">🇯🇵 일본어</a>
+                    <a href="/jp-year-converter/ja/index.html" class="language-link primary">🇯🇵 일본어</a>
                     <a href="/jp-year-converter/en/index.html" class="language-link">🇺🇸 English</a>
                     <a href="/jp-year-converter/ko/index.html" class="language-link">🇰🇷 한국어</a>
                     <a href="/jp-year-converter/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
@@ -202,15 +236,18 @@
             </div>
             
             <!-- 선거 연령 확인기 -->
-            <div class="tool-card">
+            <div class="tool-card" data-category="korean">
                 <div class="tool-icon">🗳️</div>
                 <div class="tool-title">선거 연령 확인기</div>
                 <div class="tool-description">
                     2025년 제21대 대통령 선거 기준으로 투표 가능한 
                     나이(만 18세 이상)인지 확인할 수 있습니다.
                 </div>
+                <div class="tool-features">
+                    ✓ 2025년 선거 기준 ✓ 정확한 나이 계산 ✓ 투표권 확인
+                </div>
                 <div class="language-links">
-                    <a href="/election-age-checker/ko/index.html" class="language-link">🇰🇷 한국어</a>
+                    <a href="/election-age-checker/ko/index.html" class="language-link primary">🇰🇷 한국어</a>
                 </div>
             </div>
         </div>
