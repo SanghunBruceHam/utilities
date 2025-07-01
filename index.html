@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,19 +6,19 @@
     <title>유틸리티 계산기 모음 | Utilities Collection</title>
     <meta name="description" content="다양한 계산기와 유틸리티 도구 모음집. 일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 도구들을 제공합니다.">
     <meta name="keywords" content="계산기, 유틸리티, 일본 연호, 간지, 선거 연령, 변환기">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="유틸리티 계산기 모음">
     <meta property="og:description" content="다양한 계산기와 유틸리티 도구 모음집">
     <meta property="og:url" content="https://utilities.mahalohana-bruce.com">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
-    
+
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico?v=2">
     <link rel="icon" type="image/png" href="/favicon.png?v=2">
     <link rel="canonical" href="https://utilities.mahalohana-bruce.com">
-    
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
     <script>
@@ -28,7 +27,7 @@
         gtag('js', new Date());
         gtag('config', 'G-WF8ZL9QJHF');
     </script>
-    
+
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -37,260 +36,196 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "ry3utftm89");
     </script>
-    
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
         }
-        
+
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .header {
+            max-width: 800px;
             text-align: center;
-            margin-bottom: 40px;
             color: white;
         }
-        
+
+        .header {
+            margin-bottom: 60px;
+        }
+
         .header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 3.5em;
+            margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .header p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
-        
-        .tools-grid {
+
+        .language-selector {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
         }
-        
-        .tool-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .language-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px 20px;
             text-decoration: none;
-            color: inherit;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 1);
         }
-        
-        .tool-icon {
-            font-size: 3em;
+
+        .language-flag {
+            font-size: 4em;
             margin-bottom: 15px;
-            text-align: center;
+            display: block;
         }
-        
-        .tool-title {
-            font-size: 1.5em;
+
+        .language-name {
+            font-size: 1.4em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #333;
         }
-        
-        .tool-description {
+
+        .language-description {
+            font-size: 0.95em;
             color: #666;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .language-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .tool-features {
-            font-size: 0.9em;
-            color: #28a745;
-            margin-bottom: 15px;
             line-height: 1.5;
         }
-        
-        .language-links {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        
-        .language-link {
-            padding: 8px 14px;
-            background: #f8f9fa;
-            border-radius: 25px;
-            text-decoration: none;
-            color: #555;
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .language-link.primary {
-            background: #667eea;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .language-link:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-        }
-        
-        .language-link.primary:hover {
-            background: #5a67d8;
-            box-shadow: 0 5px 20px rgba(90, 103, 216, 0.4);
-        }
-        
+
         .footer {
-            text-align: center;
             color: white;
             opacity: 0.8;
-            margin-top: 40px;
+            font-size: 0.9em;
         }
-        
+
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2em;
+                font-size: 2.5em;
             }
-            
+
             .header p {
-                font-size: 1em;
+                font-size: 1.1em;
             }
-            
-            .tools-grid {
+
+            .language-selector {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-            
-            .tool-card {
-                padding: 20px;
+
+            .language-card {
+                padding: 25px 15px;
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>🛠️ 유틸리티 계산기 모음</h1>
-            <p>다양한 계산기와 변환 도구들을 한 곳에서 사용해보세요</p>
+        <div class="header fade-in">
+            <h1>🛠️ 유틸리티 계산기</h1>
+            <p>다양한 계산기와 변환 도구들을 원하는 언어로 사용해보세요</p>
         </div>
-        
-        <div class="tools-grid">
-            <!-- 일본 간지 계산기 -->
-            <div class="tool-card" data-category="japanese">
-                <div class="tool-icon">🐉</div>
-                <div class="tool-title">일본 간지 계산기</div>
-                <div class="tool-description">
-                    생년월일을 입력하여 일본 십이지(간지)를 확인할 수 있습니다. 
-                    입춘 기준으로 정확한 계산을 제공합니다.
-                </div>
-                <div class="tool-features">
-                    ✓ 입춘 기준 정확한 계산 ✓ 12가지 동물 확인 ✓ 운세 정보 제공
-                </div>
-                <div class="language-links">
-                    <a href="/jp-eto-calculator/ja/index.html" class="language-link primary">🇯🇵 일본어</a>
-                    <a href="/jp-eto-calculator/en/index.html" class="language-link">🇺🇸 English</a>
-                    <a href="/jp-eto-calculator/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
-                </div>
-            </div>
-            
-            <!-- 일본 연호 변환기 -->
-            <div class="tool-card" data-category="japanese">
-                <div class="tool-icon">📅</div>
-                <div class="tool-title">일본 연호 변환기</div>
-                <div class="tool-description">
-                    서기를 일본 연호(레이와, 헤이세이, 쇼와 등)로 변환하거나 
-                    그 반대로 변환할 수 있는 도구입니다.
-                </div>
-                <div class="tool-features">
-                    ✓ 5개 연호 지원 ✓ 양방향 변환 ✓ 역사적 정확성
-                </div>
-                <div class="language-links">
-                    <a href="/jp-year-converter/ja/index.html" class="language-link primary">🇯🇵 일본어</a>
-                    <a href="/jp-year-converter/en/index.html" class="language-link">🇺🇸 English</a>
-                    <a href="/jp-year-converter/ko/index.html" class="language-link">🇰🇷 한국어</a>
-                    <a href="/jp-year-converter/vi/index.html" class="language-link">🇻🇳 Tiếng Việt</a>
-                </div>
-            </div>
-            
-            <!-- 선거 연령 확인기 -->
-            <div class="tool-card" data-category="korean">
-                <div class="tool-icon">🗳️</div>
-                <div class="tool-title">선거 연령 확인기</div>
-                <div class="tool-description">
-                    2025년 제21대 대통령 선거 기준으로 투표 가능한 
-                    나이(만 18세 이상)인지 확인할 수 있습니다.
-                </div>
-                <div class="tool-features">
-                    ✓ 2025년 선거 기준 ✓ 정확한 나이 계산 ✓ 투표권 확인
-                </div>
-                <div class="language-links">
-                    <a href="/election-age-checker/ko/index.html" class="language-link primary">🇰🇷 한국어</a>
-                </div>
-            </div>
+
+        <div class="language-selector">
+            <a href="/ja/" class="language-card fade-in" style="animation-delay: 0.2s">
+                <span class="language-flag">🇯🇵</span>
+                <div class="language-name">日本語</div>
+                <div class="language-description">일본 연호 변환기, 간지 계산기<br>一番充実したツール</div>
+            </a>
+
+            <a href="/ko/" class="language-card fade-in" style="animation-delay: 0.4s">
+                <span class="language-flag">🇰🇷</span>
+                <div class="language-name">한국어</div>
+                <div class="language-description">일본 연호 변환기, 선거 연령 확인기<br>한국 사용자를 위한 도구</div>
+            </a>
+
+            <a href="/en/" class="language-card fade-in" style="animation-delay: 0.6s">
+                <span class="language-flag">🇺🇸</span>
+                <div class="language-name">English</div>
+                <div class="language-description">Japanese Era Converter, Zodiac Calculator<br>Tools for international users</div>
+            </a>
+
+            <a href="/vi/" class="language-card fade-in" style="animation-delay: 0.8s">
+                <span class="language-flag">🇻🇳</span>
+                <div class="language-name">Tiếng Việt</div>
+                <div class="language-description">Công cụ chuyển đổi niên hiệu Nhật<br>Dành cho người Việt Nam</div>
+            </a>
         </div>
-        
-        <div class="footer">
+
+        <div class="footer fade-in" style="animation-delay: 1s">
             <p>© 2025 Utilities Collection. 모든 도구는 무료로 제공됩니다.</p>
-            <p>궁금한 점이나 제안사항이 있으시면 언제든지 연락주세요.</p>
         </div>
     </div>
-    
+
     <script>
-        // 카드 클릭 시 애니메이션 효과
-        document.querySelectorAll('.tool-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                // 언어 링크 클릭 시에는 카드 클릭 이벤트 무시
-                if (e.target.classList.contains('language-link')) {
-                    return;
-                }
-                
-                // 첫 번째 언어 링크로 이동
-                const firstLink = this.querySelector('.language-link');
-                if (firstLink) {
-                    window.location.href = firstLink.href;
-                }
-            });
-        });
-        
-        // 페이지 로드 시 애니메이션
-        window.addEventListener('load', function() {
-            const cards = document.querySelectorAll('.tool-card');
-            cards.forEach((card, index) => {
+        // 언어 자동 감지 및 리다이렉션
+        (function() {
+            const lang = navigator.language || navigator.userLanguage;
+            const langMap = {
+                'ja': '/ja/',
+                'ko': '/ko/',
+                'en': '/en/',
+                'vi': '/vi/'
+            };
+
+            // URL 파라미터로 자동 리다이렉션 비활성화 가능
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('no_redirect') === 'true') {
+                return;
+            }
+
+            const shortLang = lang.toLowerCase().slice(0, 2);
+            if (langMap[shortLang] && window.location.pathname === '/') {
+                // 3초 후 자동 리다이렉션
                 setTimeout(() => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                    
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
-                }, index * 100);
-            });
-        });
+                    window.location.href = langMap[shortLang];
+                }, 3000);
+
+                // 리다이렉션 안내 표시
+                const header = document.querySelector('.header p');
+                header.innerHTML = `언어가 감지되었습니다. 3초 후 ${shortLang.toUpperCase()} 페이지로 이동합니다.<br><small>자동 이동을 원하지 않으시면 언어를 직접 선택해주세요.</small>`;
+            }
+        })();
     </script>
 </body>
 </html>

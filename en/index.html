@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilities Collection | English</title>
+    <meta name="description" content="Japanese Era converter, Zodiac calculator and other useful online tools in English.">
+    <meta name="keywords" content="era converter, zodiac calculator, tools, utilities, english">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/en/">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WF8ZL9QJHF');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .language-switcher {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .language-switcher a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .language-switcher a.active {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+        
+        .language-switcher a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .tool-features {
+            font-size: 0.9em;
+            color: #28a745;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .use-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .use-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ Utilities Collection</h1>
+            <p>Useful calculation and conversion tools in English</p>
+        </div>
+        
+        <div class="language-switcher">
+            <a href="/" class="language-link">🏠 Language</a>
+            <a href="/ja/">🇯🇵 日本語</a>
+            <a href="/ko/">🇰🇷 한국어</a>
+            <a href="/en/" class="active">🇺🇸 English</a>
+            <a href="/vi/">🇻🇳 Tiếng Việt</a>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <div class="tool-title">Japanese Era Converter</div>
+                <div class="tool-description">
+                    Convert between Western calendar years and Japanese era years 
+                    (Reiwa, Heisei, Showa, Taisho, Meiji) with accurate calculations.
+                </div>
+                <div class="tool-features">
+                    ✓ 5 era periods supported ✓ Bidirectional conversion ✓ Historical accuracy
+                </div>
+                <a href="/jp-year-converter/en/" class="use-button">Use Tool →</a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">🐉</div>
+                <div class="tool-title">Japanese Zodiac Calculator</div>
+                <div class="tool-description">
+                    Calculate your Japanese zodiac sign (Eto) based on your birth date.
+                    Uses the traditional Risshun (beginning of spring) calendar.
+                </div>
+                <div class="tool-features">
+                    ✓ Risshun-based calculation ✓ 12 zodiac animals ✓ Fortune information
+                </div>
+                <a href="/jp-eto-calculator/en/" class="use-button">Use Tool →</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Utilities Collection. All tools are provided free of charge.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유틸리티 계산기 모음 | 한국어판</title>
+    <meta name="description" content="일본 연호 변환기, 선거 연령 확인기 등 유용한 온라인 도구를 한국어로 제공합니다.">
+    <meta name="keywords" content="연호변환, 선거연령, 계산기, 도구, 한국">
+    
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WF8ZL9QJHF');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .language-switcher {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .language-switcher a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .language-switcher a.active {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+        }
+        
+        .language-switcher a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tool-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .tool-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .tool-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .tool-features {
+            font-size: 0.9em;
+            color: #28a745;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .use-button {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .use-button:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🛠️ 유틸리티 계산기</h1>
+            <p>유용한 계산 도구와 변환 도구의 한국어판</p>
+        </div>
+        
+        <div class="language-switcher">
+            <a href="/" class="language-link">🏠 언어선택</a>
+            <a href="/ja/">🇯🇵 日本語</a>
+            <a href="/ko/" class="active">🇰🇷 한국어</a>
+            <a href="/en/">🇺🇸 English</a>
+            <a href="/vi/">🇻🇳 Tiếng Việt</a>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-icon">📅</div>
+                <div class="tool-title">일본 연호 변환기</div>
+                <div class="tool-description">
+                    서기를 일본 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)로 변환하거나
+                    그 반대로 변환할 수 있는 도구입니다.
+                </div>
+                <div class="tool-features">
+                    ✓ 5개 연호 지원 ✓ 양방향 변환 ✓ 정확한 연도 계산
+                </div>
+                <a href="/jp-year-converter/ko/" class="use-button">사용하기 →</a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">🗳️</div>
+                <div class="tool-title">선거 연령 확인기</div>
+                <div class="tool-description">
+                    2025년 제21대 대통령 선거 기준으로 투표 가능한
+                    나이(만 18세 이상)인지 확인할 수 있습니다.
+                </div>
+                <div class="tool-features">
+                    ✓ 2025년 선거 기준 ✓ 정확한 나이 계산 ✓ 투표권 확인
+                </div>
+                <a href="/election-age-checker/ko/" class="use-button">사용하기 →</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Utilities Collection. 모든 도구는 무료로 제공됩니다.</p>
+        </div>
+    </div>
+</body>
+</html>
