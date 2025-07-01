@@ -48,59 +48,131 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
     <!-- Auto Language Detection and Redirect -->
-    <!-- 동적 광고 차단 스크립트 -->
+    <!-- 강화된 광고 차단 스크립트 -->
     <script>
-        // 언어 선택 영역에서 광고 완전 차단
-        function blockAdsInLanguageSelector() {
+        // 언어 선택 영역에서 광고 완전 차단 (강화 버전)
+        function aggressiveAdBlocker() {
             const languageSelector = document.querySelector('.language-selector');
-            if (languageSelector) {
-                // 모든 광고 관련 요소들을 찾아서 제거
-                const adSelectors = [
-                    '.adsbygoogle',
-                    'ins[class*="adsbygoogle"]',
-                    'iframe[src*="googlesyndication"]',
-                    'iframe[src*="googleads"]',
-                    'div[data-ad-client]',
-                    'div[data-ad-slot]',
-                    '[id*="google_ads"]',
-                    '[class*="google-ads"]',
-                    'script[src*="googlesyndication"]',
-                    'script[src*="googleads"]'
-                ];
-                
-                adSelectors.forEach(selector => {
+            if (!languageSelector) return;
+            
+            // 모든 광고 관련 요소들을 강력하게 차단
+            const adSelectors = [
+                '.adsbygoogle',
+                'ins',
+                'iframe',
+                'embed',
+                'object',
+                'div[data-ad-client]',
+                'div[data-ad-slot]',
+                'div[data-ad-format]',
+                '[id*="google"]',
+                '[class*="google"]',
+                '[class*="ad"]',
+                '[id*="ad"]',
+                'script[src*="googlesyndication"]',
+                'script[src*="googleads"]',
+                'script[src*="doubleclick"]',
+                'script[async]'
+            ];
+            
+            adSelectors.forEach(selector => {
+                try {
                     const elements = languageSelector.querySelectorAll(selector);
                     elements.forEach(el => {
-                        el.remove();
+                        // 광고 관련 요소만 제거 (언어 버튼은 보호)
+                        if (!el.classList.contains('language-btn') && 
+                            !el.classList.contains('language-grid') &&
+                            !el.classList.contains('flag') &&
+                            !el.classList.contains('text')) {
+                            el.style.display = 'none !important';
+                            el.style.visibility = 'hidden !important';
+                            el.style.height = '0 !important';
+                            el.style.width = '0 !important';
+                            el.style.overflow = 'hidden !important';
+                            el.style.position = 'absolute !important';
+                            el.style.left = '-9999px !important';
+                            el.style.top = '-9999px !important';
+                            el.remove();
+                        }
                     });
-                });
-            }
-        }
-        
-        // 페이지 로드 시 및 주기적으로 광고 차단 실행
-        document.addEventListener('DOMContentLoaded', blockAdsInLanguageSelector);
-        setInterval(blockAdsInLanguageSelector, 1000);
-        
-        // MutationObserver로 새로 추가되는 광고 요소들 감지 및 차단
-        if (typeof MutationObserver !== 'undefined') {
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if (mutation.type === 'childList') {
-                        blockAdsInLanguageSelector();
-                    }
-                });
+                } catch (e) {
+                    // 에러 무시하고 계속 진행
+                }
             });
             
+            // 새로 생성되는 광고 스크립트 차단
+            const scripts = languageSelector.querySelectorAll('script');
+            scripts.forEach(script => {
+                if (script.src && (
+                    script.src.includes('googlesyndication') ||
+                    script.src.includes('googleads') ||
+                    script.src.includes('doubleclick')
+                )) {
+                    script.remove();
+                }
+            });
+        }
+        
+        // 즉시 실행
+        aggressiveAdBlocker();
+        
+        // DOM이 로드된 후 실행
+        document.addEventListener('DOMContentLoaded', aggressiveAdBlocker);
+        
+        // 짧은 간격으로 지속적 차단
+        setInterval(aggressiveAdBlocker, 500);
+        
+        // MutationObserver로 실시간 감지 및 차단
+        if (typeof MutationObserver !== 'undefined') {
+            const observer = new MutationObserver(function(mutations) {
+                let shouldBlock = false;
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                        shouldBlock = true;
+                    }
+                });
+                if (shouldBlock) {
+                    setTimeout(aggressiveAdBlocker, 10);
+                }
+            });
+            
+            // 페이지 로드 후 관찰 시작
             document.addEventListener('DOMContentLoaded', function() {
                 const languageSelector = document.querySelector('.language-selector');
                 if (languageSelector) {
                     observer.observe(languageSelector, {
                         childList: true,
-                        subtree: true
+                        subtree: true,
+                        attributes: true,
+                        attributeOldValue: true
                     });
                 }
+                // body 전체도 관찰
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
             });
         }
+        
+        // 광고 로딩 방지
+        const originalCreateElement = document.createElement;
+        document.createElement = function(tagName) {
+            const element = originalCreateElement.call(this, tagName);
+            if (tagName.toLowerCase() === 'script' || tagName.toLowerCase() === 'iframe') {
+                // 광고 관련 스크립트/iframe 생성 차단
+                element.addEventListener('load', function() {
+                    if (this.src && (
+                        this.src.includes('googlesyndication') ||
+                        this.src.includes('googleads') ||
+                        this.src.includes('doubleclick')
+                    )) {
+                        this.remove();
+                    }
+                });
+            }
+            return element;
+        };
     </script>
 
     <script>
@@ -160,35 +232,76 @@
             z-index: 1000;
         }
 
-        /* 광고 차단 - 언어 선택 영역 내부에서 광고 완전 숨김 */
+        /* 강화된 광고 차단 - 언어 선택 영역 내부에서 광고 완전 차단 */
         .language-selector .adsbygoogle,
         .language-selector ins,
-        .language-selector iframe[src*="googlesyndication"],
-        .language-selector iframe[src*="googleads"],
+        .language-selector ins[class*="adsbygoogle"],
+        .language-selector iframe,
+        .language-selector embed,
+        .language-selector object,
         .language-selector div[data-ad-client],
         .language-selector div[data-ad-slot],
+        .language-selector div[data-ad-format],
         .language-selector [id*="google_ads"],
+        .language-selector [id*="google"],
         .language-selector [class*="google-ads"],
+        .language-selector [class*="google"],
         .language-selector [class*="adsbygoogle"],
+        .language-selector [class*="ad-"],
+        .language-selector [id*="ad-"],
         .language-selector script[src*="googlesyndication"],
-        .language-selector script[src*="googleads"] {
+        .language-selector script[src*="googleads"],
+        .language-selector script[src*="doubleclick"],
+        .language-selector script[async] {
             display: none !important;
             visibility: hidden !important;
             height: 0 !important;
             width: 0 !important;
+            max-height: 0 !important;
+            max-width: 0 !important;
             overflow: hidden !important;
             position: absolute !important;
-            left: -9999px !important;
-            top: -9999px !important;
+            left: -99999px !important;
+            top: -99999px !important;
             opacity: 0 !important;
             pointer-events: none !important;
+            z-index: -9999 !important;
+            clip: rect(0, 0, 0, 0) !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
         
-        /* 추가 광고 차단 - 일반적인 광고 컨테이너들 */
+        /* 추가 광고 차단 - 광고 컨테이너들 */
         .language-selector > div:has(.adsbygoogle),
         .language-selector > div:has(ins),
-        .language-selector > div:has(iframe[src*="googlesyndication"]) {
+        .language-selector > div:has(iframe),
+        .language-selector > div:has(script[src*="googlesyndication"]),
+        .language-selector div[style*="googlesyndication"],
+        .language-selector div[style*="googleads"] {
             display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+        
+        /* 언어 버튼들은 보호 */
+        .language-selector .language-btn,
+        .language-selector .language-grid,
+        .language-selector .flag,
+        .language-selector .text,
+        .language-selector .title,
+        .language-selector .subtitle,
+        .language-selector .logo,
+        .language-selector .auto-redirect-notice {
+            display: block !important;
+            visibility: visible !important;
+            position: relative !important;
+            left: auto !important;
+            top: auto !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            z-index: auto !important;
         }
 
         .logo {
@@ -353,23 +466,23 @@
             <p>Automatically redirecting to your browser's language.</p>
         </div>
 
-        <!-- Google AdSense -->
-        <div style="text-align: center; margin: 20px 0;">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-5508768187151867"
-                 data-ad-slot="4067267701"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
         <div class="footer">
             <p>© 2025 유틸리티 계산기 모음. 다양한 언어의 무료 온라인 도구들</p>
             <p>일본 연호 변환, 간지 계산, 선거 연령 확인을 쉽고 빠르게 이용하세요.</p>
         </div>
+    </div>
+
+    <!-- Google AdSense - 언어 선택 영역 밖에 배치 -->
+    <div style="text-align: center; margin: 20px 0; max-width: 500px; margin: 20px auto;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-5508768187151867"
+             data-ad-slot="4067267701"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
     </div>
 
     <script type="application/ld+json">
