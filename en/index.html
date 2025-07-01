@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,17 +56,32 @@
             text-align: center;
             margin-bottom: 20px;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 10px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .language-switcher a {
-            transition: color 0.3s ease;
+            color: #2d3748 !important;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 4px;
         }
         
         .language-switcher a:hover {
-            color: #4a90e2 !important;
+            color: #ffffff !important;
+            background: #4a90e2;
+            transform: translateY(-1px);
+        }
+        
+        .language-switcher a[href="/en/"] {
+            color: #ffffff !important;
+            background: #e53935;
+            font-weight: bold;
         }
 
         .container {
@@ -82,12 +98,16 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .header p {
             font-size: 1.2em;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            font-weight: 400;
         }
 
         .tools-grid {
@@ -105,6 +125,20 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        /* Block ads inside tool cards */
+        .tool-card .adsbygoogle,
+        .tool-card ins,
+        .tool-card iframe[src*="googlesyndication"],
+        .tool-card div[data-ad-client] {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
         }
 
         .tool-card:hover {
@@ -126,17 +160,22 @@
         }
 
         .tool-description {
-            color: #666;
-            line-height: 1.6;
+            color: #4a5568;
+            line-height: 1.7;
             margin-bottom: 20px;
             font-size: 1.05em;
+            font-weight: 400;
         }
 
         .tool-features {
             font-size: 0.95em;
-            color: #28a745;
+            color: #2d5a3d;
             margin-bottom: 20px;
-            line-height: 1.5;
+            line-height: 1.6;
+            background: #f0f9f4;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
         }
 
         .tool-link {
@@ -190,16 +229,37 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
             .header h1 {
                 font-size: 2em;
+                line-height: 1.2;
+            }
+
+            .header p {
+                font-size: 1.1em;
             }
 
             .tools-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .tool-card {
-                padding: 25px;
+                padding: 25px 20px;
+            }
+
+            .language-switcher {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+
+            .language-switcher a {
+                font-size: 0.9em;
+                margin: 0 4px;
+                padding: 6px 8px;
             }
         }
     </style>
@@ -207,12 +267,12 @@
 <body>
     <div class="container">
         <div class="language-switcher">
-            <a href="/" style="color: #666; text-decoration: none; margin: 0 10px;">🌍 Language</a>
+            <a href="/" style="text-decoration: none;">🌍 Language</a>
             <span style="color: #ccc;">|</span>
-            <a href="/en/" style="color: #e53935; font-weight: bold; text-decoration: none; margin: 0 10px;">🇺🇸 English</a>
-            <a href="/ja/" style="color: #666; text-decoration: none; margin: 0 10px;">🇯🇵 日本語</a>
-            <a href="/ko/" style="color: #666; text-decoration: none; margin: 0 10px;">🇰🇷 한국어</a>
-            <a href="/vi/" style="color: #666; text-decoration: none; margin: 0 10px;">🇻🇳 Tiếng Việt</a>
+            <a href="/en/" style="font-weight: bold; text-decoration: none;">🇺🇸 English</a>
+            <a href="/ja/" style="text-decoration: none;">🇯🇵 日本語</a>
+            <a href="/ko/" style="text-decoration: none;">🇰🇷 한국어</a>
+            <a href="/vi/" style="text-decoration: none;">🇻🇳 Tiếng Việt</a>
         </div>
         
         <div class="header">
