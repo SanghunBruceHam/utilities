@@ -54,7 +54,7 @@
         function aggressiveAdBlocker() {
             const languageSelector = document.querySelector('.language-selector');
             if (!languageSelector) return;
-            
+
             // 모든 광고 관련 요소들을 강력하게 차단
             const adSelectors = [
                 '.adsbygoogle',
@@ -74,7 +74,7 @@
                 'script[src*="doubleclick"]',
                 'script[async]'
             ];
-            
+
             adSelectors.forEach(selector => {
                 try {
                     const elements = languageSelector.querySelectorAll(selector);
@@ -99,7 +99,7 @@
                     // 에러 무시하고 계속 진행
                 }
             });
-            
+
             // 새로 생성되는 광고 스크립트 차단
             const scripts = languageSelector.querySelectorAll('script');
             scripts.forEach(script => {
@@ -112,16 +112,16 @@
                 }
             });
         }
-        
+
         // 즉시 실행
         aggressiveAdBlocker();
-        
+
         // DOM이 로드된 후 실행
         document.addEventListener('DOMContentLoaded', aggressiveAdBlocker);
-        
+
         // 짧은 간격으로 지속적 차단
         setInterval(aggressiveAdBlocker, 500);
-        
+
         // MutationObserver로 실시간 감지 및 차단
         if (typeof MutationObserver !== 'undefined') {
             const observer = new MutationObserver(function(mutations) {
@@ -135,7 +135,7 @@
                     setTimeout(aggressiveAdBlocker, 10);
                 }
             });
-            
+
             // 페이지 로드 후 관찰 시작
             document.addEventListener('DOMContentLoaded', function() {
                 const languageSelector = document.querySelector('.language-selector');
@@ -154,7 +154,7 @@
                 });
             });
         }
-        
+
         // 광고 로딩 방지
         const originalCreateElement = document.createElement;
         document.createElement = function(tagName) {
@@ -271,7 +271,7 @@
             margin: 0 !important;
             padding: 0 !important;
         }
-        
+
         /* 추가 광고 차단 - 광고 컨테이너들 */
         .language-selector > div:has(.adsbygoogle),
         .language-selector > div:has(ins),
@@ -284,7 +284,7 @@
             height: 0 !important;
             overflow: hidden !important;
         }
-        
+
         /* 언어 버튼들은 보호 */
         .language-selector .language-btn,
         .language-selector .language-grid,
@@ -302,6 +302,66 @@
             opacity: 1 !important;
             pointer-events: auto !important;
             z-index: auto !important;
+        }
+
+        /* 카드 내부 광고 완전 차단 - 강화 버전 */
+        .language-btn .adsbygoogle,
+        .language-btn ins,
+        .language-btn ins[class*="adsbygoogle"],
+        .language-btn iframe,
+        .language-btn embed,
+        .language-btn object,
+        .language-btn div[data-ad-client],
+        .language-btn div[data-ad-slot],
+        .language-btn div[data-ad-format],
+        .language-btn [id*="google_ads"],
+        .language-btn [id*="google"],
+        .language-btn [class*="google-ads"],
+        .language-btn [class*="google"],
+        .language-btn [class*="adsbygoogle"],
+        .language-btn [class*="ad-"],
+        .language-btn [id*="ad-"],
+        .language-btn script[src*="googlesyndication"],
+        .language-btn script[src*="googleads"],
+        .language-btn script[src*="doubleclick"],
+        .language-btn script[async],
+        .language-grid .adsbygoogle,
+        .language-grid ins,
+        .language-grid ins[class*="adsbygoogle"],
+        .language-grid iframe,
+        .language-grid embed,
+        .language-grid object,
+        .language-grid div[data-ad-client],
+        .language-grid div[data-ad-slot],
+        .language-grid div[data-ad-format],
+        .language-grid [id*="google_ads"],
+        .language-grid [id*="google"],
+        .language-grid [class*="google-ads"],
+        .language-grid [class*="google"],
+        .language-grid [class*="adsbygoogle"],
+        .language-grid [class*="ad-"],
+        .language-grid [id*="ad-"],
+        .language-grid script[src*="googlesyndication"],
+        .language-grid script[src*="googleads"],
+        .language-grid script[src*="doubleclick"],
+        .language-grid script[async] {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+            max-height: 0 !important;
+            max-width: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            left: -99999px !important;
+            top: -99999px !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            z-index: -9999 !important;
+            clip: rect(0, 0, 0, 0) !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
         }
 
         .logo {
