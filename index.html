@@ -213,32 +213,149 @@
     </script>
 
     <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dark-primary-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --bg-color: #ffffff;
+            --dark-bg-color: #2d3748;
+            --text-color: #2d3748;
+            --dark-text-color: #e2e8f0;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --dark-card-bg: rgba(45, 55, 72, 0.95);
+            --shadow: 0 20px 60px rgba(0,0,0,0.2);
+            --dark-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Performance optimization - reduce repaints */
+        body, .language-selector, .language-btn {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-gradient);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            transition: background 0.3s ease, color 0.3s ease;
+            font-display: swap; /* Font loading optimization */
+        }
+
+        /* Dark mode styles */
+        [data-theme="dark"] {
+            --primary-gradient: var(--dark-primary-gradient);
+            --bg-color: var(--dark-bg-color);
+            --text-color: var(--dark-text-color);
+            --card-bg: var(--dark-card-bg);
+            --shadow: var(--dark-shadow);
+        }
+
+        [data-theme="dark"] body {
+            background: var(--dark-primary-gradient);
+        }
+
+        /* Loading states */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(102, 126, 234, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .loading-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Page transition effects */
+        .page-transition {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .language-selector {
-            background: white;
+            background: var(--card-bg);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow);
             text-align: center;
             max-width: 500px;
             width: 100%;
             position: relative;
             z-index: 1000;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 2px solid var(--text-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .theme-toggle:focus {
+            outline: 2px solid #4a90e2;
+            outline-offset: 2px;
         }
 
         /* 강화된 광고 차단 - 언어 선택 영역 내부에서 광고 완전 차단 */
@@ -405,7 +522,7 @@
             align-items: center;
             gap: 15px;
             padding: 25px;
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--card-bg);
             border: none;
             border-radius: 15px;
             text-decoration: none;
@@ -417,6 +534,27 @@
             cursor: pointer;
             outline: none;
             border: 2px solid transparent;
+            overflow: hidden;
+        }
+
+        /* Ripple effect for visual feedback */
+        .language-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(74, 144, 226, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .language-btn:active::before {
+            width: 300px;
+            height: 300px;
         }
 
         .language-btn:focus {
@@ -425,14 +563,58 @@
         }
 
         .language-btn:focus-visible {
-            outline: 2px solid #4a90e2;
+            outline: 3px solid #4a90e2;
             outline-offset: 2px;
         }
 
         .language-btn:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            background: rgba(255, 255, 255, 1);
+            background: var(--bg-color);
+        }
+
+        /* Loading state for buttons */
+        .language-btn.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .language-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--text-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            transform: translateY(-50%);
+        }
+
+        /* Enhanced keyboard navigation */
+        .language-btn:focus:not(:focus-visible) {
+            outline: none;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Skip link for screen readers */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 4px;
+        }
+
+        .skip-link:focus {
+            top: 6px;
         }
 
         .flag {
@@ -448,15 +630,59 @@
             display: block;
             font-size: 1.4rem;
             font-weight: 700;
-            color: #2d3748;
+            color: var(--text-color);
             margin-bottom: 4px;
             text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
         }
 
         .lang-name {
             font-size: 0.9rem;
-            color: #2d3748;
+            color: var(--text-color);
             font-weight: 600;
+            opacity: 0.8;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .language-btn {
+                border: 3px solid var(--text-color);
+            }
+            
+            .text > span:first-child,
+            .lang-name {
+                font-weight: 800;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .loading-spinner {
+                animation: none;
+                border-top-color: transparent;
+                border-left-color: white;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .theme-toggle,
+            .loading-overlay {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
         }
 
         .auto-redirect-notice {
@@ -504,8 +730,21 @@
     </style>
 </head>
 <body>
-    <div class="language-selector">
-        <div class="logo">🛠️</div>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+        <div class="loading-spinner" aria-label="Loading"></div>
+    </div>
+
+    <div class="language-selector page-transition" id="main-content" role="main">
+        <!-- Dark mode toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+            <span id="themeIcon">🌙</span>
+        </button>
+        
+        <div class="logo" role="img" aria-label="Tools emoji">🛠️</div>
         <h1 class="title">Choose Your Language</h1>
         <p class="subtitle">언어를 선택해주세요 / 言語を選択してください</p>
 
@@ -584,39 +823,202 @@
     </script>
 
     <script>
-        // Enhanced user experience improvements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add loading states to language buttons
-            const languageButtons = document.querySelectorAll('.language-btn');
+        // Performance optimization: Use RAF for smooth animations
+        const rafThrottle = (callback) => {
+            let ticking = false;
+            return (...args) => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        callback(...args);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            };
+        };
 
-            languageButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // Add loading state
-                    this.style.opacity = '0.8';
-                    this.style.transform = 'translateY(-3px)';
+        // Dark mode functionality
+        class ThemeManager {
+            constructor() {
+                this.theme = localStorage.getItem('theme') || 
+                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                this.init();
+            }
 
-                    // Add loading indicator
-                    const loadingSpinner = document.createElement('div');
-                    loadingSpinner.innerHTML = '⟳';
-                    loadingSpinner.style.cssText = `
-                        position: absolute;
-                        top: 50%;
-                        right: 15px;
-                        transform: translateY(-50%);
-                        animation: spin 1s linear infinite;
-                        font-size: 1.2em;
-                        color: #4a90e2;
-                    `;
-                    this.appendChild(loadingSpinner);
-                });
+            init() {
+                this.applyTheme();
+                this.setupToggle();
+                this.setupMediaQuery();
+            }
 
-                // Keyboard navigation support
-                button.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.click();
+            applyTheme() {
+                document.documentElement.setAttribute('data-theme', this.theme);
+                const themeIcon = document.getElementById('themeIcon');
+                if (themeIcon) {
+                    themeIcon.textContent = this.theme === 'dark' ? '☀️' : '🌙';
+                }
+                localStorage.setItem('theme', this.theme);
+            }
+
+            toggle() {
+                this.theme = this.theme === 'dark' ? 'light' : 'dark';
+                this.applyTheme();
+                
+                // Announce to screen readers
+                const announcement = `Switched to ${this.theme} mode`;
+                this.announceToScreenReader(announcement);
+            }
+
+            setupToggle() {
+                const toggle = document.getElementById('themeToggle');
+                if (toggle) {
+                    toggle.addEventListener('click', () => this.toggle());
+                    toggle.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.toggle();
+                        }
+                    });
+                }
+            }
+
+            setupMediaQuery() {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addListener((e) => {
+                    if (!localStorage.getItem('theme')) {
+                        this.theme = e.matches ? 'dark' : 'light';
+                        this.applyTheme();
                     }
                 });
+            }
+
+            announceToScreenReader(message) {
+                const announcement = document.createElement('div');
+                announcement.setAttribute('aria-live', 'polite');
+                announcement.setAttribute('aria-atomic', 'true');
+                announcement.className = 'sr-only';
+                announcement.style.cssText = `
+                    position: absolute;
+                    width: 1px;
+                    height: 1px;
+                    padding: 0;
+                    margin: -1px;
+                    overflow: hidden;
+                    clip: rect(0, 0, 0, 0);
+                    white-space: nowrap;
+                    border: 0;
+                `;
+                announcement.textContent = message;
+                document.body.appendChild(announcement);
+                setTimeout(() => document.body.removeChild(announcement), 1000);
+            }
+        }
+
+        // Enhanced user experience improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme manager
+            new ThemeManager();
+
+            // Loading overlay management
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            const showLoading = () => {
+                loadingOverlay.classList.add('active');
+                loadingOverlay.setAttribute('aria-hidden', 'false');
+            };
+            const hideLoading = () => {
+                loadingOverlay.classList.remove('active');
+                loadingOverlay.setAttribute('aria-hidden', 'true');
+            };
+
+            // Enhanced language buttons with improved UX
+            const languageButtons = document.querySelectorAll('.language-btn');
+
+            languageButtons.forEach((button, index) => {
+                // Staggered animation for visual appeal
+                button.style.animationDelay = `${index * 0.1}s`;
+
+                // Enhanced click handling with loading states
+                button.addEventListener('click', function(e) {
+                    // Prevent multiple clicks
+                    if (this.classList.contains('loading')) return;
+
+                    // Add loading state
+                    this.classList.add('loading');
+                    showLoading();
+
+                    // Haptic feedback for mobile devices
+                    if (navigator.vibrate) {
+                        navigator.vibrate(50);
+                    }
+
+                    // Announce navigation to screen readers
+                    const language = this.querySelector('.text > span:first-child').textContent;
+                    const announcement = `Navigating to ${language} version`;
+                    document.getElementById('themeToggle').closest('.language-selector')
+                        .querySelector('.title').setAttribute('aria-live', 'polite');
+                    
+                    // Simulate network delay for better UX
+                    setTimeout(() => {
+                        window.location.href = this.href;
+                    }, 300);
+                });
+
+                // Enhanced keyboard navigation
+                button.addEventListener('keydown', function(e) {
+                    switch(e.key) {
+                        case 'Enter':
+                        case ' ':
+                            e.preventDefault();
+                            this.click();
+                            break;
+                        case 'ArrowDown':
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            const nextButton = this.nextElementSibling || languageButtons[0];
+                            nextButton.focus();
+                            break;
+                        case 'ArrowUp':
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            const prevButton = this.previousElementSibling || languageButtons[languageButtons.length - 1];
+                            prevButton.focus();
+                            break;
+                        case 'Home':
+                            e.preventDefault();
+                            languageButtons[0].focus();
+                            break;
+                        case 'End':
+                            e.preventDefault();
+                            languageButtons[languageButtons.length - 1].focus();
+                            break;
+                    }
+                });
+
+                // Enhanced hover effects with throttling
+                const handleMouseMove = rafThrottle((e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    button.style.setProperty('--mouse-x', `${x}%`);
+                    button.style.setProperty('--mouse-y', `${y}%`);
+                });
+
+                button.addEventListener('mousemove', handleMouseMove);
+                button.addEventListener('mouseleave', () => {
+                    button.style.removeProperty('--mouse-x');
+                    button.style.removeProperty('--mouse-y');
+                });
+
+                // Intersection Observer for scroll-triggered animations
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.animationPlayState = 'running';
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                observer.observe(button);
             });
 
             const style = document.createElement('style');
@@ -681,28 +1083,91 @@
             `;
             document.head.appendChild(style);
 
-            // Performance monitoring
+            // Performance monitoring with Core Web Vitals
             if ('performance' in window) {
+                // Monitor loading performance
                 window.addEventListener('load', function() {
                     const perfData = performance.getEntriesByType('navigation')[0];
                     if (perfData && perfData.loadEventEnd > 0) {
-                        gtag('event', 'page_load_time', {
-                            value: Math.round(perfData.loadEventEnd - perfData.loadEventStart)
-                        });
+                        const loadTime = Math.round(perfData.loadEventEnd - perfData.loadEventStart);
+                        gtag('event', 'page_load_time', { value: loadTime });
+                        
+                        // Monitor Core Web Vitals
+                        if ('web-vitals' in window) {
+                            web-vitals.getCLS(console.log);
+                            web-vitals.getFID(console.log);
+                            web-vitals.getLCP(console.log);
+                        }
                     }
                 });
+
+                // Monitor memory usage
+                if ('memory' in performance) {
+                    setInterval(() => {
+                        const memory = performance.memory;
+                        if (memory.usedJSHeapSize > memory.jsHeapSizeLimit * 0.8) {
+                            console.warn('High memory usage detected');
+                        }
+                    }, 30000);
+                }
+            }
+
+            // Service Worker for caching (if available)
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            }
+
+            // Connection quality adaptation
+            if ('connection' in navigator) {
+                const connection = navigator.connection;
+                if (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g') {
+                    // Reduce animations for slow connections
+                    document.documentElement.style.setProperty('--animation-duration', '0.1s');
+                }
             }
         });
 
-        // Prefetch resources for better navigation experience
+        // Enhanced prefetching with priority
         document.addEventListener('DOMContentLoaded', function() {
-            const prefetchUrls = ['/ko/', '/ja/', '/en/', '/vi/'];
-            prefetchUrls.forEach(url => {
-                const link = document.createElement('link');
-                link.rel = 'prefetch';
-                link.href = url;
-                document.head.appendChild(link);
+            const prefetchUrls = [
+                { url: '/ko/', priority: 'high' },
+                { url: '/ja/', priority: 'high' },
+                { url: '/en/', priority: 'medium' },
+                { url: '/vi/', priority: 'medium' }
+            ];
+
+            // Use Intersection Observer to prefetch when user shows intent
+            const prefetchObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const href = entry.target.href;
+                        if (href && !document.querySelector(`link[href="${href}"]`)) {
+                            const link = document.createElement('link');
+                            link.rel = 'prefetch';
+                            link.href = href;
+                            link.crossOrigin = 'anonymous';
+                            document.head.appendChild(link);
+                        }
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            languageButtons.forEach(button => {
+                prefetchObserver.observe(button);
             });
+
+            // Immediate prefetch for high priority resources
+            setTimeout(() => {
+                prefetchUrls.filter(item => item.priority === 'high').forEach(item => {
+                    const link = document.createElement('link');
+                    link.rel = 'prefetch';
+                    link.href = item.url;
+                    link.crossOrigin = 'anonymous';
+                    document.head.appendChild(link);
+                });
+            }, 1000);
         });
     </script>
 </body>
