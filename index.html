@@ -31,7 +31,7 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="/favicon.png" as="image" type="image/png">
-    
+
     <!-- Google Analytics with performance optimization -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
     <script>
@@ -418,12 +418,12 @@
             outline: none;
             border: 2px solid transparent;
         }
-        
+
         .language-btn:focus {
             border-color: #4a90e2;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 3px rgba(74, 144, 226, 0.3);
         }
-        
+
         .language-btn:focus-visible {
             outline: 2px solid #4a90e2;
             outline-offset: 2px;
@@ -582,19 +582,19 @@
         }
     }
     </script>
-    
+
     <script>
         // Enhanced user experience improvements
         document.addEventListener('DOMContentLoaded', function() {
             // Add loading states to language buttons
             const languageButtons = document.querySelectorAll('.language-btn');
-            
+
             languageButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     // Add loading state
                     this.style.opacity = '0.8';
                     this.style.transform = 'translateY(-3px)';
-                    
+
                     // Add loading indicator
                     const loadingSpinner = document.createElement('div');
                     loadingSpinner.innerHTML = '⟳';
@@ -609,7 +609,7 @@
                     `;
                     this.appendChild(loadingSpinner);
                 });
-                
+
                 // Keyboard navigation support
                 button.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
@@ -618,28 +618,69 @@
                     }
                 });
             });
-            
-            // Add CSS animation for loading spinner
+
             const style = document.createElement('style');
             style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+
                 @keyframes spin {
-                    from { transform: translateY(-50%) rotate(0deg); }
-                    to { transform: translateY(-50%) rotate(360deg); }
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
                 }
-                
-                .language-btn:active {
-                    transform: translateY(-2px) !important;
+
+                .loading-spinner {
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid #e3e8ee;
+                    border-top: 2px solid #667eea;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
                 }
-                
+
+                @keyframes slideInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .language-btn {
+                    animation: slideInUp 0.6s ease-out forwards;
+                }
+
+                .language-btn:nth-child(1) { animation-delay: 0.1s; opacity: 0; }
+                .language-btn:nth-child(2) { animation-delay: 0.2s; opacity: 0; }
+                .language-btn:nth-child(3) { animation-delay: 0.3s; opacity: 0; }
+                .language-btn:nth-child(4) { animation-delay: 0.4s; opacity: 0; }
+
                 @media (prefers-reduced-motion: reduce) {
-                    .language-btn, .language-btn *, @keyframes spin {
+                    .language-btn, .language-btn *, * {
                         animation: none !important;
                         transition: none !important;
                     }
+                    .language-btn { opacity: 1 !important; }
+                }
+
+                .logo {
+                    animation: pulse 2s ease-in-out infinite;
+                }
+
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
                 }
             `;
             document.head.appendChild(style);
-            
+
             // Performance monitoring
             if ('performance' in window) {
                 window.addEventListener('load', function() {
@@ -652,7 +693,7 @@
                 });
             }
         });
-        
+
         // Prefetch resources for better navigation experience
         document.addEventListener('DOMContentLoaded', function() {
             const prefetchUrls = ['/ko/', '/ja/', '/en/', '/vi/'];
