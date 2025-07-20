@@ -928,7 +928,8 @@
             // Enhanced language buttons with improved UX
             const languageButtons = document.querySelectorAll('.language-btn');
 
-            languageButtons.forEach((button, index) => {
+            if (languageButtons && languageButtons.length > 0) {
+                languageButtons.forEach((button, index) => {
                 // Staggered animation for visual appeal
                 button.style.animationDelay = `${index * 0.1}s`;
 
@@ -1014,7 +1015,8 @@
                 }, { threshold: 0.1 });
 
                 observer.observe(button);
-            });
+                });
+            }
 
             const style = document.createElement('style');
             style.textContent = `
