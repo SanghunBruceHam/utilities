@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,25 +9,25 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Utilities Collection">
     <meta name="language" content="Korean">
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="유틸리티 계산기 모음 - 일본 연호, 간지, 선거 연령 계산기">
     <meta property="og:description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 계산기 도구들을 무료로 제공합니다.">
     <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ko/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
-    
+
     <!-- Hreflang -->
     <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
     <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
     <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
     <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
     <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
-    
+
     <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/favicon.png">
-    
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
     <script>
@@ -40,9 +39,12 @@
 
     <!-- Google AdSense Auto Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-    
-    
-    
+
+<script>
+</script>
+
+
+
     <style>
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -62,7 +64,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
             background: var(--primary-gradient);
@@ -147,7 +149,7 @@
             outline: 2px solid #4a90e2;
             outline-offset: 2px;
         }
-        
+
         .language-switcher {
             text-align: center;
             margin-bottom: 25px;
@@ -163,7 +165,7 @@
         [data-theme="dark"] .language-switcher {
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .language-switcher a {
             color: var(--text-color) !important;
             text-decoration: none;
@@ -191,14 +193,14 @@
         .language-switcher a:hover::before {
             left: 100%;
         }
-        
+
         .language-switcher a:hover {
             color: #ffffff !important;
             background: linear-gradient(135deg, #4a90e2 0%, #667eea 100%);
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
-        
+
         .language-switcher a[href="/ko/"] {
             color: #ffffff !important;
             background: linear-gradient(135deg, #e53935 0%, #d32f2f 100%);
@@ -211,18 +213,18 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .header {
             text-align: center;
             margin-bottom: 40px;
             color: white;
         }
-        
+
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
@@ -230,14 +232,14 @@
             font-weight: 700;
             letter-spacing: 0.5px;
         }
-        
+
         .header p {
             font-size: 1.2em;
             opacity: 0.95;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
             font-weight: 400;
         }
-        
+
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -245,7 +247,7 @@
             margin-bottom: 50px;
             align-items: start;
         }
-        
+
         .tool-card {
             background: var(--card-bg);
             border-radius: 20px;
@@ -285,9 +287,9 @@
             width: 500px;
             height: 500px;
         }
-        
-        
-        
+
+
+
         .tool-card::before {
             content: '';
             position: absolute;
@@ -315,7 +317,7 @@
             transform: translateY(-6px) scale(1.01);
             transition: all 0.15s ease;
         }
-        
+
         .tool-icon {
             font-size: 3.5em;
             margin-bottom: 25px;
@@ -335,7 +337,7 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-5px); }
         }
-        
+
         .tool-title {
             font-size: 1.75em;
             font-weight: 700;
@@ -347,7 +349,7 @@
             z-index: 2;
             transition: color 0.3s ease;
         }
-        
+
         .tool-description {
             color: var(--text-color);
             opacity: 0.8;
@@ -359,7 +361,7 @@
             z-index: 2;
             transition: color 0.3s ease, opacity 0.3s ease;
         }
-        
+
         .tool-features {
             font-size: 1em;
             color: #2d5a3d;
@@ -373,7 +375,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .tool-link {
             display: inline-flex;
             align-items: center;
@@ -406,7 +408,7 @@
         .tool-link:hover::before {
             left: 100%;
         }
-        
+
         .tool-link:hover {
             background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
             transform: translateY(-4px) scale(1.05);
@@ -417,7 +419,7 @@
             transform: translateY(-2px) scale(1.02);
             transition: all 0.1s ease;
         }
-        
+
         .seo-content {
             background: white;
             border-radius: 15px;
@@ -425,50 +427,50 @@
             margin: 40px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
         .seo-content h2 {
             color: #333;
             margin-bottom: 20px;
             font-size: 1.5em;
         }
-        
+
         .seo-content h3 {
             color: #555;
             margin: 20px 0 10px 0;
             font-size: 1.2em;
         }
-        
+
         .seo-content p {
             color: #666;
             line-height: 1.6;
             margin-bottom: 15px;
         }
-        
+
         .footer {
             text-align: center;
             color: white;
             opacity: 0.8;
             margin-top: 40px;
         }
-        
+
         /* Loading skeleton animation */
         .skeleton {
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: loading 1.5s infinite;
         }
-        
+
         @keyframes loading {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
-        
+
         /* Improved accessibility */
         .tool-card:focus-within {
             outline: 2px solid #4a90e2;
             outline-offset: 2px;
         }
-        
+
         /* Reduced motion preferences */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
@@ -484,7 +486,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                 gap: 25px;
             }
-            
+
             .tool-card {
                 padding: 30px 25px;
             }
@@ -562,7 +564,7 @@
                 display: inline-block;
             }
         }
-        
+
         /* Small Mobile Styles */
         @media (max-width: 480px) {
             body {
@@ -577,17 +579,17 @@
             .header p {
                 font-size: 1.1em;
             }
-            
+
             .tool-card {
                 padding: 25px 18px;
                 border-radius: 16px;
             }
-            
+
             .tool-icon {
                 font-size: 2.8em;
                 margin-bottom: 18px;
             }
-            
+
             .tool-title {
                 font-size: 1.45em;
                 line-height: 1.3;
@@ -652,12 +654,12 @@
             <a href="/ko/" style="font-weight: bold; text-decoration: none;">🇰🇷 한국어</a>
             <a href="/vi/" style="text-decoration: none;">🇻🇳 Tiếng Việt</a>
         </div>
-        
+
         <div class="header">
             <h1>🛠️ 유틸리티 계산기 모음</h1>
             <p>일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 유용한 도구들</p>
         </div>
-        
+
         <div class="tools-grid">
             <!-- 일본 연호 변환기 -->
             <div class="tool-card">
@@ -671,7 +673,7 @@
                 </div>
                 <a href="/jp-year-converter/ko/index.html" class="tool-link">연호 변환기 사용하기</a>
             </div>
-            
+
             <!-- 일본 간지 계산기 -->
             <div class="tool-card">
                 <div class="tool-icon">🐉</div>
@@ -684,7 +686,7 @@
                 </div>
                 <a href="/jp-eto-calculator/ko/index.html" class="tool-link">간지 계산기 사용하기</a>
             </div>
-            
+
             <!-- 선거 연령 확인기 -->
             <div class="tool-card">
                 <div class="tool-icon">🗳️</div>
@@ -698,31 +700,31 @@
                 <a href="/election-age-checker/ko/index.html" class="tool-link">선거 연령 확인하기</a>
             </div>
         </div>
-        
-        
-        
+
+
+
         <div class="seo-content">
             <h2>유틸리티 계산기 모음 - 무료 온라인 도구</h2>
-            
+
             <h3>일본 연호 변환기란?</h3>
             <p>일본 연호 변환기는 서력(서기)과 일본의 전통 연호 시스템 간의 변환을 도와주는 도구입니다. 현재 레이와(令和), 헤이세이(平成), 쇼와(昭和), 다이쇼(大正), 메이지(明治) 등 5개의 주요 연호를 지원합니다. 일본 관련 문서 작성, 역사 연구, 또는 일본 문화에 관심이 있는 분들에게 매우 유용한 도구입니다.</p>
-            
+
             <h3>간지(십이지) 계산기 사용법</h3>
             <p>간지 계산기는 생년월일을 입력하면 해당하는 십이지(12지지)를 알려주는 도구입니다. 쥐, 소, 호랑이, 토끼, 용, 뱀, 말, 양, 원숭이, 닭, 개, 돼지 등 12가지 동물 중 어느 것에 해당하는지 정확하게 계산해 드립니다. 입춘 기준으로 계산하여 더욱 정확한 결과를 제공합니다.</p>
-            
+
             <h3>선거 연령 확인의 중요성</h3>
             <p>선거 연령 확인기는 만 18세 이상의 투표권 보장을 위해 만들어진 도구입니다. 2025년 제21대 대통령 선거를 기준으로 투표 가능 여부를 미리 확인할 수 있어, 민주주의 참여에 대한 준비를 도와드립니다.</p>
-            
+
             <h3>무료 계산기 도구의 장점</h3>
             <p>저희가 제공하는 모든 계산기는 완전 무료이며, 별도의 회원가입이나 소프트웨어 설치가 필요하지 않습니다. 웹 브라우저만 있으면 언제든지 사용할 수 있으며, 모바일 기기에서도 원활하게 작동합니다. 정확성과 사용 편의성을 최우선으로 개발되었습니다.</p>
         </div>
-        
+
         <div class="footer">
             <p>© 2025 유틸리티 계산기 모음. 모든 도구는 무료로 제공됩니다.</p>
             <p>일본 연호 변환, 간지 계산, 선거 연령 확인을 한 곳에서 쉽고 빠르게 이용하세요.</p>
         </div>
     </div>
-    
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -738,7 +740,7 @@
         }
     }
     </script>
-    
+
     <script>
         // Dark mode functionality
         class ThemeManager {
@@ -766,7 +768,7 @@
             toggle() {
                 this.theme = this.theme === 'dark' ? 'light' : 'dark';
                 this.applyTheme();
-                this.announceToScreenReader(`${this.theme === 'dark' ? '다크' : '라이트'} 모드로 전환되었습니다`);
+                this                this.announceToScreenReader(`${this.theme === 'dark' ? '다크' : '라이트'} 모드로 전환되었습니다`);
             }
 
             setupToggle() {
@@ -831,7 +833,7 @@
 
             // Tool card interaction enhancements
             const toolCards = document.querySelectorAll('.tool-card');
-            
+
             toolCards.forEach((card, index) => {
                 // Staggered animation
                 card.style.animationDelay = `${index * 0.1}s`;
@@ -858,7 +860,7 @@
                         const size = Math.max(rect.width, rect.height) * 2;
                         const x = e.clientX - rect.left - size / 2;
                         const y = e.clientY - rect.top - size / 2;
-                        
+
                         ripple.style.cssText = `
                             position: absolute;
                             width: ${size}px;
@@ -872,11 +874,11 @@
                             pointer-events: none;
                             z-index: 10;
                         `;
-                        
+
                         this.style.position = 'relative';
                         this.style.overflow = 'hidden';
                         this.appendChild(ripple);
-                        
+
                         // Enhanced loading state with better animation
                         const originalText = this.innerHTML;
                         this.innerHTML = `
@@ -895,11 +897,11 @@
                         this.style.opacity = '0.8';
                         this.style.transform = 'translateY(-4px) scale(0.98)';
                         this.style.cursor = 'not-allowed';
-                        
+
                         // Announce to screen readers
                         const cardTitle = card.querySelector('.tool-title').textContent;
                         this.setAttribute('aria-label', `${cardTitle} 페이지로 이동 중`);
-                        
+
                         // Cleanup and navigation
                         setTimeout(() => {
                             ripple.remove();
@@ -915,20 +917,20 @@
                         }
                     });
                 }
-                
+
                 // Add keyboard navigation
                 card.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' && toolLink) {
                         toolLink.click();
                     }
                 });
-                
+
                 // Add focus management
                 card.setAttribute('tabindex', '0');
                 card.setAttribute('role', 'article');
                 card.setAttribute('aria-label', card.querySelector('.tool-title').textContent);
             });
-            
+
             // Language switcher enhancements
             const langLinks = document.querySelectorAll('.language-switcher a');
             langLinks.forEach(link => {
@@ -936,7 +938,7 @@
                     this.style.opacity = '0.7';
                 });
             });
-            
+
             // Performance tracking
             if ('performance' in window) {
                 window.addEventListener('load', function() {
@@ -949,7 +951,7 @@
                     }
                 });
             }
-            
+
             // Lazy load content improvements
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -958,16 +960,16 @@
                     }
                 });
             }, { threshold: 0.1 });
-            
+
             toolCards.forEach(card => observer.observe(card));
-            
+
             // Add fade-in animation
             const style = document.createElement('style');
             style.textContent = `
                 .fade-in {
                     animation: fadeInUp 0.6s ease-out forwards;
                 }
-                
+
                 @keyframes fadeInUp {
                     from {
                         opacity: 0;
