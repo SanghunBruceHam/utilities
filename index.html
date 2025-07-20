@@ -1149,6 +1149,7 @@
                 });
             }, { threshold: 0.5 });
 
+            const languageButtons = document.querySelectorAll('.language-btn');
             languageButtons.forEach(button => {
                 prefetchObserver.observe(button);
             });
