@@ -655,7 +655,7 @@
             .language-btn {
                 border: 3px solid var(--text-color);
             }
-            
+
             .text > span:first-child,
             .lang-name {
                 font-weight: 800;
@@ -670,7 +670,7 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-            
+
             .loading-spinner {
                 animation: none;
                 border-top-color: transparent;
@@ -684,7 +684,7 @@
             .loading-overlay {
                 display: none !important;
             }
-            
+
             body {
                 background: white !important;
                 color: black !important;
@@ -738,7 +738,7 @@
 <body>
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <!-- Loading overlay -->
     <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
         <div class="loading-spinner" aria-label="Loading"></div>
@@ -749,7 +749,7 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
             <span id="themeIcon">🌙</span>
         </button>
-        
+
         <div class="logo" role="img" aria-label="Tools emoji">🛠️</div>
         <h1 class="title">Choose Your Language</h1>
         <p class="subtitle">언어를 선택해주세요 / 言語を選択してください</p>
@@ -799,7 +799,7 @@
         </div>
     </div>
 
-    
+
 
     <script type="application/ld+json">
     {
@@ -858,7 +858,7 @@
             toggle() {
                 this.theme = this.theme === 'dark' ? 'light' : 'dark';
                 this.applyTheme();
-                
+
                 // Announce to screen readers
                 const announcement = `Switched to ${this.theme} mode`;
                 this.announceToScreenReader(announcement);
@@ -951,7 +951,7 @@
                     const announcement = `Navigating to ${language} version`;
                     document.getElementById('themeToggle').closest('.language-selector')
                         .querySelector('.title').setAttribute('aria-live', 'polite');
-                    
+
                     // Simulate network delay for better UX
                     setTimeout(() => {
                         window.location.href = this.href;
@@ -1086,7 +1086,7 @@
                     if (perfData && perfData.loadEventEnd > 0) {
                         const loadTime = Math.round(perfData.loadEventEnd - perfData.loadEventStart);
                         gtag('event', 'page_load_time', { value: loadTime });
-                        
+
                         // Monitor Core Web Vitals
                         if ('web-vitals' in window) {
                             web-vitals.getCLS(console.log);
@@ -1125,46 +1125,51 @@
         });
 
         // Enhanced prefetching with priority
-        document.addEventListener('DOMContentLoaded', function() {
-            const prefetchUrls = [
-                { url: '/ko/', priority: 'high' },
-                { url: '/ja/', priority: 'high' },
-                { url: '/en/', priority: 'medium' },
-                { url: '/vi/', priority: 'medium' }
-            ];
+            document.addEventListener('DOMContentLoaded', function() {
+                const prefetchUrls = [
+                    { url: '/ko/', priority: 'high' },
+                    { url: '/ja/', priority: 'high' },
+                    { url: '/en/', priority: 'medium' },
+                    { url: '/vi/', priority: 'medium' }
+                ];
 
-            // Use Intersection Observer to prefetch when user shows intent
-            const prefetchObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const href = entry.target.href;
-                        if (href && !document.querySelector(`link[href="${href}"]`)) {
-                            const link = document.createElement('link');
-                            link.rel = 'prefetch';
-                            link.href = href;
-                            link.crossOrigin = 'anonymous';
-                            document.head.appendChild(link);
+                // Get language buttons first
+                const languageButtons = document.querySelectorAll('.language-btn');
+
+                // Use Intersection Observer to prefetch when user shows intent
+                const prefetchObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const href = entry.target.href;
+                            if (href && !document.querySelector(`link[href="${href}"]`)) {
+                                const link = document.createElement('link');
+                                link.rel = 'prefetch';
+                                link.href = href;
+                                link.crossOrigin = 'anonymous';
+                                document.head.appendChild(link);
+                            }
                         }
-                    }
-                });
-            }, { threshold: 0.5 });
+                    });
+                }, { threshold: 0.5 });
 
-            const languageButtons = document.querySelectorAll('.language-btn');
-            languageButtons.forEach(button => {
-                prefetchObserver.observe(button);
+                // Apply observer to language buttons
+                if (languageButtons.length > 0) {
+                    languageButtons.forEach(button => {
+                        prefetchObserver.observe(button);
+                    });
+                }
+
+                // Immediate prefetch for high priority resources
+                setTimeout(() => {
+                    prefetchUrls.filter(item => item.priority === 'high').forEach(item => {
+                        const link = document.createElement('link');
+                        link.rel = 'prefetch';
+                        link.href = item.url;
+                        link.crossOrigin = 'anonymous';
+                        document.head.appendChild(link);
+                    });
+                }, 1000);
             });
-
-            // Immediate prefetch for high priority resources
-            setTimeout(() => {
-                prefetchUrls.filter(item => item.priority === 'high').forEach(item => {
-                    const link = document.createElement('link');
-                    link.rel = 'prefetch';
-                    link.href = item.url;
-                    link.crossOrigin = 'anonymous';
-                    document.head.appendChild(link);
-                });
-            }, 1000);
-        });
     </script>
 </body>
 </html>
