@@ -53,14 +53,7 @@
     })(window, document, "clarity", "script", "ry3utftm89");
     </script>
 
-    <!-- Google AdSense Auto Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" crossorigin="anonymous"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-5508768187151867",
-            enable_page_level_ads: true
-        });
-    </script>
+    
 
     <!-- Auto Language Detection and Redirect -->
     <!-- 강화된 광고 차단 스크립트 -->
@@ -930,91 +923,93 @@
 
             if (languageButtons && languageButtons.length > 0) {
                 languageButtons.forEach((button, index) => {
-                // Staggered animation for visual appeal
-                button.style.animationDelay = `${index * 0.1}s`;
+                    // Staggered animation for visual appeal
+                    button.style.animationDelay = `${index * 0.1}s`;
 
-                // Enhanced click handling with loading states
-                button.addEventListener('click', function(e) {
-                    // Prevent multiple clicks
-                    if (this.classList.contains('loading')) return;
+                    // Enhanced click handling with loading states
+                    button.addEventListener('click', function(e) {
+                        // Prevent multiple clicks
+                        if (this.classList.contains('loading')) return;
 
-                    // Add loading state
-                    this.classList.add('loading');
-                    showLoading();
+                        // Add loading state
+                        this.classList.add('loading');
+                        showLoading();
 
-                    // Haptic feedback for mobile devices
-                    if (navigator.vibrate) {
-                        navigator.vibrate(50);
-                    }
+                        // Haptic feedback for mobile devices
+                        if (navigator.vibrate) {
+                            navigator.vibrate(50);
+                        }
 
-                    // Announce navigation to screen readers
-                    const language = this.querySelector('.text > span:first-child').textContent;
-                    const announcement = `Navigating to ${language} version`;
-                    document.getElementById('themeToggle').closest('.language-selector')
-                        .querySelector('.title').setAttribute('aria-live', 'polite');
+                        // Announce navigation to screen readers
+                        const language = this.querySelector('.text > span:first-child').textContent;
+                        const announcement = `Navigating to ${language} version`;
+                        const titleElement = document.querySelector('.title');
+                        if (titleElement) {
+                            titleElement.setAttribute('aria-live', 'polite');
+                        }
 
-                    // Simulate network delay for better UX
-                    setTimeout(() => {
-                        window.location.href = this.href;
-                    }, 300);
-                });
+                        // Simulate network delay for better UX
+                        setTimeout(() => {
+                            window.location.href = this.href;
+                        }, 300);
+                    });
 
-                // Enhanced keyboard navigation
-                button.addEventListener('keydown', function(e) {
-                    switch(e.key) {
-                        case 'Enter':
-                        case ' ':
-                            e.preventDefault();
-                            this.click();
-                            break;
-                        case 'ArrowDown':
-                        case 'ArrowRight':
-                            e.preventDefault();
-                            const nextButton = this.nextElementSibling || languageButtons[0];
-                            nextButton.focus();
-                            break;
-                        case 'ArrowUp':
-                        case 'ArrowLeft':
-                            e.preventDefault();
-                            const prevButton = this.previousElementSibling || languageButtons[languageButtons.length - 1];
-                            prevButton.focus();
-                            break;
-                        case 'Home':
-                            e.preventDefault();
-                            languageButtons[0].focus();
-                            break;
-                        case 'End':
-                            e.preventDefault();
-                            languageButtons[languageButtons.length - 1].focus();
-                            break;
-                    }
-                });
-
-                // Enhanced hover effects with throttling
-                const handleMouseMove = rafThrottle((e) => {
-                    const rect = button.getBoundingClientRect();
-                    const x = ((e.clientX - rect.left) / rect.width) * 100;
-                    const y = ((e.clientY - rect.top) / rect.height) * 100;
-                    button.style.setProperty('--mouse-x', `${x}%`);
-                    button.style.setProperty('--mouse-y', `${y}%`);
-                });
-
-                button.addEventListener('mousemove', handleMouseMove);
-                button.addEventListener('mouseleave', () => {
-                    button.style.removeProperty('--mouse-x');
-                    button.style.removeProperty('--mouse-y');
-                });
-
-                // Intersection Observer for scroll-triggered animations
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.animationPlayState = 'running';
+                    // Enhanced keyboard navigation
+                    button.addEventListener('keydown', function(e) {
+                        switch(e.key) {
+                            case 'Enter':
+                            case ' ':
+                                e.preventDefault();
+                                this.click();
+                                break;
+                            case 'ArrowDown':
+                            case 'ArrowRight':
+                                e.preventDefault();
+                                const nextButton = this.nextElementSibling || languageButtons[0];
+                                nextButton.focus();
+                                break;
+                            case 'ArrowUp':
+                            case 'ArrowLeft':
+                                e.preventDefault();
+                                const prevButton = this.previousElementSibling || languageButtons[languageButtons.length - 1];
+                                prevButton.focus();
+                                break;
+                            case 'Home':
+                                e.preventDefault();
+                                languageButtons[0].focus();
+                                break;
+                            case 'End':
+                                e.preventDefault();
+                                languageButtons[languageButtons.length - 1].focus();
+                                break;
                         }
                     });
-                }, { threshold: 0.1 });
 
-                observer.observe(button);
+                    // Enhanced hover effects with throttling
+                    const handleMouseMove = rafThrottle((e) => {
+                        const rect = button.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        button.style.setProperty('--mouse-x', `${x}%`);
+                        button.style.setProperty('--mouse-y', `${y}%`);
+                    });
+
+                    button.addEventListener('mousemove', handleMouseMove);
+                    button.addEventListener('mouseleave', () => {
+                        button.style.removeProperty('--mouse-x');
+                        button.style.removeProperty('--mouse-y');
+                    });
+
+                    // Intersection Observer for scroll-triggered animations
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.style.animationPlayState = 'running';
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    observer.observe(button);
                 });
             }
 
