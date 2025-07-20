@@ -1153,8 +1153,9 @@
                 }, { threshold: 0.5 });
 
                 // Apply observer to language buttons
-                if (languageButtons.length > 0) {
-                    languageButtons.forEach(button => {
+                const languageButtonsForPrefetch = document.querySelectorAll('.language-btn');
+                if (languageButtonsForPrefetch.length > 0) {
+                    languageButtonsForPrefetch.forEach(button => {
                         prefetchObserver.observe(button);
                     });
                 }
