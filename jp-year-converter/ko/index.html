@@ -22,6 +22,9 @@
 <meta name="robots" content="index, follow">
 <link rel="icon" href="/favicon.ico">
 <link rel="icon" href="/favicon.png" type="image/png">   
+<script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
+     crossorigin="anonymous"></script>
 
     <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
@@ -31,9 +34,6 @@
     gtag('js', new Date());
     gtag('config', 'G-WF8ZL9QJHF');
   </script>
-
-    <!-- Google AdSense Auto Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
 <script>
     (function () {
@@ -343,96 +343,14 @@
 </section>
 </div>
 
-    <script>
-    const eras = {
-      reiwa: 2019,
-      heisei: 1989,
-      showa: 1926,
-      taisho: 1912,
-      meiji: 1868
-    };
-    const eraNames = {
-      reiwa: "레이와 (令和)",
-      heisei: "헤이세이 (平成)",
-      showa: "쇼와 (昭和)",
-      taisho: "다이쇼 (大正)",
-      meiji: "메이지 (明治)"
-    };
-    const translations = {
-      toWareki: " 는 ",
-      toSeireki: " 는 서기 "
-    };
-
-    const gregorianYearSelect = document.getElementById("gregorian-year");
-    for (let y = new Date().getFullYear(); y >= 1868; y--) {
-      gregorianYearSelect.innerHTML += `<option value="${y}">${y}</option>`;
-    }
-
-    const modeSelect = document.getElementById("mode");
-    const westernInputs = document.getElementById("western-inputs");
-    const japaneseInputs = document.getElementById("japanese-inputs");
-    const result = document.getElementById("result");
-
-    const eraTabsContainer = document.getElementById("era-tabs");
-    const eraYearSelect = document.getElementById("era-year");
-    let selectedEra = "reiwa";
-
-    Object.keys(eras).forEach((era) => {
-      const div = document.createElement("div");
-      div.textContent = eraNames[era];
-      div.className = "era-tab" + (era === selectedEra ? " active" : "");
-      div.dataset.era = era;
-      div.addEventListener("click", () => {
-        selectedEra = era;
-        updateEraTabs();
-        populateEraYears(selectedEra);
-      });
-      eraTabsContainer.appendChild(div);
-    });
-
-    function updateEraTabs() {
-      document.querySelectorAll(".era-tab").forEach((tab) => {
-        tab.classList.toggle("active", tab.dataset.era === selectedEra);
-      });
-    }
-
-    function populateEraYears(era) {
-      const start = eras[era];
-      const current = new Date().getFullYear();
-      const max = era === "reiwa" ? current - start + 1 : (Object.values(eras).find(y => y > start) || current) - start;
-      eraYearSelect.innerHTML = "";
-      for (let i = 1; i <= max; i++) {
-        eraYearSelect.innerHTML += `<option value="${i}">${i}</option>`;
-      }
-    }
-
-    modeSelect.addEventListener("change", () => {
-      const isToWareki = modeSelect.value === "toWareki";
-      westernInputs.style.display = isToWareki ? "block" : "none";
-      japaneseInputs.style.display = isToWareki ? "none" : "block";
-    });
-
-    populateEraYears(selectedEra);
-
-    document.getElementById("convertBtn").addEventListener("click", () => {
-      result.innerHTML = "";
-      const mode = modeSelect.value;
-      if (mode === "toWareki") {
-        const year = parseInt(gregorianYearSelect.value);
-        for (const [era, start] of Object.entries(eras)) {
-          if (year >= start) {
-            const ey = year - start + 1;
-            result.innerHTML = `<span class="highlight-result">${year}</span>${translations[mode]}<span class="highlight-result">${eraNames[era]} ${ey}</span>년입니다.`;
-            return;
-          }
-        }
-      } else {
-        const ey = parseInt(eraYearSelect.value);
-        const year = eras[selectedEra] + ey - 1;
-        result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]}<span class="highlight-result">${year}</span>년입니다.`;
-      }
-    });
-  </script>
+<amp-ad width="100vw" height="320"
+     type="adsense"
+     data-ad-client="ca-pub-5508768187151867"
+     data-ad-slot="7298546648"
+     data-auto-format="rspv"
+     data-full-width="">
+  <div overflow=""></div>
+</amp-ad>
 
 <script type="application/ld+json">
 {
