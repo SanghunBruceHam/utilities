@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Japanese Era Converter｜Gregorian ⇄ Japanese Era</title>
+<meta content="Free tool to convert between Japanese eras (Meiji, Taisho, Showa, Heisei, Reiwa) and the Gregorian calendar." name="description"/>
+<meta content="Japanese era, wareki, Gregorian calendar, Reiwa, Heisei, Showa, Taisho, Meiji, conversion tool" name="keywords"/>
+<meta content="Japanese Era ⇄ Gregorian Converter" property="og:title"/>
+<meta content="Easily convert between Japanese eras and Gregorian years with one click." property="og:description"/>
+<meta content="https://utilities.mahalohana-bruce.com/jp-year-converter/en/" property="og:url"/>
+<meta content="https://utilities.mahalohana-bruce.com/og-image.png" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="#4a90e2" name="theme-color"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ja/" hreflang="ja" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/" hreflang="ko" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/" hreflang="en" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/vi/" hreflang="vi" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/" hreflang="x-default" rel="alternate"/>
+<link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/" rel="canonical"/>
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" href="/favicon.png" type="image/png">   
+      
+      <!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WF8ZL9QJHF"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WF8ZL9QJHF');
+    </script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"></script>
+<script async="" custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+<script>
+  (function () {
+    const lang = navigator.language || navigator.userLanguage;
+    const map = {
+      'ja': '/jp-year-converter/ja/index.html',
+      'ko': '/jp-year-converter/ko/index.html',
+      'en': '/jp-year-converter/en/index.html',
+      'vi': '/jp-year-converter/vi/index.html',
+      'zh': '/jp-year-converter/ja/index.html'
+    };
+    const current = window.location.pathname;
+    const alreadyLocalized = [
+      '/jp-year-converter/ja/index.html',
+      '/jp-year-converter/ko/index.html',
+      '/jp-year-converter/en/index.html',
+      '/jp-year-converter/vi/index.html'
+    ];
+    if (!alreadyLocalized.includes(current)) {
+      const shortLang = lang.toLowerCase().slice(0, 2);
+      const redirectTo = map[shortLang] || map['en'];
+      window.location.replace(redirectTo);
+    }
+  })();
+  </script>
+<style>
+    html { font-size: 16px; }
+    @media (max-width: 768px) { html { font-size: 14px; } }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    .container {
+      background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
+      max-width: 600px;
+      margin: auto;
+      padding: 2.5rem;
+      border-radius: 24px;
+      border: none;
+      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3), 
+                  0 8px 20px rgba(118, 75, 162, 0.2),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+      background-size: 200% 100%;
+      animation: shimmer 2s linear infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .language-switcher {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .language-switcher a {
+      text-decoration: none;
+      margin: 0 8px;
+      color: #333;
+      font-weight: normal;
+      transition: color 0.3s;
+    }
+    .language-switcher a:hover {
+      color: #4a90e2;
+    }
+    .language-switcher a.active {
+      font-weight: bold;
+      color: #e53935;
+    }
+    .language-switcher img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    label, select, button {
+      display: block;
+      margin: 1rem 0;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .era-tabs {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    .era-tab {
+      flex: 1;
+      text-align: center;
+      background: #e3f2fd;
+      border: 1px solid #2196f3;
+      border-radius: 8px;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+    }
+    .era-tab:hover {
+      background: #bbdefb;
+    }
+    .era-tab.active {
+      background: #2196f3;
+      color: white;
+      font-weight: bold;
+    }
+    button {
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #357ab7;
+    }
+    #result {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      background: #fffbe7;
+      border-left: 6px solid #ffd95c;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    .highlight-result {
+      color: red;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<div style="text-align: center; margin-bottom: 1rem;">
+<a href="/en/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
+🏠 Back to Tools
+</a>
+</div>
+<div class="language-switcher">
+<a href="/jp-year-converter/ja/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
+      <a href="/jp-year-converter/ko/index.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
+      <a class="active" href="/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
+      <a href="/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
+      <a href="/jp-year-converter/ja/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
+</div>
+<h1>Japanese Era Converter｜Gregorian ⇄ Japanese Era</h1>
+
+<p style="text-align: center; margin: 1rem 0; font-size: 1.1rem; color: #4a5568;">Free online tool to convert between traditional Japanese eras (Reiwa, Heisei, Showa, Taisho, Meiji) and Gregorian years.</p>
+
+<!-- Collapsible Usage Section -->
+<details style="margin: 1.5rem 0; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+<summary style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; cursor: pointer; font-weight: 600; font-size: 1.1rem; outline: none;">📖 View Instructions & Supported Eras</summary>
+<div style="padding: 1.5rem; background: #f8f9ff;">
+<h3 style="margin-top: 0; color: #4a5568;">📋 How to Use</h3>
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.6;">
+<li>Select the conversion direction (Gregorian→Era or Era→Gregorian)</li>
+<li>Choose the corresponding year or era</li>
+<li>Click the convert button to see the result</li>
+</ol>
+
+<h3 style="color: #4a5568;">🗾 Supported Japanese Eras</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #e53935;">
+<strong>Reiwa (令和)</strong><br><small>2019~Present</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+<strong>Heisei (平成)</strong><br><small>1989~2019</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #388e3c;">
+<strong>Showa (昭和)</strong><br><small>1926~1989</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #f57c00;">
+<strong>Taisho (大正)</strong><br><small>1912~1926</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<strong>Meiji (明治)</strong><br><small>1868~1912</small>
+</div>
+</div>
+</div>
+</details>
+
+<section>
+<h3>🔄 Convert</h3>
+<label for="mode">Select conversion direction:</label>
+<select id="mode">
+<option value="toWareki">Gregorian → Japanese Era</option>
+<option value="toSeireki">Japanese Era → Gregorian</option>
+</select>
+<div id="western-inputs">
+<label for="gregorian-year">Select Gregorian year:</label>
+<select id="gregorian-year"></select>
+</div>
+<div id="japanese-inputs" style="display:none;">
+<label>Select era:</label>
+<div class="era-tabs" id="era-tabs"></div>
+<label for="era-year">Year:</label>
+<select id="era-year"></select>
+</div>
+<button id="convertBtn">Convert</button>
+<div id="result"></div>
+
+<section style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9ff 0%, #fff3e0 100%); border-radius: 16px; border: 1px solid #e2e8f0;">
+<h3 style="color: #4a5568; margin-top: 0;">ℹ️ About Era Conversion</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">📜 Era System</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Japanese eras change with the enthronement of emperors, each having unique meaning and history. The current Reiwa means "beautiful harmony".</p>
+</div>
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">✅ Accurate Results</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Based on official Japanese government era standards. Useful for document preparation, historical research, and learning Japanese culture.</p>
+</div>
+</div>
+</section>
+</div>
+<script>
+    const eras = {
+      reiwa: 2019,
+      heisei: 1989,
+      showa: 1926,
+      taisho: 1912,
+      meiji: 1868
+    };
+    const eraNames = {
+      reiwa: "Reiwa (令和)",
+      heisei: "Heisei (平成)",
+      showa: "Showa (昭和)",
+      taisho: "Taisho (大正)",
+      meiji: "Meiji (明治)"
+    };
+    const translations = {
+      toWareki: " corresponds to ",
+      toSeireki: " is equivalent to Gregorian "
+    };
+
+    const gregorianYearSelect = document.getElementById("gregorian-year");
+    for (let y = new Date().getFullYear(); y >= 1868; y--) {
+      gregorianYearSelect.innerHTML += `<option value="${y}">${y}</option>`;
+    }
+
+    const modeSelect = document.getElementById("mode");
+    const westernInputs = document.getElementById("western-inputs");
+    const japaneseInputs = document.getElementById("japanese-inputs");
+    const result = document.getElementById("result");
+
+    const eraTabsContainer = document.getElementById("era-tabs");
+    const eraYearSelect = document.getElementById("era-year");
+    let selectedEra = "reiwa";
+
+    Object.keys(eras).forEach((era) => {
+      const div = document.createElement("div");
+      div.textContent = eraNames[era];
+      div.className = "era-tab" + (era === selectedEra ? " active" : "");
+      div.dataset.era = era;
+      div.addEventListener("click", () => {
+        selectedEra = era;
+        updateEraTabs();
+        populateEraYears(selectedEra);
+      });
+      eraTabsContainer.appendChild(div);
+    });
+
+    function updateEraTabs() {
+      document.querySelectorAll(".era-tab").forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.era === selectedEra);
+      });
+    }
+
+    function populateEraYears(era) {
+      const start = eras[era];
+      const current = new Date().getFullYear();
+      const max = era === "reiwa" ? current - start + 1 : (Object.values(eras).find(y => y > start) || current) - start;
+      eraYearSelect.innerHTML = "";
+      for (let i = 1; i <= max; i++) {
+        eraYearSelect.innerHTML += `<option value="${i}">${i}</option>`;
+      }
+    }
+
+    modeSelect.addEventListener("change", () => {
+      const isToWareki = modeSelect.value === "toWareki";
+      westernInputs.style.display = isToWareki ? "block" : "none";
+      japaneseInputs.style.display = isToWareki ? "none" : "block";
+    });
+
+    populateEraYears(selectedEra);
+
+    document.getElementById("convertBtn").addEventListener("click", () => {
+      result.innerHTML = "";
+      const mode = modeSelect.value;
+      if (mode === "toWareki") {
+        const year = parseInt(gregorianYearSelect.value);
+        for (const [era, start] of Object.entries(eras)) {
+          if (year >= start) {
+            const ey = year - start + 1;
+            result.innerHTML = `<span class="highlight-result">${year}</span>${translations[mode]}<span class="highlight-result"> ${eraNames[era]} ${ey}</span>.`;
+            return;
+          }
+        }
+      } else {
+        const ey = parseInt(eraYearSelect.value);
+        const year = eras[selectedEra] + ey - 1;
+        result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]}<span class="highlight-result"> ${year}</span>.`;
+      }
+    });
+  </script>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"></script>
+<!-- 디스플레이 광고 -->
+<ins class="adsbygoogle" data-ad-client="ca-pub-5508768187151867" data-ad-format="auto" data-ad-slot="8394292465" data-full-width-responsive="true" style="display:block"></ins>
+<script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+<amp-ad data-ad-client="ca-pub-5508768187151867" data-ad-slot="8986626310" data-auto-format="rspv" data-full-width="" height="320" type="adsense" width="100vw">
+<div overflow=""></div>
+</amp-ad>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Japanese Era Converter",
+  "url": "https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html",
+  "applicationCategory": "Calculator",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "How are Japanese eras calculated?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Eras like Reiwa, Heisei, Showa, Taisho, and Meiji are calculated based on the starting year of each era. For example, Reiwa started in 2019, so 2024 is Reiwa 6."
+    }
+  }, {
+    "@type": "Question",
+    "name": "What is the current Japanese era?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The current Japanese era is Reiwa (令和), which began on May 1, 2019."
+    }
+  }]
+}
+</script>
+</body>
+</html>
