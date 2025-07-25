@@ -273,6 +273,96 @@
   <div overflow=""></div>
 </amp-ad>
 
+<div class="container">
+<div style="text-align: center; margin-bottom: 1rem;">
+<a href="/vi/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
+🏠 Quay lại Danh sách Công cụ
+</a>
+</div>
+<div class="language-switcher">
+<a href="/jp-year-converter/ja/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
+      <a href="/jp-year-converter/ko/index.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
+      <a href="/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
+      <a class="active" href="/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
+      <a href="/jp-year-converter/ja/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
+</div>
+<h1>Chuyển đổi Niên hiệu Nhật Bản｜Dương lịch ⇄ Niên hiệu</h1>
+
+<p style="text-align: center; margin: 1rem 0; font-size: 1.1rem; color: #4a5568;">Công cụ trực tuyến miễn phí để chuyển đổi giữa các niên hiệu truyền thống của Nhật Bản (Reiwa, Heisei, Showa, Taisho, Meiji) và năm dương lịch.</p>
+
+<!-- Phần hướng dẫn có thể thu gọn -->
+<details style="margin: 1.5rem 0; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
+<summary style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; cursor: pointer; font-weight: 600; font-size: 1.1rem; outline: none;">📖 Xem hướng dẫn và niên hiệu được hỗ trợ</summary>
+<div style="padding: 1.5rem; background: #f8f9ff;">
+<h3 style="margin-top: 0; color: #4a5568;">📋 Cách sử dụng</h3>
+<ol style="margin: 1rem 0; padding-left: 1.5rem; line-height: 1.6;">
+<li>Chọn hướng chuyển đổi (Dương lịch→Niên hiệu hoặc Niên hiệu→Dương lịch)</li>
+<li>Chọn năm hoặc niên hiệu tương ứng</li>
+<li>Nhấp nút chuyển đổi để xem kết quả</li>
+</ol>
+
+<h3 style="color: #4a5568;">🗾 Niên hiệu Nhật Bản được hỗ trợ</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #e53935;">
+<strong>Reiwa (令和)</strong><br><small>2019~Hiện tại</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+<strong>Heisei (平成)</strong><br><small>1989~2019</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #388e3c;">
+<strong>Showa (昭和)</strong><br><small>1926~1989</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #f57c00;">
+<strong>Taisho (大正)</strong><br><small>1912~1926</small>
+</div>
+<div style="background: #fff; padding: 0.8rem; border-radius: 8px; border-left: 4px solid #7b1fa2;">
+<strong>Meiji (明治)</strong><br><small>1868~1912</small>
+</div>
+</div>
+</div>
+</details>
+
+<section>
+<h3>🔄 Chuyển đổi</h3>
+<label for="mode">Chọn hướng chuyển đổi:</label>
+<select id="mode">
+<option value="toWareki">Dương lịch → Niên hiệu Nhật Bản</option>
+<option value="toSeireki">Niên hiệu Nhật Bản → Dương lịch</option>
+</select>
+<div id="western-inputs">
+<label for="gregorian-year">Chọn năm dương lịch:</label>
+<select id="gregorian-year"></select>
+</div>
+<div id="japanese-inputs" style="display:none;">
+<label>Chọn niên hiệu:</label>
+<div class="era-tabs" id="era-tabs"></div>
+<label for="era-year">Năm:</label>
+<select id="era-year"></select>
+</div>
+<button id="convertBtn">Chuyển đổi</button>
+<div id="result"></div>
+
+<section style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #f8f9ff 0%, #fff3e0 100%); border-radius: 16px; border: 1px solid #e2e8f0;">
+<h3 style="color: #4a5568; margin-top: 0;">ℹ️ Về chuyển đổi niên hiệu</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">📜 Hệ thống niên hiệu</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Niên hiệu Nhật Bản thay đổi theo việc lên ngôi của hoàng đế, mỗi niên hiệu có ý nghĩa và lịch sử riêng. Reiwa hiện tại có nghĩa là "hòa hợp tươi đẹp".</p>
+</div>
+<div>
+<h4 style="color: #667eea; margin: 0 0 0.5rem 0;">✅ Kết quả chính xác</h4>
+<p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Dựa trên tiêu chuẩn niên hiệu chính thức của chính phủ Nhật Bản. Hữu ích cho việc chuẩn bị tài liệu, nghiên cứu lịch sử và học văn hóa Nhật Bản.</p>
+</div>
+</div>
+</section>
+</section>
+
+<div class="footer" style="text-align: center; color: white; opacity: 0.8; margin-top: 40px; padding: 20px;">
+    <p>© 2025 <a href="https://utilities.mahalohana-bruce.com/vi/" style="color: white; text-decoration: underline;">Bộ Sưu Tập Máy Tính Tiện Ích</a>. Tất cả các công cụ được cung cấp miễn phí.</p>
+    <p><a href="https://utilities.mahalohana-bruce.com/vi/" style="color: white; text-decoration: underline;">Chuyển đổi niên hiệu Nhật và tính toán can chi</a> dễ dàng và nhanh chóng tại một nơi.</p>
+</div>
+</div>
+
 <script>
     const eras = {
       reiwa: 2019,
@@ -351,7 +441,7 @@
     document.getElementById("convertBtn").addEventListener("click", () => {
       result.innerHTML = "";
       const mode = modeSelect.value;
-      
+
       try {
         if (mode === "toWareki") {
           const year = parseInt(gregorianYearSelect.value);
@@ -359,7 +449,7 @@
             result.innerHTML = "Vui lòng chọn năm hợp lệ.";
             return;
           }
-          
+
           for (const [era, start] of Object.entries(eras).reverse()) {
             if (year >= start) {
               const ey = year - start + 1;
@@ -374,7 +464,7 @@
             result.innerHTML = "Vui lòng chọn năm niên hiệu hợp lệ.";
             return;
           }
-          
+
           const year = eras[selectedEra] + ey - 1;
           result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]}<span class="highlight-result">${year}</span>.`;
         }
