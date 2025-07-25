@@ -445,13 +445,16 @@
       const mode = modeSelect.value;
       if (mode === "toWareki") {
         const year = parseInt(gregorianYearSelect.value);
-        for (const [era, start] of Object.entries(eras)) {
+        // Sort eras by start year descending to find the correct era
+        const sortedEras = Object.entries(eras).sort((a, b) => b[1] - a[1]);
+        for (const [era, start] of sortedEras) {
           if (year >= start) {
             const ey = year - start + 1;
             result.innerHTML = `<span class="highlight-result">${year}</span>${translations[mode]} <span class="highlight-result">${eraNames[era]} ${ey}</span>年 です。`;
             return;
           }
         }
+        result.innerHTML = "この年は対応している元号に該当しません。";
       } else {
         const ey = parseInt(eraYearSelect.value);
         const year = eras[selectedEra] + ey - 1;
