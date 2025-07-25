@@ -425,7 +425,20 @@
     function populateEraYears(era) {
       const start = eras[era];
       const current = new Date().getFullYear();
-      const max = era === "reiwa" ? current - start + 1 : (Object.values(eras).find(y => y > start) || current) - start;
+      let max;
+      
+      // Define exact end years for each era
+      const eraEndYears = {
+        meiji: 1912,   // Meiji 45 (ended July 30, 1912)
+        taisho: 1926,  // Taisho 15 (ended December 25, 1926)
+        showa: 1989,   // Showa 64 (ended January 7, 1989)
+        heisei: 2019,  // Heisei 31 (ended April 30, 2019)
+        reiwa: current // Current era, ongoing
+      };
+      
+      const endYear = eraEndYears[era];
+      max = endYear - start + 1;
+      
       eraYearSelect.innerHTML = "";
       for (let i = 1; i <= max; i++) {
         eraYearSelect.innerHTML += `<option value="${i}">${i}</option>`;

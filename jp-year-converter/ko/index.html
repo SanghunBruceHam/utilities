@@ -429,7 +429,20 @@
     function populateEraYears(era) {
       const start = eras[era];
       const current = new Date().getFullYear();
-      const max = era === "reiwa" ? current - start + 1 : (Object.values(eras).find(y => y > start) || current) - start;
+      let max;
+      
+      // Define exact end years for each era
+      const eraEndYears = {
+        meiji: 1912,   // 메이지 45년 (1912년 7월 30일 종료)
+        taisho: 1926,  // 다이쇼 15년 (1926년 12월 25일 종료)
+        showa: 1989,   // 쇼와 64년 (1989년 1월 7일 종료)
+        heisei: 2019,  // 헤이세이 31년 (2019년 4월 30일 종료)
+        reiwa: current // 현재 연호, 진행 중
+      };
+      
+      const endYear = eraEndYears[era];
+      max = endYear - start + 1;
+      
       eraYearSelect.innerHTML = "";
       for (let i = 1; i <= max; i++) {
         eraYearSelect.innerHTML += `<option value="${i}">${i}</option>`;
