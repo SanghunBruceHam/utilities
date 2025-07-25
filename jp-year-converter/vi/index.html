@@ -336,30 +336,51 @@
       }
     }
 
-    modeSelect.addEventListener("change", () => {
+    function toggleInputs() {
       const isToWareki = modeSelect.value === "toWareki";
       westernInputs.style.display = isToWareki ? "block" : "none";
       japaneseInputs.style.display = isToWareki ? "none" : "block";
-    });
+      result.innerHTML = "";
+    }
+
+    modeSelect.addEventListener("change", toggleInputs);
 
     populateEraYears(selectedEra);
+    toggleInputs(); // Initialize display state
 
     document.getElementById("convertBtn").addEventListener("click", () => {
       result.innerHTML = "";
       const mode = modeSelect.value;
-      if (mode === "toWareki") {
-        const year = parseInt(gregorianYearSelect.value);
-        for (const [era, start] of Object.entries(eras)) {
-          if (year >= start) {
-            const ey = year - start + 1;
-            result.innerHTML = `Năm <span class="highlight-result">${year}</span>${translations[mode]} <span class="highlight-result">${eraNames[era]} ${ey}</span>.`;
+      
+      try {
+        if (mode === "toWareki") {
+          const year = parseInt(gregorianYearSelect.value);
+          if (isNaN(year)) {
+            result.innerHTML = "Vui lòng chọn năm hợp lệ.";
             return;
           }
+          
+          for (const [era, start] of Object.entries(eras).reverse()) {
+            if (year >= start) {
+              const ey = year - start + 1;
+              result.innerHTML = `Năm <span class="highlight-result">${year}</span>${translations[mode]}<span class="highlight-result">${eraNames[era]} ${ey}</span>.`;
+              return;
+            }
+          }
+          result.innerHTML = "Năm này không thuộc về bất kỳ niên hiệu nào được hỗ trợ.";
+        } else {
+          const ey = parseInt(eraYearSelect.value);
+          if (isNaN(ey)) {
+            result.innerHTML = "Vui lòng chọn năm niên hiệu hợp lệ.";
+            return;
+          }
+          
+          const year = eras[selectedEra] + ey - 1;
+          result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]}<span class="highlight-result">${year}</span>.`;
         }
-      } else {
-        const ey = parseInt(eraYearSelect.value);
-        const year = eras[selectedEra] + ey - 1;
-        result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]} <span class="highlight-result">${year}</span>.`;
+      } catch (error) {
+        result.innerHTML = "Có lỗi xảy ra khi chuyển đổi. Vui lòng thử lại.";
+        console.error("Conversion error:", error);
       }
     });
   </script>
