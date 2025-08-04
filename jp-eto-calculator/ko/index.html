@@ -2,11 +2,41 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>간지 계산기｜생년월일로 십이지 간단 확인</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>간지 계산기｜생년월일로 십이지 간단 확인</title>
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' 'unsafe-inline' 'unsafe-eval';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+          https://www.googletagmanager.com 
+          https://www.google-analytics.com 
+          https://pagead2.googlesyndication.com 
+          https://www.clarity.ms 
+          https://cdn.ampproject.org
+          https://ads-partners.coupang.com
+          https://upload.wikimedia.org;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' 
+          https://www.google-analytics.com 
+          https://analytics.google.com 
+          https://www.clarity.ms
+          https://ads-partners.coupang.com;
+      frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+  ">
+  <!-- Preconnect to external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  
   <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 <link rel="icon" href="./favicon.ico">
-<link rel="icon" href="./favicon.png" type="image/png">   
+<link rel="icon" href="./favicon.png" type="image/png">
+<link rel="stylesheet" href="/css/design-system.css">   
   <link rel="canonical" href="https://utilities.mahalohana-bruce.com/jp-eto-calculator/ko/index.html">
   <meta name="description" content="생년월일로 간지(십이지)를 조사하는 무료 계산 도구입니다. 입춘 기준에도 대응합니다.">
   <meta name="keywords" content="간지, 생년월일, 계산기, 십이지, 한국의 간지">
@@ -48,235 +78,169 @@
   <!-- AMP Ad Script -->
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 
-  <style>
-    body {
-      font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
-      margin: 0;
-      padding: 0;
-    }
-    .calculator {
-      background: white;
-      padding: 2em;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-      text-align: center;
-      max-width: 480px;
-      width: 90%;
-      margin: 2em auto;
-    }
-    h1 {
-      font-family: 'Kosugi Maru', sans-serif;
-      font-size: 1.8em;
-      margin-bottom: 0.6em;
-      color: #00796b;
-    }
-    .description-box {
-      background-color: #f1f8e9;
-      border-left: 6px solid #8bc34a;
-      padding: 1em;
-      font-size: 0.95em;
-      color: #4e5c41;
-      margin-bottom: 1.5em;
-      line-height: 1.6em;
-      border-radius: 6px;
-    }
-    .input-row {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    input, select {
-      padding: 0.6em;
-      font-size: 1em;
-      border-radius: 8px;
-      border: 1px solid #bbb;
-    }
-    .result {
-      margin-top: 1.2em;
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #2c3e50;
-      background: #e0f2f1;
-      padding: 0.8em 1em;
-      border-radius: 12px;
-    }
-    .history, .popular, .share, .fortune {
-      margin-top: 16px;
-      font-size: 0.9em;
-      color: #555;
-    }
-    @media (max-width: 600px) {
-      .calculator {
-        padding: 1em;
-        width: 95%;
-        font-size: 0.95em;
-      }
-      h1 {
-        font-size: 1.4em;
-      }
-      .input-row {
-        flex-wrap: nowrap;
-        flex-direction: row;
-        flex-shrink: 1;
-        flex-grow: 1;
-        justify-content: space-between;
-      }
-      .input-row select {
-        flex: 1;
-        min-width: 30%;
-      }
-      input, button {
-        width: 100%;
-      }
-      .result {
-        font-size: 1.1em;
-        padding: 0.6em 0.8em;
-      }
-    }
-  </style>
+<style>
+/* Minimal page-specific styles - most styling comes from design-system.css */
+.description-box {
+  background: var(--primary-alpha);
+  border-left: 4px solid var(--primary-light);
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.6;
+  border-radius: var(--radius-lg);
+}
+
+.eto-result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.eto-emoji {
+  font-size: 3rem;
+}
+
+.eto-animal {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+.history, .share, .fortune {
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.share a {
+  margin-right: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.language-switcher {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.language-switcher a {
+  text-decoration: none;
+  margin: 0 var(--spacing-xs);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+.language-switcher a:hover {
+  color: var(--primary-light);
+}
+
+.language-switcher a.active {
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+</style>
 </head>
 <body>
-  <div class="calculator">
-    <div style="text-align: center; margin-bottom: 1rem;">
-      <a href="/ko/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
-        🏠 도구 목록으로 돌아가기
-      </a>
+  <div class="page-container">
+    <div class="container-sm">
+      <div class="card fade-in" id="etoCalculator">
+        <div class="text-center mb-lg">
+          <a href="/ko/" class="btn btn-success btn-sm">
+            🏠 도구 목록으로 돌아가기
+          </a>
+        </div>
+        <div class="language-switcher text-center mb-lg">
+          <a href="/jp-eto-calculator/ja/index.html">🇯🇵 日本語</a> |
+          <a class="active" href="/jp-eto-calculator/ko/index.html">🇰🇷 한국어</a> |
+          <a href="/jp-eto-calculator/en/index.html">🇺🇸 English</a> |
+          <a href="/jp-eto-calculator/vi/index.html">🇻🇳 Tiếng Việt</a>
+        </div>
+        
+        <div class="card-header">
+          <h1 class="card-title">🐲 간지 계산기</h1>
+          <div class="description-box">
+            <strong>사용법:</strong><br>
+            1. 조사하고 싶은 사람의 생년월일을 입력하세요 (달력 형식 또는 년·월·일 선택).<br>
+            2. "변환하기" 버튼을 클릭하거나 엔터키를 누르세요.<br>
+            3. 간지, 인기 간지, 오늘의 운세가 표시됩니다.<br>
+            ※ 2월 4일(입춘) 이전에 태어난 경우는 전년의 간지가 됩니다.<br>
+            <em class="text-muted text-xs">※ 이 페이지를 북마크해두면 편리합니다.</em>
+          </div>
+        </div>
+        
+        <div class="form-group text-center">
+          <div class="input-row">
+            <input type="date" id="birthDate" class="form-input">
+            <button id="convertBtn" class="btn btn-success">변환하기</button>
+          </div>
+        </div>
+        
+        <div class="form-group text-center">
+          <div class="input-row">
+            <select id="birthYear" class="form-select"></select>
+            <select id="birthMonth" class="form-select"></select>
+            <select id="birthDay" class="form-select"></select>
+          </div>
+        </div>
+        
+        <div class="result-box text-center" id="result" style="display: none;"></div>
+        <div class="history text-center" id="history"></div>
+        <div class="share text-center" id="share"></div>
+        <div class="fortune text-center" id="fortune"></div>
+      </div>
     </div>
-    <h1>간지 조사하기</h1>
-    <div class="description-box">
-      <strong>사용법:</strong><br>
-      1. 조사하고 싶은 사람의 생년월일을 입력하세요 (달력 형식 또는 년·월·일 선택).<br>
-      2. "변환" 버튼을 클릭하거나 엔터키를 누르세요.<br>
-      3. 간지, 인기 간지, 오늘의 운세가 표시됩니다.<br>
-      ※ 2월 4일(입춘) 이전에 태어난 경우는 전년의 간지가 됩니다.<br>
-      <em style="font-size: 0.85em; color: #888;">※ 이 페이지를 북마크해두면 편리합니다.</em>
-    </div>
-    <div class="input-row">
-      <input type="date" id="birthDate">
-      <button id="convertBtn" style="padding: 0.6em 1em; font-size: 1em; border-radius: 8px; border: none; background-color: #00796b; color: white; cursor: pointer;">변환</button>
-    </div>
-    <div class="input-row">
-      <select id="birthYear"></select>
-      <select id="birthMonth"></select>
-      <select id="birthDay"></select>
-    </div>
-    <div class="result" id="result"></div>
-    <div class="history" id="history"></div>
-    <div class="popular" id="popular"></div>
-    <div class="share" id="share"></div>
-    <div class="fortune" id="fortune"></div>
   </div>
-  <script>
-    var etoList = ['자(쥐)', '축(소)', '인(호랑이)', '묘(토끼)', '진(용)', '사(뱀)', '오(말)', '미(양)', '신(원숭이)', '유(닭)', '술(개)', '해(돼지)'];
-    var fortuneList = ['대길! 오늘은 매우 좋은 날이 될 것 같습니다.', '중길. 평온한 하루를 보낼 수 있을 것입니다.', '소길. 신중하게 행동하면 길합니다.', '말길. 너무 무리하지 말고 자연스럽게.', '흉. 주의 깊게 지내세요.'];
-    var resultDiv = document.getElementById('result');
-    var historyDiv = document.getElementById('history');
-    var popularDiv = document.getElementById('popular');
-    var shareDiv = document.getElementById('share');
-    var fortuneDiv = document.getElementById('fortune');
-    var dateInput = document.getElementById('birthDate');
-    var yearSel = document.getElementById('birthYear');
-    var monthSel = document.getElementById('birthMonth');
-    var daySel = document.getElementById('birthDay');
-    var countMap = new Array(12).fill(0);
-    var historyLog = [];
-
-    for (var y = 1900; y <= new Date().getFullYear(); y++) {
-      var opt = document.createElement('option');
-      opt.value = y;
-      opt.textContent = y + '년';
-      yearSel.appendChild(opt);
-    }
-    for (var m = 1; m <= 12; m++) {
-      var opt = document.createElement('option');
-      opt.value = m;
-      opt.textContent = m + '월';
-      monthSel.appendChild(opt);
-    }
-    function updateDays() {
-      daySel.innerHTML = '';
-      var year = parseInt(yearSel.value);
-      var month = parseInt(monthSel.value);
-      var daysInMonth = new Date(year, month, 0).getDate();
-      for (var d = 1; d <= daysInMonth; d++) {
-        var opt = document.createElement('option');
-        opt.value = d;
-        opt.textContent = d + '일';
-        daySel.appendChild(opt);
-      }
-    }
-
-    function showResult(dateStr) {
-      if (!dateStr) return;
-      var date = new Date(dateStr);
-      var risshun = new Date(date.getFullYear(), 1, 4);
-      var etoYear = date < risshun ? date.getFullYear() - 1 : date.getFullYear();
-      var index = (etoYear - 1984 + 12) % 12;
-      var eto = etoList[index];
-      resultDiv.innerHTML = etoYear + '년의 간지는 <span style="color:#e74c3c; font-size:1.4em;">「' + eto + '」</span><br><span style="font-size: 0.9em; color: #2e7d32;">오늘의 운세: ' + fortuneList[Math.floor(Math.random() * fortuneList.length)] + '</span>';
-      historyLog.unshift(etoYear + '년 - ' + eto);
-      if (historyLog.length > 3) historyLog.pop();
-      historyDiv.innerHTML = '최근 결과:<br>' + historyLog.map(function(h) { return '・' + h; }).join('<br>');
-      countMap[index]++;
-      var ranked = countMap.map(function(v, i) { return { eto: etoList[i], count: v }; }).sort(function(a, b) { return b.count - a.count; });
-      popularDiv.innerHTML = '인기 간지:<br>' + ranked.slice(0, 3).map(function(r) { return '・' + r.eto + '（' + r.count + '회）'; }).join('<br>');
-      shareDiv.innerHTML = `
-        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(etoYear + '년의 간지는 「' + eto + '」입니다!')}&url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/ko/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #1da1f2; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/X_logo_2023.svg" width="18"> X
-        </a>
-        <a class="line" href="https://social-plugins.line.me/lineit/share?url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/ko/index.html&text=${encodeURIComponent(etoYear + '년의 간지는 「' + eto + '」입니다!')}" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #00c300; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" width="18"> LINE
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://utilities.mahalohana-bruce.com/jp-eto-calculator/ko/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #3b5998; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" width="18"> Facebook
-        </a>`;
-      var fortune = fortuneList[Math.floor(Math.random() * fortuneList.length)];
-      fortuneDiv.innerHTML = '';
-    }
-
-    yearSel.addEventListener('change', updateDays);
-    monthSel.addEventListener('change', updateDays);
-    daySel.addEventListener('change', function() {
-      var year = yearSel.value;
-      var month = ('0' + monthSel.value).slice(-2);
-      var day = ('0' + daySel.value).slice(-2);
-      showResult(year + '-' + month + '-' + day);
-    });
-    dateInput.addEventListener('change', function() {
-      showResult(dateInput.value);
-    });
-    document.getElementById('convertBtn').addEventListener('click', function() {
-      showResult(dateInput.value);
-    });
-    dateInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        showResult(dateInput.value);
-      }
-    });
-
-    yearSel.value = 2000;
-    monthSel.value = 1;
-    updateDays();
-    daySel.value = 1;
-    showResult('2000-01-01');
-  </script>
+  <script src="/js/calculators/jp-eto-calculator.js"></script>
 
   <!-- Coupang Partners Ad Section -->
-  <div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: 100%; width: 100%; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); box-sizing: border-box;">
-    <h3 style="color: #2d3748; margin-bottom: 15px; font-size: 1.2rem;">🛍️ 추천 상품</h3>
-    <p style="color: #4a5568; font-size: 0.9rem; margin-bottom: 15px;">간지 계산기를 사용하며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
+  <div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 15px; margin: 25px auto; max-width: 800px; width: 95%; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); box-sizing: border-box;">
+    <h3 style="color: #2d3748; margin-bottom: 12px; font-size: 1.1rem;">🛍️ 추천 상품</h3>
+    <p style="color: #4a5568; font-size: 0.85rem; margin-bottom: 12px;">간지 계산기를 사용하며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
 
-    <!-- 쿠팡 파트너스 광고 -->
-    <div style="margin: 15px 0; overflow: hidden; max-width: 100%;">
+    <!-- 쿠팡 파트너스 광고 - 반응형 최적화 -->
+    <div style="margin: 10px 0; overflow: hidden; max-width: 100%; display: flex; justify-content: center; min-height: 120px;">
       <script src="https://ads-partners.coupang.com/g.js"></script>
       <script>
-        const containerWidth = Math.min(window.innerWidth - 80, 560);
-        const adWidth = Math.max(320, Math.min(containerWidth, 560));
-        new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":adWidth.toString(),"height":"140","tsource":""});
+        // 반응형 광고 크기 최적화
+        function getOptimizedAdSize() {
+          const screenWidth = window.innerWidth;
+          const containerPadding = 40; // 좌우 패딩
+          const maxWidth = Math.min(screenWidth - containerPadding, 728); // 최대 728px (표준 리더보드)
+          
+          if (screenWidth <= 480) {
+            // 모바일: 320x100 배너
+            return { width: Math.max(300, Math.min(maxWidth, 320)), height: "100" };
+          } else if (screenWidth <= 768) {
+            // 태블릿: 468x60 또는 320x100
+            return { width: Math.max(320, Math.min(maxWidth, 468)), height: "100" };
+          } else {
+            // 데스크톱: 728x90 리더보드 또는 560x140 캐러셀
+            return { width: Math.max(560, Math.min(maxWidth, 728)), height: "140" };
+          }
+        }
+        
+        const adSize = getOptimizedAdSize();
+        new PartnersCoupang.G({
+          "id": 867629,
+          "template": "carousel",
+          "trackingCode": "AF6959276",
+          "width": adSize.width.toString(),
+          "height": adSize.height,
+          "tsource": ""
+        });
+        
+        // 창 크기 변경 시 광고 재조정
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(function() {
+            // 광고 컨테이너 재조정 (필요시)
+            const newSize = getOptimizedAdSize();
+            console.log('광고 크기 재조정:', newSize);
+          }, 250);
+        });
       </script>
     </div>
   </div>

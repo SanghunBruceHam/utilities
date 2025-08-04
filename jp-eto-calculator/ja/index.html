@@ -2,12 +2,44 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>干支計算機｜生年月日で十二支を簡単チェック</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>干支計算機｜生年月日で十二支を簡単チェック</title>
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' 'unsafe-inline' 'unsafe-eval';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+          https://www.googletagmanager.com 
+          https://www.google-analytics.com 
+          https://pagead2.googlesyndication.com 
+          https://www.clarity.ms 
+          https://cdn.ampproject.org
+          https://ads-partners.coupang.com
+          https://upload.wikimedia.org;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' 
+          https://www.google-analytics.com 
+          https://analytics.google.com 
+          https://www.clarity.ms
+          https://ads-partners.coupang.com;
+      frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+  ">
+  <!-- Preconnect to external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  
   <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 <link rel="icon" href="./favicon.ico">
 <link rel="icon" href="./favicon.png" type="image/png">   
   <link rel="canonical" href="https://utilities.mahalohana-bruce.com/jp-eto-calculator/ja/index.html">
+  
+  <!-- Unified Design System -->
+  <link rel="stylesheet" href="/css/design-system.css">
   <meta name="description" content="生年月日から干支（えと）を調べる無料の計算ツールです。立春基準にも対応。">
   <meta name="keywords" content="干支, 生年月日, 計算機, 十二支, 日本の干支">
   <meta property="og:title" content="干支計算機">
@@ -47,227 +79,127 @@
   <!-- AMP Ad Script -->
   <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
   <style>
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #fff3e0);
-      margin: 0;
-      padding: 0;
-    }
-    .calculator {
-      background: white;
-      padding: 2em;
-      border-radius: 16px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-      text-align: center;
-      max-width: 480px;
-      width: 90%;
-      margin: 2em auto;
-    }
-    h1 {
-      font-family: 'Kosugi Maru', sans-serif;
-      font-size: 1.8em;
-      margin-bottom: 0.6em;
-      color: #00796b;
-    }
+    /* Minimal page-specific styles - most styling comes from design-system.css */
     .description-box {
-      background-color: #f1f8e9;
-      border-left: 6px solid #8bc34a;
-      padding: 1em;
-      font-size: 0.95em;
-      color: #4e5c41;
-      margin-bottom: 1.5em;
-      line-height: 1.6em;
-      border-radius: 6px;
+      background: var(--primary-alpha);
+      border-left: 4px solid var(--primary-light);
+      padding: var(--spacing-lg);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+      border-radius: var(--radius-lg);
     }
-    .input-row {
+    
+    .eto-result {
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: var(--spacing-lg);
       flex-wrap: wrap;
     }
-    input, select {
-      padding: 0.6em;
-      font-size: 1em;
-      border-radius: 8px;
-      border: 1px solid #bbb;
+    
+    .eto-emoji {
+      font-size: 3rem;
     }
-    .result {
-      margin-top: 1.2em;
-      font-size: 1.3em;
-      font-weight: bold;
-      color: #2c3e50;
-      background: #e0f2f1;
-      padding: 0.8em 1em;
-      border-radius: 12px;
+    
+    .eto-animal {
+      color: var(--primary-dark);
+      font-weight: 700;
     }
-    .history, .popular, .share, .fortune {
-      margin-top: 16px;
-      font-size: 0.9em;
-      color: #555;
+    
+    .history, .share, .fortune {
+      margin-top: var(--spacing-lg);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
     }
-    @media (max-width: 600px) {
-      .calculator {
-        padding: 1em;
-        width: 95%;
-        font-size: 0.95em;
-      }
-      h1 {
-        font-size: 1.4em;
-      }
-      .input-row {
-        flex-wrap: nowrap;
-        flex-direction: row;
-        flex-shrink: 1;
-        flex-grow: 1;
-        justify-content: space-between;
-      }
-      .input-row select {
-        flex: 1;
-        min-width: 30%;
-      }
-      input, button {
-        width: 100%;
-      }
-      .result {
-        font-size: 1.1em;
-        padding: 0.6em 0.8em;
-      }
+    
+    .share a {
+      margin-right: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .language-switcher {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+    
+    .language-switcher a {
+      text-decoration: none;
+      margin: 0 var(--spacing-xs);
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color var(--transition-base);
+    }
+    
+    .language-switcher a:hover {
+      color: var(--primary-light);
+    }
+    
+    .language-switcher a.active {
+      font-weight: 700;
+      color: var(--primary-dark);
     }
   </style>
 </head>
 <body>
-  <div class="calculator">
-    <div style="text-align: center; margin-bottom: 1rem;">
-      <a href="/ja/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
-        🏠 ツール一覧に戻る
-      </a>
+  <div class="page-container">
+    <div class="container-sm">
+      <div class="card fade-in" id="etoCalculator">
+        <div class="text-center mb-lg">
+          <a href="/ja/" class="btn btn-success btn-sm">
+            🏠 ツール一覧に戻る
+          </a>
+        </div>
+        <div class="language-switcher text-center mb-lg">
+          <a class="active" href="/jp-eto-calculator/ja/index.html">🇯🇵 日本語</a> |
+          <a href="/jp-eto-calculator/ko/index.html">🇰🇷 한국어</a> |
+          <a href="/jp-eto-calculator/en/index.html">🇺🇸 English</a> |
+          <a href="/jp-eto-calculator/vi/index.html">🇻🇳 Tiếng Việt</a>
+        </div>
+        
+        <div class="card-header">
+          <h1 class="card-title">🐲 干支計算機</h1>
+          <div class="description-box">
+            <strong>使い方：</strong><br>
+            1. 調べたい人の生年月日を入力してください（カレンダー形式または年・月・日の選択）。<br>
+            2. 「変換する」ボタンをクリックするか、エンターキーを押します。<br>
+            3. 干支、人気の干支、今日の運勢が表示されます。<br>
+            ※ 2月4日（立春）より前に生まれた場合は、前年の干支になります。<br>
+            <em class="text-muted text-xs">※ このページをブックマークしておくと便利です。</em>
+          </div>
+        </div>
+        
+        <div class="form-group text-center">
+          <div class="input-row">
+            <input type="date" id="birthDate" class="form-input">
+            <button id="convertBtn" class="btn btn-success">変換する</button>
+          </div>
+        </div>
+        
+        <div class="form-group text-center">
+          <div class="input-row">
+            <select id="birthYear" class="form-select"></select>
+            <select id="birthMonth" class="form-select"></select>
+            <select id="birthDay" class="form-select"></select>
+          </div>
+        </div>
+        
+        <div class="result-box text-center" id="result" style="display: none;"></div>
+        <div class="history text-center" id="history"></div>
+        <div class="share text-center" id="share"></div>
+        <div class="fortune text-center" id="fortune"></div>
+      </div>
     </div>
-    <h1>干支を調べる</h1>
-    <div class="description-box">
-      <strong>使い方：</strong><br>
-      1. 調べたい人の生年月日を入力してください（カレンダー形式または年・月・日の選択）。<br>
-      2. 「変換する」ボタンをクリックするか、エンターキーを押します。<br>
-      3. 干支、人気の干支、今日の運勢が表示されます。<br>
-      ※ 2月4日（立春）より前に生まれた場合は、前年の干支になります。<br>
-      <em style="font-size: 0.85em; color: #888;">※ このページをブックマークしておくと便利です。</em>
-    </div>
-    <div class="input-row">
-      <input type="date" id="birthDate">
-      <button id="convertBtn" style="padding: 0.6em 1em; font-size: 1em; border-radius: 8px; border: none; background-color: #00796b; color: white; cursor: pointer;">変換する</button>
-    </div>
-    <div class="input-row">
-      <select id="birthYear"></select>
-      <select id="birthMonth"></select>
-      <select id="birthDay"></select>
-    </div>
-    <div class="result" id="result"></div>
-    <div class="history" id="history"></div>
-    <div class="popular" id="popular"></div>
-    <div class="share" id="share"></div>
-    <div class="fortune" id="fortune"></div>
   </div>
-  <script>
-    var etoList = ['子（ねずみ）', '丑（うし）', '寅（とら）', '卯（うさぎ）', '辰（たつ）', '巳（へび）', '午（うま）', '未（ひつじ）', '申（さる）', '酉（とり）', '戌（いぬ）', '亥（いのしし）'];
-    var fortuneList = ['大吉！今日はとても良い日になりそうです。', '中吉。平穏な一日を過ごせるでしょう。', '小吉。慎重に行動すれば吉。', '末吉。あまり無理をせず、自然体で。', '凶。注意深く過ごしましょう。'];
-    var resultDiv = document.getElementById('result');
-    var historyDiv = document.getElementById('history');
-    var popularDiv = document.getElementById('popular');
-    var shareDiv = document.getElementById('share');
-    var fortuneDiv = document.getElementById('fortune');
-    var dateInput = document.getElementById('birthDate');
-    var yearSel = document.getElementById('birthYear');
-    var monthSel = document.getElementById('birthMonth');
-    var daySel = document.getElementById('birthDay');
-    var countMap = new Array(12).fill(0);
-    var historyLog = [];
-
-    for (var y = 1900; y <= new Date().getFullYear(); y++) {
-      var opt = document.createElement('option');
-      opt.value = y;
-      opt.textContent = y + '年';
-      yearSel.appendChild(opt);
-    }
-    for (var m = 1; m <= 12; m++) {
-      var opt = document.createElement('option');
-      opt.value = m;
-      opt.textContent = m + '月';
-      monthSel.appendChild(opt);
-    }
-    function updateDays() {
-      daySel.innerHTML = '';
-      var year = parseInt(yearSel.value);
-      var month = parseInt(monthSel.value);
-      var daysInMonth = new Date(year, month, 0).getDate();
-      for (var d = 1; d <= daysInMonth; d++) {
-        var opt = document.createElement('option');
-        opt.value = d;
-        opt.textContent = d + '日';
-        daySel.appendChild(opt);
-      }
-    }
-
-    function showResult(dateStr) {
-      if (!dateStr) return;
-      var date = new Date(dateStr);
-      var risshun = new Date(date.getFullYear(), 1, 4);
-      var etoYear = date < risshun ? date.getFullYear() - 1 : date.getFullYear();
-      var index = (etoYear - 1984 + 12) % 12;
-      var eto = etoList[index];
-      resultDiv.innerHTML = etoYear + '年の干支は <span style="color:#e74c3c; font-size:1.4em;">「' + eto + '」</span><br><span style="font-size: 0.9em; color: #2e7d32;">今日の運勢: ' + fortuneList[Math.floor(Math.random() * fortuneList.length)] + '</span>';
-      historyLog.unshift(etoYear + '年 - ' + eto);
-      if (historyLog.length > 3) historyLog.pop();
-      historyDiv.innerHTML = '最近の結果:<br>' + historyLog.map(function(h) { return '・' + h; }).join('<br>');
-      countMap[index]++;
-      var ranked = countMap.map(function(v, i) { return { eto: etoList[i], count: v }; }).sort(function(a, b) { return b.count - a.count; });
-      popularDiv.innerHTML = '人気の干支:<br>' + ranked.slice(0, 3).map(function(r) { return '・' + r.eto + '（' + r.count + '回）'; }).join('<br>');
-      shareDiv.innerHTML = `
-        <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(etoYear + '年の干支は「' + eto + '」です！')}&url=&url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #1da1f2; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/X_logo_2023.svg" width="18"> X
-        </a>
-        <a class="line" href="https://social-plugins.line.me/lineit/share?url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/index.html&text=${encodeURIComponent(etoYear + '年の干支は「' + eto + '」です！')}" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #00c300; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" width="18"> LINE
-        </a>
-        <a href="https://www.facebook.com/sharer/sharer.php?u=&url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #3b5998; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" width="18"> Facebook
-        </a>
-        <a href="https://www.threads.net/intent/post?text=${encodeURIComponent(etoYear + '年の干支は「' + eto + '」です！ &url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/index.html')}" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #000; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Threads_%28app%29_logo.svg" width="18"> Threads
-        </a>
-        <a href="https://www.instagram.com/?url=&url=https://utilities.mahalohana-bruce.com/jp-eto-calculator/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background-color: #e1306c; color: white; padding: 6px 10px; border-radius: 6px; text-decoration: none;">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="18"> Instagram
-        </a>`;
-      var fortune = fortuneList[Math.floor(Math.random() * fortuneList.length)];
-      fortuneDiv.innerHTML = '';
-    }
-
-    yearSel.addEventListener('change', updateDays);
-    monthSel.addEventListener('change', updateDays);
-    daySel.addEventListener('change', function() {
-      var year = yearSel.value;
-      var month = ('0' + monthSel.value).slice(-2);
-      var day = ('0' + daySel.value).slice(-2);
-      showResult(year + '-' + month + '-' + day);
-    });
-    dateInput.addEventListener('change', function() {
-      showResult(dateInput.value);
-    });
-    document.getElementById('convertBtn').addEventListener('click', function() {
-      showResult(dateInput.value);
-    });
-    dateInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        showResult(dateInput.value);
-      }
-    });
-
-    yearSel.value = 2000;
-    monthSel.value = 1;
-    updateDays();
-    daySel.value = 1;
-    showResult('2000-01-01');
-  </script>
+  
+  <div class="footer" style="background: linear-gradient(135deg, rgba(45, 55, 72, 0.95) 0%, rgba(26, 32, 44, 0.98) 100%); border-radius: 16px; padding: 25px 20px; margin-top: 40px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); text-align: center; backdrop-filter: blur(10px);">
+    <p style="color: #ffffff; font-weight: 600; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.5;">© 2025 <a href="https://utilities.mahalohana-bruce.com/ja/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">ユーティリティ計算機コレクション</a>。すべてのツールは無料で提供されています。</p>
+    <p style="color: #B3E5FC; font-weight: 500; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0; font-size: 0.9rem; line-height: 1.4;"><a href="https://utilities.mahalohana-bruce.com/ja/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">和暦変換、干支計算、選挙年齢確認</a>を一か所で簡単かつ迅速にご利用ください。</p>
+  </div>
+  
+  <!-- Load modularized JavaScript -->
+  <script src="/js/calculators/jp-eto-calculator.js"></script>
 
   <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KPV6LHBP"

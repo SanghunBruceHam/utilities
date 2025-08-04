@@ -5,6 +5,28 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>일본 연호 변환기｜서기 ⇄ 연호</title>
+
+<!-- Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' 'unsafe-inline' 'unsafe-eval';
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+        https://www.googletagmanager.com 
+        https://www.google-analytics.com 
+        https://pagead2.googlesyndication.com 
+        https://www.clarity.ms 
+        https://cdn.ampproject.org
+        https://ads-partners.coupang.com
+        https://upload.wikimedia.org;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data: https: blob:;
+    connect-src 'self' 
+        https://www.google-analytics.com 
+        https://analytics.google.com 
+        https://www.clarity.ms
+        https://ads-partners.coupang.com;
+    frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+">
 <meta content="일본의 연호(메이지, 다이쇼, 쇼와, 헤이세이, 레이와)를 서기와 상호 변환할 수 있는 무료 도구입니다." name="description"/>
 <meta content="연호, 일본 연호, 서기, 레이와, 헤이세이, 쇼와, 다이쇼, 메이지, 변환 도구" name="keywords"/>
 <meta content="일본 연호 ⇄ 서기 변환기" property="og:title"/>
@@ -18,10 +40,19 @@
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/en/index.html" hreflang="en" rel="alternate"/>
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/vi/index.html" hreflang="vi" rel="alternate"/>
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" hreflang="x-default" rel="alternate"/>
+
+<!-- Preconnect to external origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://pagead2.googlesyndication.com">
+<link rel="preconnect" href="https://www.clarity.ms">
+
 <link href="https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html" rel="canonical"/>
 <meta name="robots" content="index, follow">
 <link rel="icon" href="/favicon.ico">
-<link rel="icon" href="/favicon.png" type="image/png">   
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="stylesheet" href="/css/design-system.css">   
 <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867"
      crossorigin="anonymous"></script>
@@ -60,221 +91,157 @@
     })();
   </script>
 <style>
-    html { font-size: 16px; }
-    @media (max-width: 768px) { html { font-size: 14px; } }
-    body {
-      font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      margin: 0;
-      padding: 2rem;
-      min-height: 100vh;
-    }
-    .container {
-      background: linear-gradient(145deg, #ffffff 0%, #f8f9ff 100%);
-      max-width: 600px;
-      margin: auto;
-      padding: 2.5rem;
-      border-radius: 24px;
-      border: none;
-      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3), 
-                  0 8px 20px rgba(118, 75, 162, 0.2),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-    .container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-      background-size: 200% 100%;
-      animation: shimmer 2s linear infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    .language-switcher {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    .language-switcher a {
-      text-decoration: none;
-      margin: 0 8px;
-      color: #333;
-      font-weight: normal;
-      transition: color 0.3s;
-    }
-    .language-switcher a:hover {
-      color: #4a90e2;
-    }
-    .language-switcher a.active {
-      font-weight: bold;
-      color: #e53935;
-    }
-    .language-switcher img {
-      width: 20px;
-      vertical-align: middle;
-      margin-right: 4px;
-    }
-    h1 {
-      text-align: center;
-      font-size: 1.5rem;
-    }
-    label, select, button {
-      display: block;
-      margin: 1rem 0;
-      width: 100%;
-      font-size: 1rem;
-    }
-    select {
-      padding: 0.75rem 1rem;
-      border: 2px solid #e1e8ed;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-    select:focus {
-      outline: none;
-      border-color: #667eea;
-      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-      transform: translateY(-1px);
-    }
-    label {
-      font-weight: 600;
-      color: #4a5568;
-      margin-bottom: 0.5rem;
-    }
-    .era-tabs {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      margin-top: 1rem;
-    }
-    .era-tab {
-      flex: 1;
-      text-align: center;
-      background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-      border: 2px solid transparent;
-      border-radius: 12px;
-      padding: 0.75rem 0.5rem;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: 0.9rem;
-      font-weight: 500;
-      position: relative;
-      overflow: hidden;
-    }
-    .era-tab::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: -1;
-    }
-    .era-tab:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-      border-color: #667eea;
-    }
-    .era-tab.active {
-      color: white;
-      font-weight: bold;
-      border-color: #667eea;
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-    }
-    .era-tab.active::before {
-      opacity: 1;
-    }
-    button {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 0.875rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-      position: relative;
-      overflow: hidden;
-    }
-    button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    button:hover::before {
-      left: 100%;
-    }
-    button:hover { 
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
-    }
-    button:active {
-      transform: translateY(0);
-    }
-    #result {
-      margin-top: 2rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
-      border: none;
-      padding: 1.5rem;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(255, 193, 7, 0.2);
-      border-left: 5px solid #ff6b6b;
-      animation: fadeInUp 0.5s ease-out;
-    }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .highlight-result {
-      color: red;
-      text-decoration: underline;
-    }
-  </style>
+/* Minimal page-specific styles - most styling comes from design-system.css */
+.era-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.era-tab {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.era-tab:hover {
+  border-color: var(--primary-light);
+  transform: translateY(-1px);
+}
+
+.era-tab.active {
+  background: var(--primary-gradient);
+  color: white;
+  border-color: var(--primary-light);
+}
+
+.conversion-result {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.conversion-result.success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 2px solid var(--success-color);
+  color: var(--success-color);
+}
+
+.conversion-result.error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 2px solid var(--error-color);
+  color: var(--error-color);
+}
+
+.result-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.result-item {
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius-md);
+}
+
+.result-item .label {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.result-item .value {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--text-color);
+}
+
+.year-comparison-table {
+  width: 100%;
+  margin-top: var(--spacing-lg);
+  border-collapse: collapse;
+}
+
+.year-comparison-table th,
+.year-comparison-table td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.year-comparison-table th {
+  background: var(--primary-alpha);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.year-comparison-table .current-year {
+  background: rgba(102, 126, 234, 0.1);
+  font-weight: 600;
+}
+
+.language-switcher {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.language-switcher a {
+  text-decoration: none;
+  margin: 0 var(--spacing-sm);
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+.language-switcher a:hover {
+  color: var(--primary-light);
+}
+
+.language-switcher a.active {
+  font-weight: 700;
+  color: var(--error-color);
+}
+
+.language-switcher img {
+  width: 20px;
+  vertical-align: middle;
+  margin-right: var(--spacing-xs);
+}
+</style>
 </head>
 <body>
-<div class="container">
-<div style="text-align: center; margin-bottom: 1rem;">
-<a href="/ko/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
-🏠 도구 목록으로 돌아가기
-</a>
-</div>
-<div class="language-switcher">
-<a href="/jp-year-converter/ja/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
-      <a class="active" href="/jp-year-converter/ko/index.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
-      <a href="/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
-      <a href="/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
-      <a href="/jp-year-converter/ja/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
-</div>
-<h1>일본 연호 변환기｜서기 ⇄ 연호</h1>
+<div class="page-container">
+  <div class="container container-md">
+    <div class="card fade-in">
+      <div class="text-center mb-lg">
+        <a href="/ko/" class="btn btn-success btn-sm">
+          🏠 도구 목록으로 돌아가기
+        </a>
+      </div>
+      <div class="language-switcher">
+        <a href="/jp-year-converter/ja/index.html"><img alt="日本語" src="https://flagcdn.com/w40/jp.png"/>日本語</a> |
+        <a class="active" href="/jp-year-converter/ko/index.html"><img alt="한국어" src="https://flagcdn.com/w40/kr.png"/>한국어</a> |
+        <a href="/jp-year-converter/en/index.html"><img alt="English" src="https://flagcdn.com/w40/gb.png"/>English</a> |
+        <a href="/jp-year-converter/vi/index.html"><img alt="Tiếng Việt" src="https://flagcdn.com/w40/vn.png"/>Tiếng Việt</a> |
+        <a href="/jp-year-converter/ja/index.html"><img alt="中文" src="https://flagcdn.com/w40/cn.png"/>中文</a>
+      </div>
+      
+      <div class="card-header">
+        <h1 class="card-title">일본 연호 변환기｜서기 ⇄ 연호</h1>
+        <p class="card-subtitle">일본의 전통 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)를 서기와 상호 변환할 수 있는 무료 온라인 도구입니다.</p>
+      </div>
 
-<p style="text-align: center; margin: 1rem 0; font-size: 1.1rem; color: #4a5568;">일본의 전통 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)를 서기와 상호 변환할 수 있는 무료 온라인 도구입니다.</p>
 
 <!-- 접을 수 있는 사용법 섹션 -->
 <details style="margin: 1.5rem 0; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden;">
@@ -308,25 +275,40 @@
 </div>
 </details>
 
-<section>
-<h3>🔄 변환하기</h3>
-<label for="mode">변환 방향 선택:</label>
-<select id="mode">
-<option value="toWareki">서기 → 연호</option>
-<option value="toSeireki">연호 → 서기</option>
-</select>
-<div id="western-inputs">
-<label for="gregorian-year">서기 연도 선택:</label>
-<select id="gregorian-year"></select>
-</div>
-<div id="japanese-inputs" style="display:none;">
-<label>연호 선택:</label>
-<div class="era-tabs" id="era-tabs"></div>
-<label for="era-year">년도:</label>
-<select id="era-year"></select>
-</div>
-<button id="convertBtn">변환</button>
-<div id="result"></div>
+      <div class="form-section">
+        <h3 class="text-xl font-semibold mb-lg">🔄 변환하기</h3>
+        
+        <div class="form-group">
+          <label for="mode" class="form-label">변환 방향 선택:</label>
+          <select id="mode" class="form-select">
+            <option value="toWareki">서기 → 연호</option>
+            <option value="toSeireki">연호 → 서기</option>
+          </select>
+        </div>
+        
+        <div id="western-inputs">
+          <div class="form-group">
+            <label for="gregorian-year" class="form-label">서기 연도 선택:</label>
+            <select id="gregorian-year" class="form-select"></select>
+          </div>
+        </div>
+        
+        <div id="japanese-inputs" style="display:none;">
+          <div class="form-group">
+            <label class="form-label">연호 선택:</label>
+            <div class="era-tabs" id="era-tabs"></div>
+          </div>
+          <div class="form-group">
+            <label for="era-year" class="form-label">년도:</label>
+            <select id="era-year" class="form-select"></select>
+          </div>
+        </div>
+        
+        <div class="text-center mb-xl">
+          <button id="convertBtn" class="btn btn-primary btn-lg">변환</button>
+        </div>
+        <div id="result" class="text-center mt-xl"></div>
+      </div>
 
 <!-- Cross-reference table -->
 <div id="crossReferenceTable" style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%); border-radius: 16px; border: 1px solid #c3e6c3; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
@@ -408,10 +390,13 @@
   </div>
 </div>
 
-<div class="footer" style="background: linear-gradient(135deg, rgba(45, 55, 72, 0.95) 0%, rgba(26, 32, 44, 0.98) 100%); border-radius: 16px; padding: 25px 20px; margin-top: 40px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); text-align: center; backdrop-filter: blur(10px);">
-    <p style="color: #ffffff; font-weight: 600; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.5;">© 2025 <a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">유틸리티 계산기 모음</a>. 모든 도구는 무료로 제공됩니다.</p>
-    <p style="color: #B3E5FC; font-weight: 500; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0; font-size: 0.9rem; line-height: 1.4;"><a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">일본 연호 변환, 간지 계산, 선거 연령 확인</a>을 한 곳에서 쉽고 빠르게 이용하세요.</p>
+    </div>
+  </div>
 </div>
+
+<div class="footer" style="background: linear-gradient(135deg, rgba(45, 55, 72, 0.95) 0%, rgba(26, 32, 44, 0.98) 100%); border-radius: 16px; padding: 25px 20px; margin-top: 40px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); text-align: center; backdrop-filter: blur(10px);">
+  <p style="color: #ffffff; font-weight: 600; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.5;">© 2025 <a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">유틸리티 계산기 모음</a>. 모든 도구는 무료로 제공됩니다.</p>
+  <p style="color: #B3E5FC; font-weight: 500; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0; font-size: 0.9rem; line-height: 1.4;"><a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">일본 연호 변환, 간지 계산, 선거 연령 확인</a>을 한 곳에서 쉽고 빠르게 이용하세요.</p>
 </div>
 
 <amp-ad width="100vw" height="320"
@@ -423,112 +408,7 @@
   <div overflow=""></div>
 </amp-ad>
 
-<script>
-    const eras = {
-      reiwa: 2019,
-      heisei: 1989,
-      showa: 1926,
-      taisho: 1912,
-      meiji: 1868
-    };
-    const eraNames = {
-      reiwa: "레이와(令和)",
-      heisei: "헤이세이(平成)",
-      showa: "쇼와(昭和)",
-      taisho: "다이쇼(大正)",
-      meiji: "메이지(明治)"
-    };
-    const translations = {
-      toWareki: "년은 ",
-      toSeireki: "년은 서기 "
-    };
-
-    const gregorianYearSelect = document.getElementById("gregorian-year");
-    for (let y = new Date().getFullYear(); y >= 1868; y--) {
-      gregorianYearSelect.innerHTML += `<option value="${y}">${y}</option>`;
-    }
-
-    const modeSelect = document.getElementById("mode");
-    const westernInputs = document.getElementById("western-inputs");
-    const japaneseInputs = document.getElementById("japanese-inputs");
-    const result = document.getElementById("result");
-
-    const eraTabsContainer = document.getElementById("era-tabs");
-    const eraYearSelect = document.getElementById("era-year");
-    let selectedEra = "reiwa";
-
-    Object.keys(eras).forEach((era) => {
-      const div = document.createElement("div");
-      div.textContent = eraNames[era];
-      div.className = "era-tab" + (era === selectedEra ? " active" : "");
-      div.dataset.era = era;
-      div.addEventListener("click", () => {
-        selectedEra = era;
-        updateEraTabs();
-        populateEraYears(selectedEra);
-      });
-      eraTabsContainer.appendChild(div);
-    });
-
-    function updateEraTabs() {
-      document.querySelectorAll(".era-tab").forEach((tab) => {
-        tab.classList.toggle("active", tab.dataset.era === selectedEra);
-      });
-    }
-
-    function populateEraYears(era) {
-      const start = eras[era];
-      const current = new Date().getFullYear();
-      let max;
-      
-      // Define exact end years for each era
-      const eraEndYears = {
-        meiji: 1912,   // 메이지 45년 (1912년 7월 30일 종료)
-        taisho: 1926,  // 다이쇼 15년 (1926년 12월 25일 종료)
-        showa: 1989,   // 쇼와 64년 (1989년 1월 7일 종료)
-        heisei: 2019,  // 헤이세이 31년 (2019년 4월 30일 종료)
-        reiwa: current // 현재 연호, 진행 중
-      };
-      
-      const endYear = eraEndYears[era];
-      max = endYear - start + 1;
-      
-      eraYearSelect.innerHTML = "";
-      for (let i = 1; i <= max; i++) {
-        eraYearSelect.innerHTML += `<option value="${i}">${i}</option>`;
-      }
-    }
-
-    modeSelect.addEventListener("change", () => {
-      const isToWareki = modeSelect.value === "toWareki";
-      westernInputs.style.display = isToWareki ? "block" : "none";
-      japaneseInputs.style.display = isToWareki ? "none" : "block";
-    });
-
-    populateEraYears(selectedEra);
-
-    document.getElementById("convertBtn").addEventListener("click", () => {
-      result.innerHTML = "";
-      const mode = modeSelect.value;
-      if (mode === "toWareki") {
-        const year = parseInt(gregorianYearSelect.value);
-        // Sort eras by start year descending to find the correct era
-        const sortedEras = Object.entries(eras).sort((a, b) => b[1] - a[1]);
-        for (const [era, start] of sortedEras) {
-          if (year >= start) {
-            const ey = year - start + 1;
-            result.innerHTML = `<span class="highlight-result">${year}</span>${translations[mode]} <span class="highlight-result">${eraNames[era]} ${ey}</span>년입니다.`;
-            return;
-          }
-        }
-        result.innerHTML = "이 연도는 지원되는 연호에 해당하지 않습니다.";
-      } else {
-        const ey = parseInt(eraYearSelect.value);
-        const year = eras[selectedEra] + ey - 1;
-        result.innerHTML = `<span class="highlight-result">${eraNames[selectedEra]} ${ey}</span>${translations[mode]} <span class="highlight-result">${year}</span>년입니다.`;
-      }
-    });
-  </script>
+<script src="/js/calculators/jp-year-converter.js"></script>
 
 <script type="application/ld+json">
 {

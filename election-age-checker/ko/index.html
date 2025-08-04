@@ -22,134 +22,156 @@
   <meta name="twitter:card" content="summary_large_image">
   <title>21대 대통령 선거 투표 가능 나이 판독기</title>
 
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self' 'unsafe-inline' 'unsafe-eval';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+          https://www.googletagmanager.com 
+          https://www.google-analytics.com 
+          https://pagead2.googlesyndication.com 
+          https://www.clarity.ms 
+          https://cdn.ampproject.org
+          https://ads-partners.coupang.com
+          https://upload.wikimedia.org;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' 
+          https://www.google-analytics.com 
+          https://analytics.google.com 
+          https://www.clarity.ms
+          https://ads-partners.coupang.com;
+      frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com;
+  ">
+  
+  <!-- Preconnect to external origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.clarity.ms">
+  
+  <!-- Unified Design System -->
+  <link rel="stylesheet" href="/css/design-system.css">
 
   <style>
-    * { box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    /* Minimal page-specific styles - most styling comes from design-system.css */
+    .election-info {
+      background: var(--primary-alpha);
+      border-left: 4px solid var(--primary-light);
+      padding: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      border-radius: var(--radius-lg);
     }
-    body {
-      background: linear-gradient(135deg, #e0f7fa, #e1bee7);
-      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+    
+    .election-info h3 {
+      color: var(--primary-dark);
+      margin-bottom: var(--spacing-md);
+      font-size: var(--font-size-lg);
+    }
+    
+    .age-check-result {
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      margin-top: var(--spacing-lg);
+      text-align: center;
+    }
+    
+    .age-check-result.eligible {
+      background: rgba(76, 175, 80, 0.1);
+      border: 2px solid var(--success-color);
+      color: var(--success-color);
+    }
+    
+    .age-check-result.not-eligible {
+      background: rgba(244, 67, 54, 0.1);
+      border: 2px solid var(--error-color);
+      color: var(--error-color);
+    }
+    
+    .age-check-result.error {
+      background: rgba(244, 67, 54, 0.1);
+      border: 2px solid var(--error-color);
+      color: var(--error-color);
+    }
+    
+    .result-header {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
     }
-    .card {
-      background-color: #fff;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 100%;
-      max-width: 420px;
+    
+    .status-icon {
+      font-size: 2rem;
     }
-    h1 {
-      font-size: 17px;
-      color: #333;
-      margin-bottom: 16px;
-      line-height: 1.4;
-      word-break: keep-all;
+    
+    .result-header h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      margin: 0;
     }
-    .description {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.5;
+    
+    .result-details {
+      display: grid;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+      text-align: left;
     }
-    h2 {
-      font-size: 22px;
-      color: #2c3e50;
-      margin-bottom: 20px;
+    
+    .detail-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--spacing-sm) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-    label {
-      font-size: 15px;
-      color: #555;
-      margin-bottom: 10px;
-      display: block;
+    
+    .detail-item .label {
+      font-weight: 600;
+      color: var(--text-secondary);
     }
-    input[type="date"] {
-      padding: 12px 14px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      width: 100%;
-      margin-bottom: 6px;
-      text-align: center;
+    
+    .detail-item .value {
+      font-weight: 700;
     }
-    .format {
-      font-size: 13px;
-      color: #999;
-      margin-bottom: 16px;
+    
+    .additional-info {
+      background: rgba(255, 255, 255, 0.5);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      margin-top: var(--spacing-lg);
     }
-    .guide {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 20px;
-      line-height: 1.4;
+    
+    .share-section {
+      margin-top: var(--spacing-lg);
     }
-    button {
-      background-color: #5e35b1;
+    
+    .share-btn {
+      background: var(--primary-gradient);
       color: white;
-      padding: 12px 20px;
       border: none;
-      font-size: 16px;
-      border-radius: 10px;
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      font-weight: 600;
       cursor: pointer;
-      width: 100%;
-      margin-top: 10px;
-      transition: background-color 0.3s;
+      transition: all var(--transition-base);
     }
-    button:hover {
-      background-color: #4527a0;
+    
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
-    #result {
-      margin-top: 24px;
-      font-size: 17px;
-      line-height: 1.6;
-    }
+
+    /* Legacy result styles for compatibility */
     .vote-yes {
-      color: #2e7d32;
+      color: var(--success-color);
       font-weight: bold;
     }
+    
     .vote-no {
-      color: #c62828;
+      color: var(--error-color);
       font-weight: bold;
-    }
-    .sns-share a img {
-      transition: transform 0.2s ease, opacity 0.2s;
-    }
-    .sns-share a:hover img {
-      transform: scale(1.15);
-      opacity: 0.85;
-    }
-    @media (max-width: 480px) {
-      body {
-        padding: 10px;
-      }
-      .card {
-        padding: 20px 16px;
-        border-radius: 16px;
-      }
-      h1 {
-        font-size: 15px;
-      }
-      h2 {
-        font-size: 18px;
-      }
-      .description, .guide, label, .format, #result {
-        font-size: 13px;
-      }
-      input[type="date"] {
-        font-size: 15px;
-        padding: 10px;
-      }
-      button {
-        font-size: 15px;
-        padding: 10px;
-      }
     }
   </style>
 
@@ -165,51 +187,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 
-  <div class="card">
-    <div style="text-align: center; margin-bottom: 1rem;">
-      <a href="/ko/" style="display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 8px; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s;">
+  <div class="page-container">
+    <div class="container-sm">
+      <a href="/ko/" class="nav-back">
         🏠 도구 목록으로 돌아가기
       </a>
-    </div>
-    <h1>2025년 제21대 대통령 선거 투표 가능 나이 계산기</h1>
-    <p class="description">2025년 제21대 대선을 기준으로,<br>만 18세 이상 투표 가능 여부를 확인해보세요.</p>
-    <h2>🗳️ 21대 대통령 선거 가능 나이 판독기</h2>
-    <label for="birthdate">생년월일을 입력하세요</label>
-    <input type="date" id="birthdate" min="1900-01-01" max="2025-06-04" value="2007-06-01" />
-    <div class="format">MM/DD/YYYY (월/일/년)</div>
-    <p class="guide">
-      생년월일을 선택한 뒤<br />
-      <strong>[판독하기]</strong> 버튼을 클릭하면<br />
-      <strong>2025년 6월 3일 기준</strong> 투표 가능 여부를 알려드려요.
-    </p>
-    <button onclick="calculateAge()">판독하기</button>
-    <p id="result"></p>
-    <div class="sns-share" style="margin-top: 24px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-      <a href="https://share.kakao.com/talk?url=https://wp.mahalohana-bruce.com/Pres.Election_age_check.html" target="_blank" title="KakaoTalk" style="text-decoration:none">
-        <img src="https://img.icons8.com/color/48/kakaotalk--v1.png" alt="KakaoTalk" width="36" height="36">
-      </a>
-      <a href="https://x.com/intent/tweet?url=https://wp.mahalohana-bruce.com/Pres.Election_age_check.html&text=2025%EB%85%84%20%EB%8C%80%EC%84%A0%20%ED%88%AC%ED%91%9C%20%EA%B0%80%EB%8A%A5%20%EB%82%98%EC%9D%B4%20%ED%8C%90%EB%8F%85%EA%B8%B0" target="_blank" title="X" style="text-decoration:none">
-        <img src="https://img.icons8.com/ios-filled/50/twitterx--v2.png" alt="X" width="36" height="36">
-      </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://wp.mahalohana-bruce.com/Pres.Election_age_check.html" target="_blank" title="Facebook" style="text-decoration:none">
-        <img src="https://img.icons8.com/color/48/facebook-new.png" alt="Facebook" width="36" height="36">
-      </a>
-      <a href="https://social-plugins.line.me/lineit/share?url=https://wp.mahalohana-bruce.com/Pres.Election_age_check.html" target="_blank" title="LINE" style="text-decoration:none">
-        <img src="https://img.icons8.com/color/48/line-me.png" alt="LINE" width="36" height="36">
-      </a>
-      <a href="#" onclick="alert('Instagram은 웹 공유를 지원하지 않습니다. 앱에서 공유해주세요.')" title="Instagram" style="text-decoration:none">
-        <img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="Instagram" width="36" height="36">
-      </a>
-      <a href="#" onclick="alert('TikTok은 웹 공유를 지원하지 않습니다. 앱에서 공유해주세요.')" title="TikTok" style="text-decoration:none">
-        <img src="https://img.icons8.com/fluency/48/tiktok.png" alt="TikTok" width="36" height="36">
-      </a>
-      <a href="#" onclick="alert('Threads는 웹 공유를 지원하지 않습니다. 앱에서 공유해주세요.')" title="Threads" style="text-decoration:none">
-        <img src="https://img.icons8.com/ios-filled/50/threads-app.png" alt="Threads" width="36" height="36">
-      </a>
-    </div>
-    <div style="text-align:center; margin-top: 20px;">
-      <p style="font-size: 14px; color: #444;">📲 QR 코드로 이 페이지를 공유하세요</p>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wp.mahalohana-bruce.com/Pres.Election_age_check.html" alt="QR 공유 코드" width="160" height="160" style="border-radius: 12px;" />
+      
+      <div class="card fade-in" id="electionAgeChecker">
+        <div class="card-header">
+          <h1 class="card-title">🗳️ 2025년 대선 투표권 확인기</h1>
+          <p class="card-subtitle">2025년 제21대 대선을 기준으로, 만 18세 이상 투표 가능 여부를 확인해보세요.</p>
+        </div>
+        
+        <div class="election-info" id="electionInfo">
+          <!-- JavaScript will populate this -->
+        </div>
+        
+        <form class="form-group">
+          <label for="birthdate" class="form-label">생년월일을 입력하세요</label>
+          <input type="date" id="birthdate" class="form-input" min="1900-01-01" max="2025-06-04" value="2007-06-01" />
+          <div class="text-muted text-sm mb-lg">
+            생년월일을 선택한 뒤 <strong>[판독하기]</strong> 버튼을 클릭하면<br>
+            <strong>2025년 6월 3일 기준</strong> 투표 가능 여부를 알려드려요.
+          </div>
+          <button type="button" onclick="calculateAge()" class="btn btn-primary btn-lg">판독하기</button>
+        </form>
+        
+        <div id="result"></div>
+        
+        <div class="mt-xl text-center">
+          <div class="sns-share" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-lg);">
+            <a href="https://share.kakao.com/talk?url=https://utilities.mahalohana-bruce.com/election-age-checker/ko/" target="_blank" title="KakaoTalk" class="btn btn-sm btn-secondary">
+              📱 카카오톡
+            </a>
+            <a href="https://x.com/intent/tweet?url=https://utilities.mahalohana-bruce.com/election-age-checker/ko/&text=2025년 대선 투표권 확인기" target="_blank" title="X" class="btn btn-sm btn-secondary">
+              🐦 X
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://utilities.mahalohana-bruce.com/election-age-checker/ko/" target="_blank" title="Facebook" class="btn btn-sm btn-secondary">
+              📘 Facebook
+            </a>
+            <a href="https://social-plugins.line.me/lineit/share?url=https://utilities.mahalohana-bruce.com/election-age-checker/ko/" target="_blank" title="LINE" class="btn btn-sm btn-secondary">
+              💬 LINE
+            </a>
+          </div>
+          
+          <div class="text-center">
+            <p class="text-sm text-muted mb-md">📲 QR 코드로 이 페이지를 공유하세요</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://utilities.mahalohana-bruce.com/election-age-checker/ko/" alt="QR 공유 코드" width="160" height="160" style="border-radius: var(--radius-lg);" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -256,26 +283,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-  <script>
-    function calculateAge() {
-      const input = document.getElementById("birthdate").value;
-      const resultElement = document.getElementById("result");
-      if (!input) {
-        resultElement.innerHTML = `<span class="vote-no">⚠️ 생년월일을 입력해주세요.</span>`;
-        return;
-      }
-      const birthDate = new Date(input);
-      const 기준일 = new Date("2025-06-03");
-      let age = 기준일.getFullYear() - birthDate.getFullYear();
-      const isBeforeBirthday = 기준일.getMonth() < birthDate.getMonth() || (기준일.getMonth() === birthDate.getMonth() && 기준일.getDate() < birthDate.getDate());
-      if (isBeforeBirthday) age--;
-      if (age >= 18) {
-        resultElement.innerHTML = `<span class="vote-yes">🗳️ 만 ${age}세입니다. 2025년 6월 3일 기준으로 만 18세 이상으로 <strong>투표 가능한 나이</strong>입니다!<br>소중한 한표 부탁드려요.</span>`;
-      } else {
-        resultElement.innerHTML = `<span class="vote-no">🔒 만 ${age}세입니다. 2025년 6월 3일 기준으로는<br><strong>투표할 수 없습니다.</strong><br>다음 선거를 기대해주세요.</span>`;
-      }
-    }
-  </script>
+<script src="/js/calculators/election-age-checker.js"></script>
 
 <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
