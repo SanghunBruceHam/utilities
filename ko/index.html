@@ -277,10 +277,10 @@
 
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .tool-card {
@@ -297,6 +297,10 @@
             backdrop-filter: blur(20px);
             overflow: hidden;
             text-align: center;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         [data-theme="dark"] .tool-card {
@@ -415,6 +419,7 @@
         .tool-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             padding: 10px 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -428,6 +433,7 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            margin-top: auto;
         }
 
         .tool-link::before {
