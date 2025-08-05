@@ -571,38 +571,56 @@
         </div>
 
         <!-- Coupang Partners Ad Section -->
-    <div style="background: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 20px; margin: 30px auto; max-width: 100%; width: 100%; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); box-sizing: border-box;">
-      <h3 style="color: #2d3748; margin-bottom: 15px; font-size: 1.2rem;">🛍️ 추천 상품</h3>
-      <p style="color: #4a5568; font-size: 0.9rem; margin-bottom: 15px;">유용한 계산기 도구를 사용하며 쇼핑도 함께! 쿠팡에서 다양한 상품을 만나보세요.</p>
-
+    <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 30px; margin: 40px auto; max-width: 800px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+      <h3 style="color: #ffffff; margin-bottom: 15px; font-size: 1.4rem; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">🛠️ 유틸리티 도구 관련 추천 상품</h3>
+      <p style="color: #ffffff; font-size: 1rem; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">유용한 유틸리티 도구를 사용하며 쇼핑도 함께! 다양한 상품들을 만나보세요!</p>
+      
       <!-- 쿠팡 파트너스 광고 -->
-      <div style="margin: 15px 0; overflow: hidden; max-width: 100%;">
-        <script>
-          (function() {
-            const script = document.createElement('script');
-            script.src = 'https://ads-partners.coupang.com/g.js';
-            script.onload = function() {
-              try {
-                const containerWidth = Math.min(window.innerWidth - 80, 560);
-                const adWidth = Math.max(320, Math.min(containerWidth, 560));
-                new PartnersCoupang.G({"id":867629,"template":"carousel","trackingCode":"AF6959276","width":adWidth.toString(),"height":"140","tsource":""});
-              } catch (error) {
-                console.warn('쿠팡 광고 로드 실패:', error);
-              }
-            };
-            script.onerror = function() {
-              console.warn('쿠팡 광고 스크립트 로드 실패');
-            };
-            document.head.appendChild(script);
-          })();
-        </script>
+      <div style="margin: 20px 0; width: 100%; max-width: 750px; overflow: hidden; margin-left: auto; margin-right: auto;">
+        <div id="coupang-ad-container" style="width: 100%; max-width: 750px; overflow: hidden;">
+          <script>
+            (function() {
+              const script = document.createElement('script');
+              script.src = 'https://ads-partners.coupang.com/g.js';
+              script.onload = function() {
+                try {
+                  // 모바일 대응 광고 크기 조정
+                  const isMobile = window.innerWidth <= 768;
+                  const adWidth = isMobile ? Math.min(window.innerWidth - 40, 300) : 750;
+                  const adHeight = isMobile ? 120 : 150;
+                  
+                  new PartnersCoupang.G({
+                    "id": 867629,
+                    "template": "carousel",
+                    "trackingCode": "AF6959276",
+                    "width": adWidth.toString(),
+                    "height": adHeight.toString(),
+                    "tsource": ""
+                  });
+                } catch (error) {
+                  console.warn('쿠팡 광고 로드 실패:', error);
+                }
+              };
+              script.onerror = function() {
+                console.warn('쿠팡 광고 스크립트 로드 실패');
+              };
+              document.head.appendChild(script);
+            })();
+          </script>
+        </div>
       </div>
+      
+      <p style="color: #ffffff; font-size: 0.8rem; margin-top: 15px; font-style: italic; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">
+        "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다."
+      </p>
     </div>
 
-    <div class="footer" style="background: linear-gradient(135deg, rgba(45, 55, 72, 0.95) 0%, rgba(26, 32, 44, 0.98) 100%); border-radius: 16px; padding: 25px 20px; margin-top: 40px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); text-align: center; backdrop-filter: blur(10px);">
-        <p style="color: #ffffff; font-weight: 600; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.5;">© 2025 <a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">유틸리티 계산기 모음</a>. 모든 도구는 무료로 제공됩니다.</p>
-        <p style="color: #B3E5FC; font-weight: 500; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); margin: 0; font-size: 0.9rem; line-height: 1.4;"><a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">일본 연호 변환, 간지 계산, 선거 연령 확인</a>을 한 곳에서 쉽고 빠르게 이용하세요.</p>
-    </div>
+    <footer style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); color: white; text-align: center; padding: 20px 0; margin-top: 60px; border-top: 3px solid #4FC3F7; box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15); width: 100%; position: relative;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p style="margin: 0 0 8px 0; font-size: 0.95rem; font-weight: 600;">© 2025 <a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">유틸리티 계산기 모음</a>. 모든 도구는 무료로 제공됩니다.</p>
+            <p style="margin: 0; font-size: 0.9rem; color: #a0aec0;"><a href="https://utilities.mahalohana-bruce.com/ko/" style="color: #4FC3F7; text-decoration: none; font-weight: bold; transition: color 0.3s ease;" onmouseover="this.style.color='#81D4FA'" onmouseout="this.style.color='#4FC3F7'">일본 연호 변환, 간지 계산, 선거 연령 확인</a>을 한 곳에서 쉽고 빠르게 이용하세요.</p>
+        </div>
+    </footer>
 
     <amp-ad width="100vw" height="320"
          type="adsense"
