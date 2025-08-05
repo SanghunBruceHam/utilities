@@ -1,6 +1,6 @@
 
 // Enhanced service worker for better caching and error prevention
-const CACHE_NAME = 'utilities-v1';
+const CACHE_NAME = 'utilities-v2';
 const urlsToCache = [
   '/',
   '/ko/',
@@ -8,7 +8,11 @@ const urlsToCache = [
   '/en/',
   '/vi/',
   '/favicon.ico',
-  '/favicon.png'
+  '/favicon.png',
+  '/css/design-system.css',
+  '/js/calculators/jp-year-converter.js',
+  '/js/calculators/jp-eto-calculator.js',
+  '/js/calculators/election-age-checker.js'
 ];
 
 self.addEventListener('install', function(event) {
