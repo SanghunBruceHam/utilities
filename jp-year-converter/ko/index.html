@@ -286,6 +286,23 @@
           <button id="convertBtn" class="btn btn-primary btn-lg">변환</button>
         </div>
         <div id="result" class="text-center mt-xl"></div>
+        
+        <!-- 관련 도구 추천 -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 16px; border: 1px solid rgba(102, 126, 234, 0.2);">
+          <h3 style="color: #667eea; margin-top: 0; text-align: center; font-size: 1.2rem;">🔗 관련 유용한 도구들</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <a href="/jp-eto-calculator/ko/index.html" style="display: block; padding: 1rem; background: white; border-radius: 8px; text-decoration: none; color: #4a5568; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🐉</div>
+              <div style="font-weight: 600; margin-bottom: 0.3rem;">간지 계산기</div>
+              <div style="font-size: 0.85rem; color: #666;">생년월일로 십이지 확인</div>
+            </a>
+            <a href="/election-age-checker/ko/index.html" style="display: block; padding: 1rem; background: white; border-radius: 8px; text-decoration: none; color: #4a5568; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🗳️</div>
+              <div style="font-weight: 600; margin-bottom: 0.3rem;">선거 연령 확인기</div>
+              <div style="font-size: 0.85rem; color: #666;">2025년 대선 투표권 확인</div>
+            </a>
+          </div>
+        </div>
       </div>
 
 <!-- Cross-reference table -->
@@ -442,6 +459,27 @@
       "text": "현재 일본의 연호는 레이와(令和)입니다. 2019년 5월 1일부터 시작되었습니다."
     }
   }]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "유틸리티 계산기 모음",
+      "item": "https://utilities.mahalohana-bruce.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "일본 연호 변환기",
+      "item": "https://utilities.mahalohana-bruce.com/jp-year-converter/ko/index.html"
+    }
+  ]
 }
 </script>
 </body>

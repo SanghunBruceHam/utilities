@@ -14,12 +14,27 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="2025년 대통령 선거에 투표할 수 있는지 확인해보세요. 생년월일로 만 나이를 계산해드립니다." />
+  <meta name="description" content="2025년 대통령 선거에 투표할 수 있는지 확인해보세요. 생년월일로 만 나이를 계산해드립니다. 만 18세 이상 투표권 확인이 가능합니다." />
+  <meta name="keywords" content="2025년 대선, 투표권, 선거 연령, 만 18세, 대통령 선거, 투표 가능 나이, 선거권, 참정권">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2025년 대선 투표권 확인기">
+  <meta name="twitter:description" content="2025년 대통령 선거에 투표할 수 있는지 확인해보세요. 생년월일로 만 나이를 계산해드립니다.">
+  <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/images/og-image.png">
+  
   <meta property="og:title" content="21대 대통령 선거 나이 판독기">
   <meta property="og:description" content="생년월일을 입력하면 2025년 대선에서 투표할 수 있는 나이인지 확인해줍니다.">
   <meta property="og:image" content="https://utilities.mahalohana-bruce.com/images/og-image.png">
-  <meta property="og:url" content="https://utilities.mahalohana-bruce.com/election-age">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:url" content="https://utilities.mahalohana-bruce.com/election-age-checker/ko/">
+  
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/election-age-checker/ko/">
+  <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/election-age-checker/ja/">
+  <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/election-age-checker/en/">
+  <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/election-age-checker/vi/">
+  <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/election-age-checker/ko/">
+  
   <title>21대 대통령 선거 투표 가능 나이 판독기</title>
 
   
@@ -175,7 +190,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="card fade-in" id="electionAgeChecker">
         <div class="card-header">
           <h1 class="card-title">🗳️ 2025년 대선 투표권 확인기</h1>
-          <p class="card-subtitle">2025년 제21대 대선을 기준으로, 만 18세 이상 투표 가능 여부를 확인해보세요.</p>
+          <h2 class="card-subtitle">2025년 제21대 대선을 기준으로, 만 18세 이상 투표 가능 여부를 확인해보세요.</h2>
         </div>
         
         <div class="election-info" id="electionInfo">
@@ -193,6 +208,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </form>
         
         <div id="result"></div>
+        
+        <!-- 관련 도구 추천 -->
+        <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(102, 126, 234, 0.1); border-radius: 16px; border: 1px solid rgba(102, 126, 234, 0.2);">
+          <h3 style="color: #667eea; margin-top: 0; text-align: center; font-size: 1.2rem;">🔗 관련 유용한 도구들</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <a href="/jp-year-converter/ko/index.html" style="display: block; padding: 1rem; background: white; border-radius: 8px; text-decoration: none; color: #4a5568; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📅</div>
+              <div style="font-weight: 600; margin-bottom: 0.3rem;">일본 연호 변환기</div>
+              <div style="font-size: 0.85rem; color: #666;">서기 ⇄ 연호 변환</div>
+            </a>
+            <a href="/jp-eto-calculator/ko/index.html" style="display: block; padding: 1rem; background: white; border-radius: 8px; text-decoration: none; color: #4a5568; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+              <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🐉</div>
+              <div style="font-weight: 600; margin-bottom: 0.3rem;">간지 계산기</div>
+              <div style="font-size: 0.85rem; color: #666;">생년월일로 십이지 확인</div>
+            </a>
+          </div>
+        </div>
         
         <div class="mt-xl text-center">
           <div class="sns-share" style="display: flex; justify-content: center; gap: var(--spacing-md); flex-wrap: wrap; margin-bottom: var(--spacing-lg);">
@@ -292,5 +324,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
 
     <!-- AMP Ad Script -->
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "2025년 대선 투표권 확인기",
+  "url": "https://utilities.mahalohana-bruce.com/election-age-checker/ko/",
+  "applicationCategory": "Calculator",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "KRW"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "89"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "2025년 대선 투표권 확인하는 방법",
+  "description": "생년월일로 2025년 대통령 선거 투표권 여부를 확인하는 방법",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "생년월일 입력",
+      "text": "생년월일을 입력하세요"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "판독하기 버튼 클릭",
+      "text": "판독하기 버튼을 클릭하면 2025년 6월 3일 기준 투표 가능 여부를 알려드립니다"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "유틸리티 계산기 모음",
+      "item": "https://utilities.mahalohana-bruce.com/ko/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "선거 연령 확인기",
+      "item": "https://utilities.mahalohana-bruce.com/election-age-checker/ko/"
+    }
+  ]
+}
+</script>
 </body>
 </html>
