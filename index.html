@@ -105,8 +105,9 @@
             const shortLang = userLang.toLowerCase().substring(0, 2);
             const fullLang = userLang.toLowerCase();
 
-            // Check if already on a language-specific page
-            if (!window.location.pathname.match(/^\/(ko|ja|en|vi)\//)) {
+            // Check if already on a language-specific page or exactly on root
+            const currentPath = window.location.pathname;
+            if (currentPath === '/' || currentPath === '/index.html') {
                 const targetLang = langMap[fullLang] || langMap[shortLang] || '/ko/';
 
                 // Add a small delay to allow page to load for SEO
