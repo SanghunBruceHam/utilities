@@ -831,7 +831,7 @@
             toggle() {
                 this.theme = this.theme === 'dark' ? 'light' : 'dark';
                 this.applyTheme();
-                this                this.announceToScreenReader(`${this.theme === 'dark' ? '다크' : '라이트'} 모드로 전환되었습니다`);
+                this.announceToScreenReader(`${this.theme === 'dark' ? '다크' : '라이트'} 모드로 전환되었습니다`);
             }
 
             setupToggle() {
