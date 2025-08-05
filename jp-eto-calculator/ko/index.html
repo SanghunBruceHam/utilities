@@ -207,46 +207,59 @@
 
     <!-- 쿠팡 파트너스 광고 - 반응형 최적화 -->
     <div style="margin: 10px 0; overflow: hidden; max-width: 100%; display: flex; justify-content: center; min-height: 120px;">
-      <script src="https://ads-partners.coupang.com/g.js"></script>
       <script>
-        // 반응형 광고 크기 최적화
-        function getOptimizedAdSize() {
-          const screenWidth = window.innerWidth;
-          const containerPadding = 40; // 좌우 패딩
-          const maxWidth = Math.min(screenWidth - containerPadding, 728); // 최대 728px (표준 리더보드)
-          
-          if (screenWidth <= 480) {
-            // 모바일: 320x100 배너
-            return { width: Math.max(300, Math.min(maxWidth, 320)), height: "100" };
-          } else if (screenWidth <= 768) {
-            // 태블릿: 468x60 또는 320x100
-            return { width: Math.max(320, Math.min(maxWidth, 468)), height: "100" };
-          } else {
-            // 데스크톱: 728x90 리더보드 또는 560x140 캐러셀
-            return { width: Math.max(560, Math.min(maxWidth, 728)), height: "140" };
+        (function() {
+          // 반응형 광고 크기 최적화
+          function getOptimizedAdSize() {
+            const screenWidth = window.innerWidth;
+            const containerPadding = 40; // 좌우 패딩
+            const maxWidth = Math.min(screenWidth - containerPadding, 728); // 최대 728px (표준 리더보드)
+            
+            if (screenWidth <= 480) {
+              // 모바일: 320x100 배너
+              return { width: Math.max(300, Math.min(maxWidth, 320)), height: "100" };
+            } else if (screenWidth <= 768) {
+              // 태블릿: 468x60 또는 320x100
+              return { width: Math.max(320, Math.min(maxWidth, 468)), height: "100" };
+            } else {
+              // 데스크톱: 728x90 리더보드 또는 560x140 캐러셀
+              return { width: Math.max(560, Math.min(maxWidth, 728)), height: "140" };
+            }
           }
-        }
-        
-        const adSize = getOptimizedAdSize();
-        new PartnersCoupang.G({
-          "id": 867629,
-          "template": "carousel",
-          "trackingCode": "AF6959276",
-          "width": adSize.width.toString(),
-          "height": adSize.height,
-          "tsource": ""
-        });
-        
-        // 창 크기 변경 시 광고 재조정
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(function() {
-            // 광고 컨테이너 재조정 (필요시)
-            const newSize = getOptimizedAdSize();
-            console.log('광고 크기 재조정:', newSize);
-          }, 250);
-        });
+          
+          const script = document.createElement('script');
+          script.src = 'https://ads-partners.coupang.com/g.js';
+          script.onload = function() {
+            try {
+              const adSize = getOptimizedAdSize();
+              new PartnersCoupang.G({
+                "id": 867629,
+                "template": "carousel",
+                "trackingCode": "AF6959276",
+                "width": adSize.width.toString(),
+                "height": adSize.height,
+                "tsource": ""
+              });
+              
+              // 창 크기 변경 시 광고 재조정
+              let resizeTimeout;
+              window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                  // 광고 컨테이너 재조정 (필요시)
+                  const newSize = getOptimizedAdSize();
+                  console.log('광고 크기 재조정:', newSize);
+                }, 250);
+              });
+            } catch (error) {
+              console.warn('쿠팡 광고 로드 실패:', error);
+            }
+          };
+          script.onerror = function() {
+            console.warn('쿠팡 광고 스크립트 로드 실패');
+          };
+          document.head.appendChild(script);
+        })();
       </script>
     </div>
   </div>
