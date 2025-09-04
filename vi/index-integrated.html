@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Máy Tính Tiện Ích Chuyên Nghiệp | Công Cụ Trực Tuyến Chuyên Gia</title>
+    <meta name="description" content="Công cụ tính toán trực tuyến chuyên nghiệp - Công cụ chuyển đổi niên hiệu Nhật, máy tính can chi, kiểm tra tuổi bầu cử và các tiện ích chính xác và đáng tin cậy được cung cấp miễn phí.">
+    <meta name="keywords" content="máy tính chuyên nghiệp, công cụ chuyển đổi niên hiệu nhật, máy tính can chi, kiểm tra tuổi bầu cử, đáng tin cậy, chính xác">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Utilities Collection">
+    <meta name="language" content="Vietnamese">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Bộ Sưu Tập Máy Tính Tiện Ích Chuyên Nghiệp - Công Cụ Trực Tuyến Chuyên Gia">
+    <meta property="og:description" content="Công cụ tính toán trực tuyến chuyên nghiệp được cung cấp miễn phí. Chuyển đổi niên hiệu Nhật, tính toán can chi, kiểm tra tuổi bầu cử và nhiều hơn nữa">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/vi/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bộ Sưu Tập Máy Tính Tiện Ích Chuyên Nghiệp - Công Cụ Chuyên Gia">
+    <meta name="twitter:description" content="Công cụ tính toán trực tuyến chuyên nghiệp được cung cấp miễn phí.">
+    <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://www.clarity.ms">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="stylesheet" href="/css/professional-design-system.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HS98ZL6343');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+    <style>
+        .hidden { display: none; }
+        .tab-navigation {
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: #f8f9fa;
+            color: var(--text-medium);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: center;
+            min-width: 140px;
+        }
+        .tab-button:hover {
+            background: #e9ecef;
+            color: var(--text-dark);
+        }
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        .tool-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #d5d8dc;
+            margin-bottom: 40px;
+        }
+        .result-panel, .error-panel {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .result-panel.visible, .error-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .result-panel {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #b6d7a8;
+            color: #155724;
+        }
+        .error-panel {
+            background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Bar -->
+    <div class="language-bar">
+        <div class="container">
+            <div class="language-selector">
+                <span class="language-label">🌍 Chọn Ngôn Ngữ:</span>
+                <a href="/" class="language-link">Tự Động</a>
+                <a href="/en/" class="language-link">🇺🇸 English</a>
+                <a href="/ja/" class="language-link">🇯🇵 日本語</a>
+                <a href="/ko/" class="language-link">🇰🇷 한국어</a>
+                <a href="/vi/" class="language-link current">🇻🇳 Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">Bộ Sưu Tập Máy Tính Tiện Ích</h1>
+                <p class="site-description">Công cụ tính toán trực tuyến chuyên nghiệp chính xác và đáng tin cậy</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Công Cụ Tính Toán Chuyên Nghiệp</h2>
+                <p class="section-subtitle">
+                    Chúng tôi cung cấp các công cụ tính toán trực tuyến đáng tin cậy dựa trên thuật toán chính xác và dữ liệu được xác minh. 
+                    Tất cả các công cụ đều không thu thập thông tin cá nhân của người dùng và hoàn toàn miễn phí.
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTool('year')">📅 Chuyển Đổi Niên Hiệu Nhật</button>
+                    <button class="tab-button" onclick="showTool('eto')">🐉 Máy Tính Can Chi</button>
+                    <button class="tab-button" onclick="showTool('election')">🗳️ Kiểm Tra Tuổi Bầu Cử</button>
+                </div>
+            </div>
+
+            <!-- Japanese Era Converter Tool -->
+            <div id="year-tool" class="tool-panel">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">📅 Chuyển Đổi Niên Hiệu Nhật</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Chuyển đổi giữa lịch Gregorian và niên hiệu Nhật Bản (Reiwa, Heisei, Showa, Taisho, Meiji) với độ chính xác cao.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Loại Chuyển Đổi:</label>
+                    <select id="conversionType" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="ad-to-era">Dương Lịch → Niên Hiệu Nhật</option>
+                        <option value="era-to-ad">Niên Hiệu Nhật → Dương Lịch</option>
+                    </select>
+                </div>
+
+                <div id="adYearGroup" class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Năm Dương Lịch:</label>
+                    <input type="number" id="adYear" min="1868" max="2030" placeholder="ví dụ: 2024" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <div id="eraGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Niên Hiệu:</label>
+                    <select id="eraSelect" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="reiwa">Reiwa (令和)</option>
+                        <option value="heisei">Heisei (平成)</option>
+                        <option value="showa">Showa (昭和)</option>
+                        <option value="taisho">Taisho (大正)</option>
+                        <option value="meiji">Meiji (明治)</option>
+                    </select>
+                </div>
+
+                <div id="eraYearGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Năm Niên Hiệu:</label>
+                    <input type="number" id="eraYear" min="1" placeholder="ví dụ: 6" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="convertYear()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Chuyển Đổi
+                </button>
+
+                <div id="yearResult" class="result-panel">
+                    <div class="result-content" id="yearResultContent"></div>
+                    <div class="result-details" id="yearResultDetails"></div>
+                </div>
+                
+                <div id="yearError" class="error-panel">
+                    <div id="yearErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Zodiac Calculator Tool -->
+            <div id="eto-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🐉 Máy Tính Can Chi</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Tính toán con giáp của bạn (một trong 12 con vật) dựa trên ngày sinh sử dụng tính toán theo âm lịch truyền thống.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Ngày Sinh:</label>
+                    <input type="date" id="birthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="calculateEto()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Tính Can Chi
+                </button>
+
+                <div id="etoResult" class="result-panel">
+                    <div class="result-content" id="etoResultContent"></div>
+                    <div class="result-details" id="etoResultDetails"></div>
+                </div>
+                
+                <div id="etoError" class="error-panel">
+                    <div id="etoErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Election Age Checker Tool -->
+            <div id="election-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🗳️ Kiểm Tra Tuổi Bầu Cử</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Kiểm tra xem bạn có đủ tuổi bầu cử trong cuộc bầu cử tổng thống 2025 (phải từ 18 tuổi trở lên) theo luật bầu cử hiện hành.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Ngày Sinh:</label>
+                    <input type="date" id="electionBirthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="checkElectionAge()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Kiểm Tra Quyền Bầu Cử
+                </button>
+
+                <div id="electionResult" class="result-panel">
+                    <div class="result-content" id="electionResultContent"></div>
+                    <div class="result-details" id="electionResultDetails"></div>
+                </div>
+                
+                <div id="electionError" class="error-panel">
+                    <div id="electionErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <section class="info-section" style="margin-top: 80px;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">📖 Hướng Dẫn Dịch Vụ & Giải Thích Công Cụ</h2>
+                        <p class="section-subtitle">
+                            Hướng dẫn sử dụng chi tiết và giải thích về từng công cụ.
+                        </p>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>📅 Chuyển Đổi Niên Hiệu Nhật Là Gì?</h3>
+                            <p>
+                                Công cụ chuyển đổi niên hiệu Nhật hỗ trợ chuyển đổi giữa lịch Gregorian và hệ thống niên hiệu truyền thống của Nhật Bản. 
+                                Hiện tại hỗ trợ 5 niên hiệu chính: Reiwa (令和), Heisei (平成), Showa (昭和), Taisho (大正), và Meiji (明治).
+                                Dựa trên dữ liệu ngày tháng lịch sử chính xác, có thể sử dụng an toàn cho việc soạn thảo tài liệu và nghiên cứu học thuật.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🐉 Cách Sử Dụng Máy Tính Can Chi</h3>
+                            <p>
+                                Máy tính can chi là công cụ xác định con giáp tương ứng (một trong 12 con vật) khi bạn nhập ngày sinh. 
+                                Tính toán dựa trên mốc lịch âm truyền thống để có kết quả chính xác hơn và cung cấp 
+                                thông tin chi tiết và ý nghĩa văn hóa cho tất cả 12 con vật (chuột, trâu, hổ, mèo, rồng, rắn, ngựa, dê, khỉ, gà, chó, lợn).
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🗳️ Hướng Dẫn Kiểm Tra Tuổi Bầu Cử</h3>
+                            <p>
+                                Công cụ kiểm tra tuổi bầu cử xác minh xem bạn có đủ điều kiện bầu cử trong cuộc bầu cử tổng thống lần thứ 21 năm 2025 (phải từ 18 tuổi trở lên). 
+                                Thực hiện tính toán tuổi chính xác theo tiêu chuẩn của Luật Bầu cử Công chức hiện hành, 
+                                cho phép kiểm tra trước quyền bầu cử với kết quả rõ ràng dựa trên căn cứ pháp lý.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🔒 Bảo Vệ Thông Tin Cá Nhân & Bảo Mật</h3>
+                            <p>
+                                Dịch vụ của chúng tôi hoàn toàn không thu thập bất kỳ thông tin cá nhân nào từ người dùng. Tất cả tính toán được xử lý trực tiếp trong trình duyệt của bạn, 
+                                và dữ liệu bạn nhập không bao giờ được truyền ra bên ngoài, đảm bảo bảo vệ quyền riêng tư hoàn toàn.
+                                Không cần đăng ký thành viên hay cài đặt phần mềm riêng, sử dụng trực tiếp từ trình duyệt web.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>⚡ Độ Chính Xác và Tin Cậy</h3>
+                            <p>
+                                Tất cả thuật toán tính toán được phát triển theo các quy định pháp luật liên quan và tiêu chuẩn chuẩn. 
+                                Cung cấp kết quả chính xác thông qua việc xác minh và cập nhật liên tục, an toàn cho mục đích học thuật và công việc.
+                                Đối với niên hiệu Nhật, tính toán phản ánh chính xác ngày bắt đầu và kết thúc chính thức.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🆓 Dịch Vụ Hoàn Toàn Miễn Phí</h3>
+                            <p>
+                                Tất cả công cụ tính toán đều được cung cấp hoàn toàn miễn phí. Không có chi phí ẩn hay hạn chế 
+                                ai cũng có thể sử dụng tự do và chúng tôi liên tục nỗ lực cải thiện dịch vụ.
+                                Được tối ưu hóa cho tất cả môi trường di động và máy tính để bàn, thuận tiện sử dụng bất cứ lúc nào, ở đâu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed FAQ Section -->
+                    <div style="margin-top: 60px; background: white; padding: 40px; border-radius: 16px; border: 1px solid #d5d8dc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 24px; font-weight: bold; color: var(--primary-navy); margin-bottom: 30px; text-align: center;">📋 Câu Hỏi Thường Gặp (FAQ)</h3>
+                        
+                        <div style="display: grid; gap: 30px;">
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">H: Chuyển đổi niên hiệu Nhật có chính xác không?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">Đ: Có, chúng tôi tính toán dựa trên ngày bắt đầu và kết thúc chính xác của tất cả niên hiệu. Sử dụng các khoảng thời gian chính xác cho Meiji (1868-1912), Taisho (1912-1926), Showa (1926-1989), Heisei (1989-2019), và Reiwa (2019-hiện tại).</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">H: "Cơ sở âm lịch" trong tính toán can chi có nghĩa là gì?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">Đ: Truyền thống, con giáp được tính dựa trên mốc bắt đầu âm lịch (thường vào khoảng ngày 4 tháng 2). Ví dụ, nếu sinh trong tháng Giêng, con giáp của năm trước sẽ được áp dụng. Đây là theo hệ thống lịch truyền thống phương Đông.</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">H: Tiêu chuẩn tuổi bầu cử có thể thay đổi không?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">Đ: Hiện tại từ 18 tuổi trở lên đủ điều kiện bầu cử, được quy định rõ trong Luật Bầu cử Công chức. Nếu luật thay đổi, nội dung tương ứng cũng sẽ được cập nhật. Được thiết lập dựa trên cuộc bầu cử tổng thống 2025.</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">H: Có thể sử dụng trên thiết bị di động không?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">Đ: Có, có thể sử dụng trên tất cả thiết bị. Smartphone, tablet, máy tính để bàn, bất kỳ thiết bị nào chỉ cần có trình duyệt web đều có thể sử dụng trực tiếp. Thiết kế responsive được tối ưu hóa cho từng kích thước màn hình.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Bộ Sưu Tập Máy Tính Tiện Ích - Dịch Vụ Tích Hợp</h3>
+                <p class="footer-description">
+                    Dịch vụ trực tuyến tích hợp giúp bạn sử dụng tất cả công cụ tính toán một cách thuận tiện trên một trang.
+                </p>
+                <div class="footer-links">
+                    <p>📧 Liên hệ: <a href="mailto:contact@utilities.mahalohana-bruce.com">contact@utilities.mahalohana-bruce.com</a></p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 Bộ Sưu Tập Máy Tính Tiện Ích. Bảo lưu mọi quyền.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTool(toolId) {
+            // Hide all tools
+            document.querySelectorAll('.tool-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tool
+            document.getElementById(toolId + '-tool').classList.remove('hidden');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            
+            // Hide all results
+            document.querySelectorAll('.result-panel, .error-panel').forEach(panel => {
+                panel.classList.remove('visible');
+            });
+        }
+
+        // Japanese Year Converter - Accurate Implementation
+        class JpYearConverterIntegrated {
+            constructor() {
+                this.eras = {
+                    reiwa: 2019,
+                    heisei: 1989,
+                    showa: 1926,
+                    taisho: 1912,
+                    meiji: 1868
+                };
+                
+                this.eraNames = {
+                    reiwa: "Reiwa (令和)",
+                    heisei: "Heisei (平成)",
+                    showa: "Showa (昭和)",
+                    taisho: "Taisho (大正)",
+                    meiji: "Meiji (明治)"
+                };
+
+                // Define exact end years for each era
+                this.eraEndYears = {
+                    meiji: 1912,   // Meiji 45 (ended July 30, 1912)
+                    taisho: 1926,  // Taisho 15 (ended December 25, 1926)
+                    showa: 1989,   // Showa 64 (ended January 7, 1989)
+                    heisei: 2019,  // Heisei 31 (ended April 30, 2019)
+                    reiwa: new Date().getFullYear() // Current era, ongoing
+                };
+                
+                this.init();
+            }
+
+            init() {
+                document.getElementById('conversionType').addEventListener('change', (e) => {
+                    const isAdToEra = e.target.value === 'ad-to-era';
+                    document.getElementById('adYearGroup').classList.toggle('hidden', !isAdToEra);
+                    document.getElementById('eraGroup').classList.toggle('hidden', isAdToEra);
+                    document.getElementById('eraYearGroup').classList.toggle('hidden', isAdToEra);
+                });
+            }
+
+            convertYear() {
+                const conversionType = document.getElementById('conversionType').value;
+                const resultPanel = document.getElementById('yearResult');
+                const errorPanel = document.getElementById('yearError');
+                
+                resultPanel.classList.remove('visible');
+                errorPanel.classList.remove('visible');
+                
+                try {
+                    if (conversionType === 'ad-to-era') {
+                        this.convertToWareki();
+                    } else {
+                        this.convertToSeireki();
+                    }
+                    resultPanel.classList.add('visible');
+                } catch (error) {
+                    document.getElementById('yearErrorContent').textContent = error.message;
+                    errorPanel.classList.add('visible');
+                }
+            }
+
+            convertToWareki() {
+                const adYear = parseInt(document.getElementById('adYear').value);
+                if (!adYear || adYear < 1868 || adYear > 2030) {
+                    throw new Error('Vui lòng nhập một năm từ 1868 đến 2030.');
+                }
+
+                // Sort eras by start year descending to find the correct era
+                const sortedEras = Object.entries(this.eras).sort((a, b) => b[1] - a[1]);
+                
+                for (const [era, start] of sortedEras) {
+                    if (adYear >= start) {
+                        const ey = adYear - start + 1;
+                        const eraName = this.eraNames[era];
+                        const endYear = this.eraEndYears[era];
+                        
+                        // Check if the year is within the era's valid range
+                        if (endYear && adYear >= endYear) {
+                            continue; // This era has ended, try the next one
+                        }
+                        
+                        document.getElementById('yearResultContent').innerHTML = 
+                            `<strong>Năm dương lịch ${adYear}</strong> tương ứng với <strong>${eraName} năm ${ey}</strong>.`;
+                        
+                        document.getElementById('yearResultDetails').innerHTML = `
+                            <div class="result-item">
+                                <div class="label">Dương Lịch</div>
+                                <div class="value">Năm ${adYear}</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Niên Hiệu Nhật</div>
+                                <div class="value">${eraName} năm ${ey}</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Thời Kỳ Niên Hiệu</div>
+                                <div class="value">${start} ~ ${endYear === new Date().getFullYear() ? 'Hiện tại' : endYear}</div>
+                            </div>
+                        `;
+                        return;
+                    }
+                }
+                
+                throw new Error('Không tìm thấy niên hiệu tương ứng cho năm này.');
+            }
+
+            convertToSeireki() {
+                const eraKey = document.getElementById('eraSelect').value;
+                const eraYear = parseInt(document.getElementById('eraYear').value);
+                
+                if (!eraYear || eraYear < 1) {
+                    throw new Error('Vui lòng nhập một năm niên hiệu hợp lệ.');
+                }
+                
+                const start = this.eras[eraKey];
+                const endYear = this.eraEndYears[eraKey];
+                const maxYear = endYear - start + 1;
+                
+                if (eraYear > maxYear) {
+                    throw new Error(`${this.eraNames[eraKey]} chỉ tồn tại đến năm ${maxYear}.`);
+                }
+                
+                const adYear = start + eraYear - 1;
+                const eraName = this.eraNames[eraKey];
+                
+                document.getElementById('yearResultContent').innerHTML = 
+                    `<strong>${eraName} năm ${eraYear}</strong> tương ứng với <strong>dương lịch năm ${adYear}</strong>.`;
+                
+                document.getElementById('yearResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Niên Hiệu Nhật</div>
+                        <div class="value">${eraName} năm ${eraYear}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Dương Lịch</div>
+                        <div class="value">Năm ${adYear}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Thời Kỳ Niên Hiệu</div>
+                        <div class="value">${start} ~ ${endYear === new Date().getFullYear() ? 'Hiện tại' : endYear}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize the year converter
+        const jpYearConverter = new JpYearConverterIntegrated();
+
+        // Global function for the convert button
+        function convertYear() {
+            jpYearConverter.convertYear();
+        }
+
+        // Eto Calculator
+        const etoAnimals = [
+            { name: 'Chuột', kanji: '子', description: 'Tính cách khôn ngoan và thông minh' },
+            { name: 'Trâu', kanji: '丑', description: 'Tính cách trung thực và chăm chỉ' },
+            { name: 'Hổ', kanji: '寅', description: 'Tính cách dũng cảm và mạnh mẽ' },
+            { name: 'Mèo', kanji: '卯', description: 'Tính cách hiền hòa và tinh tế' },
+            { name: 'Rồng', kanji: '辰', description: 'Tính cách năng động và có sức hút' },
+            { name: 'Rắn', kanji: '巳', description: 'Tính cách thận trọng và thông minh' },
+            { name: 'Ngựa', kanji: '午', description: 'Tính cách năng động và tự do' },
+            { name: 'Dê', kanji: '未', description: 'Tính cách hòa bình và nghệ thuật' },
+            { name: 'Khỉ', kanji: '申', description: 'Tính cách thông minh và sáng tạo' },
+            { name: 'Gà', kanji: '酉', description: 'Tính cách chính xác và có trách nhiệm' },
+            { name: 'Chó', kanji: '戌', description: 'Tính cách trung thành và thẳng thắn' },
+            { name: 'Lợn', kanji: '亥', description: 'Tính cách rộng lượng và hạnh phúc' }
+        ];
+
+        function calculateEto() {
+            const birthDate = document.getElementById('birthDate').value;
+            const resultPanel = document.getElementById('etoResult');
+            const errorPanel = document.getElementById('etoError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('Vui lòng nhập ngày sinh của bạn.');
+                }
+                
+                const date = new Date(birthDate);
+                let year = date.getFullYear();
+                
+                // Tính toán theo âm lịch (khoảng ngày 4 tháng 2)
+                if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() < 4)) {
+                    year -= 1;
+                }
+                
+                const etoIndex = (year - 4) % 12;
+                const animal = etoAnimals[etoIndex];
+                
+                document.getElementById('etoResultContent').innerHTML = 
+                    `Con giáp của bạn là <strong>${animal.name} (${animal.kanji})</strong>`;
+                
+                document.getElementById('etoResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Ngày Sinh</div>
+                        <div class="value">${new Date(birthDate).toLocaleDateString('vi-VN')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Năm Can Chi</div>
+                        <div class="value">${year}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Con Giáp</div>
+                        <div class="value">${animal.name} (${animal.kanji})</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Đặc Điểm</div>
+                        <div class="value">${animal.description}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('etoErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+
+        // Election Age Checker
+        function checkElectionAge() {
+            const birthDate = document.getElementById('electionBirthDate').value;
+            const resultPanel = document.getElementById('electionResult');
+            const errorPanel = document.getElementById('electionError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('Vui lòng nhập ngày sinh của bạn.');
+                }
+                
+                const birth = new Date(birthDate);
+                const electionDate = new Date('2025-03-09'); // Bầu cử tổng thống 2025
+                const age = Math.floor((electionDate - birth) / (365.25 * 24 * 60 * 60 * 1000));
+                
+                const isEligible = age >= 18;
+                const status = isEligible ? 'Đủ tuổi bầu cử' : 'Chưa đủ tuổi bầu cử';
+                const message = isEligible ? 
+                    'Bạn đủ tuổi bầu cử trong cuộc bầu cử tổng thống 2025.' : 
+                    'Bạn phải từ 18 tuổi trở lên để bầu cử trong cuộc bầu cử tổng thống 2025.';
+                
+                document.getElementById('electionResultContent').innerHTML = 
+                    `<strong>${status}</strong><br>${message}`;
+                
+                document.getElementById('electionResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Ngày Sinh</div>
+                        <div class="value">${birth.toLocaleDateString('vi-VN')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Ngày Bầu Cử</div>
+                        <div class="value">${electionDate.toLocaleDateString('vi-VN')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Tuổi Tại Ngày Bầu Cử</div>
+                        <div class="value">${age} tuổi</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Tình Trạng Bầu Cử</div>
+                        <div class="value" style="color: ${isEligible ? 'green' : 'red'}; font-weight: bold;">${status}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('electionErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+    </script>
+</body>
+</html>

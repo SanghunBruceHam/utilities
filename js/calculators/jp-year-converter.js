@@ -170,14 +170,27 @@ class JpYearConverter {
         const modeSelect = document.getElementById("mode");
         const westernInputs = document.getElementById("western-inputs");
         const japaneseInputs = document.getElementById("japanese-inputs");
+        const gregorianYearSelect = document.getElementById("gregorian-year");
+        const eraYearSelect = document.getElementById("era-year");
 
         if (!modeSelect || !westernInputs || !japaneseInputs) return;
 
-        modeSelect.addEventListener("change", () => {
+        const applyModeUI = () => {
             const isToWareki = modeSelect.value === "toWareki";
+            // Show only the active section
             westernInputs.style.display = isToWareki ? "block" : "none";
             japaneseInputs.style.display = isToWareki ? "none" : "block";
-        });
+            // Disable hidden inputs to avoid accidental interaction
+            if (gregorianYearSelect) gregorianYearSelect.disabled = !isToWareki;
+            if (eraYearSelect) eraYearSelect.disabled = isToWareki;
+            // Clear previous result when switching mode
+            const result = document.getElementById("result");
+            if (result) result.innerHTML = "";
+        };
+
+        modeSelect.addEventListener("change", applyModeUI);
+        // Apply once on load to ensure consistent initial state
+        applyModeUI();
     }
 
     handleConvert() {
@@ -257,13 +270,20 @@ class JpYearConverter {
 }
 
 // Initialize converter when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
+const __bootJpYearConverter = () => {
     // Check if we're on a JP Year Converter page by looking for specific elements
     const container = document.querySelector('.container');
     const convertBtn = document.getElementById('convertBtn');
     const modeSelect = document.getElementById('mode');
-    
+
     if (container && convertBtn && modeSelect) {
         new JpYearConverter();
     }
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', __bootJpYearConverter);
+} else {
+    // DOM is already ready when this script loads at the bottom
+    __bootJpYearConverter();
+}

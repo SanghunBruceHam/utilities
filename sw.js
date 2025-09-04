@@ -1,6 +1,6 @@
 
 // Enhanced service worker for better caching and error prevention
-const CACHE_NAME = 'utilities-v2';
+const CACHE_NAME = 'utilities-v3';
 const urlsToCache = [
   '/',
   '/ko/',
@@ -10,6 +10,10 @@ const urlsToCache = [
   '/favicon.ico',
   '/favicon.png',
   '/css/design-system.css',
+  '/css/professional-design-system.css',
+  '/css/classic-design-system.css',
+  '/css/official-design-system.css',
+  '/js/common/performance-utils.js',
   '/js/calculators/jp-year-converter.js',
   '/js/calculators/jp-eto-calculator.js',
   '/js/calculators/election-age-checker.js'

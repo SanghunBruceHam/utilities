@@ -1,0 +1,505 @@
+/**
+ * Classic Web Design System - 2000년대 초반 스타일
+ * 테이블 기반 레이아웃과 심플한 디자인
+ */
+
+:root {
+    /* Classic Colors */
+    --bg-color: #f5f5f5;
+    --text-color: #333333;
+    --link-color: #0066cc;
+    --link-hover: #0033cc;
+    --link-visited: #663399;
+    --border-color: #cccccc;
+    --header-bg: #003366;
+    --header-text: #ffffff;
+    --table-header-bg: #e0e0e0;
+    --table-row-even: #f9f9f9;
+    --table-row-hover: #ffffcc;
+    
+    /* Classic Typography */
+    --font-family: Georgia, 'Times New Roman', serif;
+    --font-family-sans: Verdana, Arial, Helvetica, sans-serif;
+    --font-size-base: 14px;
+    --font-size-small: 12px;
+    --font-size-large: 16px;
+    --font-size-h1: 24px;
+    --font-size-h2: 20px;
+    --font-size-h3: 18px;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==');
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    background-color: white;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 30px 40px;
+    border-bottom: 3px solid #ffcc00;
+    text-align: center;
+}
+
+.header h1 {
+    font-family: var(--font-family);
+    font-size: var(--font-size-h1);
+    font-weight: normal;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.header p {
+    font-size: var(--font-size-small);
+    font-style: italic;
+    color: #ccddee;
+}
+
+/* Navigation */
+.navigation {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 40px;
+    text-align: center;
+}
+
+.navigation a {
+    color: var(--link-color);
+    text-decoration: underline;
+    margin: 0 10px;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+}
+
+.navigation a:hover {
+    color: var(--link-hover);
+    background-color: #ffff99;
+}
+
+.navigation a:visited {
+    color: var(--link-visited);
+}
+
+/* Language Selector */
+.language-selector {
+    background-color: #ffffcc;
+    border: 1px solid #cccc00;
+    padding: 15px 40px;
+    margin: 0;
+    text-align: center;
+    font-size: var(--font-size-small);
+}
+
+.language-selector a {
+    color: var(--link-color);
+    text-decoration: underline;
+    margin: 0 5px;
+}
+
+.language-selector a:hover {
+    background-color: #ffff00;
+}
+
+.language-selector .current {
+    font-weight: bold;
+    color: #ff0000;
+    text-decoration: none;
+}
+
+/* Content Area */
+.content {
+    padding: 20px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Table Layout for Tools */
+.tools-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    border: 1px solid var(--border-color);
+    font-size: 16px;
+}
+
+.tools-table th {
+    background-color: var(--table-header-bg);
+    border: 1px solid var(--border-color);
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.tools-table td {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    vertical-align: top;
+}
+
+.tools-table tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+.tools-table tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+.tool-icon {
+    font-size: 32px;
+    text-align: center;
+    width: 80px;
+}
+
+.tool-name {
+    font-weight: bold;
+    color: var(--link-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.tool-name:hover {
+    color: var(--link-hover);
+    background-color: #ffff99;
+}
+
+.tool-description {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+.tool-features {
+    font-size: 14px;
+    color: #006600;
+    margin-top: 10px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.tool-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #e6f2ff;
+    border: 1px solid #0066cc;
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.tool-link:hover {
+    background-color: #cce0ff;
+    text-decoration: underline;
+}
+
+/* Classic List Style Alternative */
+.tools-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.tools-list li {
+    border: 1px solid var(--border-color);
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: white;
+}
+
+.tools-list li:hover {
+    background-color: #fffff0;
+    border-color: #999999;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list-icon {
+    font-size: 32px;
+    margin-right: 15px;
+    width: 40px;
+    text-align: center;
+}
+
+.list-title {
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.list-content {
+    margin-left: 55px;
+}
+
+/* Information Box */
+.info-box {
+    background-color: #ffffcc;
+    border: 1px solid #cccc00;
+    padding: 15px;
+    margin: 20px 0;
+}
+
+.info-box h2 {
+    font-size: var(--font-size-h2);
+    color: #663300;
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #999999;
+    padding-bottom: 5px;
+}
+
+.info-box h3 {
+    font-size: var(--font-size-h3);
+    color: #666666;
+    margin: 15px 0 8px 0;
+}
+
+.info-box p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+    background-color: #333333;
+    color: #cccccc;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid #666666;
+    font-size: var(--font-size-small);
+    margin-top: 40px;
+}
+
+.footer a {
+    color: #99ccff;
+    text-decoration: underline;
+}
+
+.footer a:hover {
+    color: #ffffff;
+    background-color: #666666;
+}
+
+/* Advertisement Section */
+.ad-section {
+    background-color: #f0f0f0;
+    border: 2px dashed #999999;
+    padding: 20px;
+    margin: 30px 20px;
+    text-align: center;
+}
+
+.ad-section h3 {
+    font-size: var(--font-size-base);
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+/* Classic Button Style */
+.button {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #cccccc;
+    border: 2px outset #dddddd;
+    color: #000000;
+    text-decoration: none;
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #dddddd;
+}
+
+.button:active {
+    border-style: inset;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 20px 0;
+}
+
+/* Marquee Style (for nostalgic effect) */
+.marquee {
+    background-color: #ffff99;
+    padding: 5px;
+    font-weight: bold;
+    color: #ff0000;
+    text-align: center;
+    margin: 10px 0;
+    border: 1px solid #ff0000;
+}
+
+/* Blink effect (optional) */
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+.blink {
+    animation: blink 1s linear infinite;
+}
+
+/* Counter */
+.visitor-counter {
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: #666666;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #cccccc;
+}
+
+/* Responsive Design - 전체 화면 사용 */
+@media (max-width: 1200px) {
+    .content {
+        padding: 20px 30px;
+    }
+    
+    .header {
+        padding: 25px 30px;
+    }
+    
+    .navigation, .language-selector {
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 15px 20px;
+    }
+    
+    .header {
+        padding: 20px;
+    }
+    
+    .navigation, .language-selector {
+        padding: 10px 20px;
+    }
+    
+    .tools-table th {
+        padding: 12px 15px;
+        font-size: 16px;
+    }
+    
+    .tools-table td {
+        padding: 15px;
+    }
+    
+    .tool-icon {
+        font-size: 28px;
+    }
+    
+    .tool-name {
+        font-size: 16px;
+    }
+    
+    .tool-description {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 22px;
+    }
+    
+    .content {
+        padding: 10px 15px;
+    }
+    
+    .tools-table {
+        font-size: 14px;
+    }
+    
+    .tools-table th, .tools-table td {
+        padding: 10px;
+    }
+    
+    .tool-icon {
+        font-size: 24px;
+        width: 60px;
+    }
+    
+    .tool-name {
+        font-size: 14px;
+    }
+    
+    .tool-description {
+        font-size: 13px;
+    }
+    
+    .tool-link {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .language-selector a {
+        display: inline-block;
+        margin: 2px 3px;
+    }
+}
+
+/* No Dark Mode - 클래식 웹은 다크모드 없음 */
+[data-theme="dark"] {
+    /* 다크모드 무시 */
+}
+
+/* Classic Web 2.0 gradient (optional) */
+.gradient-header {
+    background: linear-gradient(to bottom, #4c4c4c 0%, #2c2c2c 100%);
+    border-bottom: 1px solid #000000;
+}
+
+/* Classic rounded corners (Web 2.0 era) */
+.rounded-box {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/* Classic shadow */
+.shadow-box {
+    -moz-box-shadow: 2px 2px 5px #999999;
+    -webkit-box-shadow: 2px 2px 5px #999999;
+    box-shadow: 2px 2px 5px #999999;
+}

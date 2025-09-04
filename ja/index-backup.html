@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プロフェッショナル ユーティリティ計算機コレクション | 専門オンラインツール</title>
+    <meta name="description" content="プロフェッショナル オンライン計算機ツール - 和暦変換器、干支計算機、選挙年齢確認器など正確で信頼できるユーティリティを無料で提供します。">
+    <meta name="keywords" content="プロフェッショナル計算機, 和暦変換器, 干支計算機, 選挙年齢確認器, 信頼性, 正確性">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Utilities Collection">
+    <meta name="language" content="Japanese">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="プロフェッショナル ユーティリティ計算機コレクション - 専門オンラインツール">
+    <meta property="og:description" content="プロフェッショナル オンライン計算機ツールを無料で提供します。和暦変換、干支計算、選挙年齢確認など">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ja/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="プロフェッショナル ユーティリティ計算機コレクション - 専門ツール">
+    <meta name="twitter:description" content="プロフェッショナル オンライン計算機ツールを無料で提供します。">
+    <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://www.clarity.ms">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="stylesheet" href="/css/professional-design-system.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HS98ZL6343');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+    <style>
+        .hidden { display: none; }
+        .tab-navigation {
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: #f8f9fa;
+            color: var(--text-medium);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: center;
+            min-width: 140px;
+        }
+        .tab-button:hover {
+            background: #e9ecef;
+            color: var(--text-dark);
+        }
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        .tool-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #d5d8dc;
+            margin-bottom: 40px;
+        }
+        .result-panel, .error-panel {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .result-panel.visible, .error-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .result-panel {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #b6d7a8;
+            color: #155724;
+        }
+        .error-panel {
+            background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Bar -->
+    <div class="language-bar">
+        <div class="container">
+            <div class="language-selector">
+                <span class="language-label">🌍 言語選択：</span>
+                <a href="/" class="language-link">自動選択</a>
+                <a href="/en/" class="language-link">🇺🇸 English</a>
+                <a href="/ja/" class="language-link current">🇯🇵 日本語</a>
+                <a href="/ko/" class="language-link">🇰🇷 한국어</a>
+                <a href="/vi/" class="language-link">🇻🇳 Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">ユーティリティ計算機コレクション</h1>
+                <p class="site-description">正確で信頼できるプロフェッショナル オンライン計算機ツール</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">プロフェッショナル計算ツール</h2>
+                <p class="section-subtitle">
+                    正確なアルゴリズムと検証されたデータに基づく信頼できるオンライン計算機ツールを提供しています。 
+                    すべてのツールはユーザーの個人情報を収集せず、完全に無料でご利用いただけます。
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTool('year')">📅 和暦変換器</button>
+                    <button class="tab-button" onclick="showTool('eto')">🐉 干支計算機</button>
+                    <button class="tab-button" onclick="showTool('election')">🗳️ 選挙年齢確認器</button>
+                </div>
+            </div>
+
+            <!-- Japanese Era Converter Tool -->
+            <div id="year-tool" class="tool-panel">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">📅 和暦変換器</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    西暦と和暦（令和、平成、昭和、大正、明治）の相互変換を高精度で行います。
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">変換タイプ：</label>
+                    <select id="conversionType" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="ad-to-era">西暦 → 和暦</option>
+                        <option value="era-to-ad">和暦 → 西暦</option>
+                    </select>
+                </div>
+
+                <div id="adYearGroup" class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">西暦年：</label>
+                    <input type="number" id="adYear" min="1868" max="2030" placeholder="例：2024" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <div id="eraGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">年号：</label>
+                    <select id="eraSelect" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="reiwa">令和</option>
+                        <option value="heisei">平成</option>
+                        <option value="showa">昭和</option>
+                        <option value="taisho">大正</option>
+                        <option value="meiji">明治</option>
+                    </select>
+                </div>
+
+                <div id="eraYearGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">年数：</label>
+                    <input type="number" id="eraYear" min="1" placeholder="例：6" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="convertYear()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    変換
+                </button>
+
+                <div id="yearResult" class="result-panel">
+                    <div class="result-content" id="yearResultContent"></div>
+                    <div class="result-details" id="yearResultDetails"></div>
+                </div>
+                
+                <div id="yearError" class="error-panel">
+                    <div id="yearErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Zodiac Calculator Tool -->
+            <div id="eto-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🐉 干支計算機</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    生年月日を入力して、十二支（12の動物）を正確に計算します。伝統的な旧暦基準を使用しています。
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">生年月日：</label>
+                    <input type="date" id="birthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="calculateEto()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    干支を計算
+                </button>
+
+                <div id="etoResult" class="result-panel">
+                    <div class="result-content" id="etoResultContent"></div>
+                    <div class="result-details" id="etoResultDetails"></div>
+                </div>
+                
+                <div id="etoError" class="error-panel">
+                    <div id="etoErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Election Age Checker Tool -->
+            <div id="election-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🗳️ 選挙年齢確認器</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    2025年大統領選挙での投票資格（満18歳以上）があるかどうかを現行の選挙法に基づいて確認します。
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">生年月日：</label>
+                    <input type="date" id="electionBirthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="checkElectionAge()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    投票資格を確認
+                </button>
+
+                <div id="electionResult" class="result-panel">
+                    <div class="result-content" id="electionResultContent"></div>
+                    <div class="result-details" id="electionResultDetails"></div>
+                </div>
+                
+                <div id="electionError" class="error-panel">
+                    <div id="electionErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <section class="info-section" style="margin-top: 80px;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">📖 サービスガイド・ツール説明</h2>
+                        <p class="section-subtitle">
+                            各ツールの詳細な使用方法とサービスガイドをご確認いただけます。
+                        </p>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>📅 和暦変換器とは？</h3>
+                            <p>
+                                和暦変換器は西暦と日本の伝統的な元号システム間の変換をサポートするツールです。 
+                                現在、令和、平成、昭和、大正、明治の5つの主要な元号をサポートしています。
+                                正確な歴史的日付データに基づいており、文書作成や学術研究に安全にご利用いただけます。
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🐉 干支計算機の使用方法</h3>
+                            <p>
+                                干支計算機は生年月日を入力すると対応する十二支（12の動物）をお知らせするツールです。 
+                                立春を基準として計算することでより正確な結果を提供し、12の動物（鼠、牛、虎、兎、竜、蛇、馬、羊、猿、鶏、狗、猪）の
+                                詳細な情報と文化的意味を合わせてご案内いたします。
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🗳️ 選挙年齢確認器案内</h3>
+                            <p>
+                                選挙年齢確認器は2025年第21回大統領選挙基準で投票可能な年齢（満18歳以上）かどうか確認できるツールです。 
+                                現行の公職選挙法基準に従って正確な年齢計算を行い、投票権行使の可否を事前に確認することができます。
+                                法的根拠と共に明確な結果を提供します。
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🔒 個人情報保護・セキュリティ</h3>
+                            <p>
+                                本サービスはユーザーの個人情報を一切収集いたしません。すべての計算はユーザーのブラウザで直接処理され、 
+                                入力されたデータが外部に送信されることはなく、完全なプライバシー保護が保証されています。
+                                別途の会員登録やソフトウェアインストールなしにウェブブラウザで直接ご利用いただけます。
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>⚡ 正確性と信頼性</h3>
+                            <p>
+                                すべての計算アルゴリズムは関連法令と標準基準に従って開発されました。 
+                                継続的な検証とアップデートにより正確な結果を提供し、学術・業務用途に安全にご利用いただけます。
+                                和暦の場合、公式的な開始日と終了日を正確に反映して計算します。
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🆓 完全無料サービス</h3>
+                            <p>
+                                すべての計算機ツールは完全に無料で提供されています。隠れた費用や制限なく 
+                                誰でも自由にご利用いただけ、継続的なサービス改善に努めています。
+                                モバイルとデスクトップすべての環境で最適化されており、いつでもどこでも便利にご利用いただけます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed FAQ Section -->
+                    <div style="margin-top: 60px; background: white; padding: 40px; border-radius: 16px; border: 1px solid #d5d8dc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 24px; font-weight: bold; color: var(--primary-navy); margin-bottom: 30px; text-align: center;">📋 よくある質問（FAQ）</h3>
+                        
+                        <div style="display: grid; gap: 30px;">
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q：和暦変換は正確ですか？</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A：はい、すべての元号の開始日と終了日を正確に反映して計算します。明治（1868-1912）、大正（1912-1926）、昭和（1926-1989）、平成（1989-2019）、令和（2019-現在）の正確な期間を基準としています。</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q：干支計算の立春基準とは何ですか？</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A：伝統的に十二支は立春（通常2月4日頃）を基準として計算されます。例えば1月に生まれた場合は前年の十二支が適用されます。これは東洋の伝統的な暦体系に従ったものです。</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q：選挙年齢基準は変更される可能性がありますか？</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A：現在は満18歳以上が投票可能であり、これは公職選挙法に明示されています。法令が変更された場合は該当内容も合わせてアップデートされます。2025年大統領選挙基準で設定されています。</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q：モバイルでも利用できますか？</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A：はい、すべてのデバイスでご利用いただけます。スマートフォン、タブレット、デスクトップなどどのデバイスでもウェブブラウザさえあれば直接ご利用いただけます。レスポンシブデザインで各画面サイズに最適化されています。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">ユーティリティ計算機コレクション - 統合サービス</h3>
+                <p class="footer-description">
+                    すべての計算ツールを1つのページで便利にご利用いただける統合オンラインサービスです。
+                </p>
+                <div class="footer-links">
+                    <p>📧 お問い合わせ：<a href="mailto:contact@utilities.mahalohana-bruce.com">contact@utilities.mahalohana-bruce.com</a></p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 ユーティリティ計算機コレクション. すべての権利を保有しています。</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTool(toolId) {
+            // Hide all tools
+            document.querySelectorAll('.tool-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tool
+            document.getElementById(toolId + '-tool').classList.remove('hidden');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            
+            // Hide all results
+            document.querySelectorAll('.result-panel, .error-panel').forEach(panel => {
+                panel.classList.remove('visible');
+            });
+        }
+
+        // Japanese Year Converter - Accurate Implementation
+        class JpYearConverterIntegrated {
+            constructor() {
+                this.eras = {
+                    reiwa: 2019,
+                    heisei: 1989,
+                    showa: 1926,
+                    taisho: 1912,
+                    meiji: 1868
+                };
+                
+                this.eraNames = {
+                    reiwa: "令和",
+                    heisei: "平成",
+                    showa: "昭和",
+                    taisho: "大正",
+                    meiji: "明治"
+                };
+
+                // Define exact end years for each era
+                this.eraEndYears = {
+                    meiji: 1912,   // Meiji 45 (ended July 30, 1912)
+                    taisho: 1926,  // Taisho 15 (ended December 25, 1926)
+                    showa: 1989,   // Showa 64 (ended January 7, 1989)
+                    heisei: 2019,  // Heisei 31 (ended April 30, 2019)
+                    reiwa: new Date().getFullYear() // Current era, ongoing
+                };
+                
+                this.init();
+            }
+
+            init() {
+                document.getElementById('conversionType').addEventListener('change', (e) => {
+                    const isAdToEra = e.target.value === 'ad-to-era';
+                    document.getElementById('adYearGroup').classList.toggle('hidden', !isAdToEra);
+                    document.getElementById('eraGroup').classList.toggle('hidden', isAdToEra);
+                    document.getElementById('eraYearGroup').classList.toggle('hidden', isAdToEra);
+                });
+            }
+
+            convertYear() {
+                const conversionType = document.getElementById('conversionType').value;
+                const resultPanel = document.getElementById('yearResult');
+                const errorPanel = document.getElementById('yearError');
+                
+                resultPanel.classList.remove('visible');
+                errorPanel.classList.remove('visible');
+                
+                try {
+                    if (conversionType === 'ad-to-era') {
+                        this.convertToWareki();
+                    } else {
+                        this.convertToSeireki();
+                    }
+                    resultPanel.classList.add('visible');
+                } catch (error) {
+                    document.getElementById('yearErrorContent').textContent = error.message;
+                    errorPanel.classList.add('visible');
+                }
+            }
+
+            convertToWareki() {
+                const adYear = parseInt(document.getElementById('adYear').value);
+                if (!adYear || adYear < 1868 || adYear > 2030) {
+                    throw new Error('1868年から2030年の間の年を入力してください。');
+                }
+
+                // Sort eras by start year descending to find the correct era
+                const sortedEras = Object.entries(this.eras).sort((a, b) => b[1] - a[1]);
+                
+                for (const [era, start] of sortedEras) {
+                    if (adYear >= start) {
+                        const ey = adYear - start + 1;
+                        const eraName = this.eraNames[era];
+                        const endYear = this.eraEndYears[era];
+                        
+                        // Check if the year is within the era's valid range
+                        if (endYear && adYear >= endYear) {
+                            continue; // This era has ended, try the next one
+                        }
+                        
+                        document.getElementById('yearResultContent').innerHTML = 
+                            `<strong>西暦${adYear}年</strong>は<strong>${eraName}${ey}年</strong>です。`;
+                        
+                        document.getElementById('yearResultDetails').innerHTML = `
+                            <div class="result-item">
+                                <div class="label">西暦</div>
+                                <div class="value">${adYear}年</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">和暦</div>
+                                <div class="value">${eraName}${ey}年</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">元号期間</div>
+                                <div class="value">${start}年 ～ ${endYear === new Date().getFullYear() ? '現在' : endYear + '年'}</div>
+                            </div>
+                        `;
+                        return;
+                    }
+                }
+                
+                throw new Error('該当する元号が見つかりませんでした。');
+            }
+
+            convertToSeireki() {
+                const eraKey = document.getElementById('eraSelect').value;
+                const eraYear = parseInt(document.getElementById('eraYear').value);
+                
+                if (!eraYear || eraYear < 1) {
+                    throw new Error('正しい元号年数を入力してください。');
+                }
+                
+                const start = this.eras[eraKey];
+                const endYear = this.eraEndYears[eraKey];
+                const maxYear = endYear - start + 1;
+                
+                if (eraYear > maxYear) {
+                    throw new Error(`${this.eraNames[eraKey]}は最大${maxYear}年までしか存在しません。`);
+                }
+                
+                const adYear = start + eraYear - 1;
+                const eraName = this.eraNames[eraKey];
+                
+                document.getElementById('yearResultContent').innerHTML = 
+                    `<strong>${eraName}${eraYear}年</strong>は<strong>西暦${adYear}年</strong>です。`;
+                
+                document.getElementById('yearResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">和暦</div>
+                        <div class="value">${eraName}${eraYear}年</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">西暦</div>
+                        <div class="value">${adYear}年</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">元号期間</div>
+                        <div class="value">${start}年 ～ ${endYear === new Date().getFullYear() ? '現在' : endYear + '年'}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize the year converter
+        const jpYearConverter = new JpYearConverterIntegrated();
+
+        // Global function for the convert button
+        function convertYear() {
+            jpYearConverter.convertYear();
+        }
+
+        // Eto Calculator
+        const etoAnimals = [
+            { name: '鼠（子）', kanji: '子', description: '知恵があり聡明な性格' },
+            { name: '牛（丑）', kanji: '丑', description: '誠実で勤勉な性格' },
+            { name: '虎（寅）', kanji: '寅', description: '勇敢で強靭な性格' },
+            { name: '兎（卯）', kanji: '卯', description: '温和で繊細な性格' },
+            { name: '竜（辰）', kanji: '辰', description: '躍動的でカリスマ的な性格' },
+            { name: '蛇（巳）', kanji: '巳', description: '慎重で知的な性格' },
+            { name: '馬（午）', kanji: '午', description: '活発で自由な性格' },
+            { name: '羊（未）', kanji: '未', description: '平和で芸術的な性格' },
+            { name: '猿（申）', kanji: '申', description: '機転が利き創意的な性格' },
+            { name: '鶏（酉）', kanji: '酉', description: '正確で責任感のある性格' },
+            { name: '犬（戌）', kanji: '戌', description: '忠実で正直な性格' },
+            { name: '猪（亥）', kanji: '亥', description: '寛大で幸福な性格' }
+        ];
+
+        function calculateEto() {
+            const birthDate = document.getElementById('birthDate').value;
+            const resultPanel = document.getElementById('etoResult');
+            const errorPanel = document.getElementById('etoError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('生年月日を入力してください。');
+                }
+                
+                const date = new Date(birthDate);
+                let year = date.getFullYear();
+                
+                // 立春基準計算（おおよそ2月4日基準）
+                if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() < 4)) {
+                    year -= 1;
+                }
+                
+                const etoIndex = (year - 4) % 12;
+                const animal = etoAnimals[etoIndex];
+                
+                document.getElementById('etoResultContent').innerHTML = 
+                    `あなたの干支は<strong>${animal.name}</strong>です`;
+                
+                document.getElementById('etoResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">生年月日</div>
+                        <div class="value">${new Date(birthDate).toLocaleDateString('ja-JP')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">干支年</div>
+                        <div class="value">${year}年</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">干支動物</div>
+                        <div class="value">${animal.name}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">特徴</div>
+                        <div class="value">${animal.description}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('etoErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+
+        // Election Age Checker
+        function checkElectionAge() {
+            const birthDate = document.getElementById('electionBirthDate').value;
+            const resultPanel = document.getElementById('electionResult');
+            const errorPanel = document.getElementById('electionError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('生年月日を入力してください。');
+                }
+                
+                const birth = new Date(birthDate);
+                const electionDate = new Date('2025-03-09'); // 2025年大統領選挙
+                const age = Math.floor((electionDate - birth) / (365.25 * 24 * 60 * 60 * 1000));
+                
+                const isEligible = age >= 18;
+                const status = isEligible ? '投票可能' : '投票不可';
+                const message = isEligible ? 
+                    '2025年大統領選挙での投票資格があります。' : 
+                    '2025年大統領選挙で投票するには満18歳以上である必要があります。';
+                
+                document.getElementById('electionResultContent').innerHTML = 
+                    `<strong>${status}</strong><br>${message}`;
+                
+                document.getElementById('electionResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">生年月日</div>
+                        <div class="value">${birth.toLocaleDateString('ja-JP')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">選挙日</div>
+                        <div class="value">${electionDate.toLocaleDateString('ja-JP')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">選挙日の年齢</div>
+                        <div class="value">${age}歳</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">投票資格</div>
+                        <div class="value" style="color: ${isEligible ? 'green' : 'red'}; font-weight: bold;">${status}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('electionErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+    </script>
+</body>
+</html>

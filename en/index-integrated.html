@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Utility Calculator Collection | Expert Online Tools</title>
+    <meta name="description" content="Professional online calculator tools - Japanese era converter, zodiac calculator, election age checker. Accurate and reliable utility services provided free of charge.">
+    <meta name="keywords" content="professional calculator, japanese era converter, zodiac calculator, election age checker, reliable, accurate">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Utilities Collection">
+    <meta name="language" content="English">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Professional Utility Calculator Collection - Expert Online Tools">
+    <meta property="og:description" content="Professional online calculator tools provided free of charge. Japanese era converter, zodiac calculator, election age checker and more.">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/en/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional Utility Calculator Collection - Expert Tools">
+    <meta name="twitter:description" content="Professional online calculator tools provided free of charge.">
+    <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="ko" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="alternate" hreflang="ja" href="https://utilities.mahalohana-bruce.com/ja/">
+    <link rel="alternate" hreflang="en" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
+    <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
+
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://www.clarity.ms">
+    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/en/">
+    <link rel="stylesheet" href="/css/professional-design-system.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HS98ZL6343');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
+
+    <style>
+        .hidden { display: none; }
+        .tab-navigation {
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid #e1e5e9;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tab-button {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: #f8f9fa;
+            color: var(--text-medium);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            text-align: center;
+            min-width: 140px;
+        }
+        .tab-button:hover {
+            background: #e9ecef;
+            color: var(--text-dark);
+        }
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+        .tool-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: 1px solid #d5d8dc;
+            margin-bottom: 40px;
+        }
+        .result-panel, .error-panel {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .result-panel.visible, .error-panel.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .result-panel {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #b6d7a8;
+            color: #155724;
+        }
+        .error-panel {
+            background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Bar -->
+    <div class="language-bar">
+        <div class="container">
+            <div class="language-selector">
+                <span class="language-label">🌍 Language Selection:</span>
+                <a href="/" class="language-link">Auto Select</a>
+                <a href="/en/" class="language-link current">🇺🇸 English</a>
+                <a href="/ja/" class="language-link">🇯🇵 日本語</a>
+                <a href="/ko/" class="language-link">🇰🇷 한국어</a>
+                <a href="/vi/" class="language-link">🇻🇳 Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">Utility Calculator Collection</h1>
+                <p class="site-description">Accurate and reliable professional online calculator tools</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2 class="section-title">Professional Calculation Tools</h2>
+                <p class="section-subtitle">
+                    We provide reliable online calculator tools based on accurate algorithms and verified data. 
+                    All tools do not collect user personal information and are completely free to use.
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTool('year')">📅 Japanese Era Converter</button>
+                    <button class="tab-button" onclick="showTool('eto')">🐉 Zodiac Calculator</button>
+                    <button class="tab-button" onclick="showTool('election')">🗳️ Election Age Checker</button>
+                </div>
+            </div>
+
+            <!-- Japanese Era Converter Tool -->
+            <div id="year-tool" class="tool-panel">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">📅 Japanese Era Converter</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Convert between Gregorian calendar and Japanese era years (Reiwa, Heisei, Showa, Taisho, Meiji) with high accuracy.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Conversion Type:</label>
+                    <select id="conversionType" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="ad-to-era">Gregorian → Japanese Era</option>
+                        <option value="era-to-ad">Japanese Era → Gregorian</option>
+                    </select>
+                </div>
+
+                <div id="adYearGroup" class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Gregorian Year:</label>
+                    <input type="number" id="adYear" min="1868" max="2030" placeholder="e.g., 2024" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <div id="eraGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Era:</label>
+                    <select id="eraSelect" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                        <option value="reiwa">Reiwa (令和)</option>
+                        <option value="heisei">Heisei (平成)</option>
+                        <option value="showa">Showa (昭和)</option>
+                        <option value="taisho">Taisho (大正)</option>
+                        <option value="meiji">Meiji (明治)</option>
+                    </select>
+                </div>
+
+                <div id="eraYearGroup" class="form-group hidden" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Era Year:</label>
+                    <input type="number" id="eraYear" min="1" placeholder="e.g., 6" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="convertYear()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Convert
+                </button>
+
+                <div id="yearResult" class="result-panel">
+                    <div class="result-content" id="yearResultContent"></div>
+                    <div class="result-details" id="yearResultDetails"></div>
+                </div>
+                
+                <div id="yearError" class="error-panel">
+                    <div id="yearErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Zodiac Calculator Tool -->
+            <div id="eto-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🐉 Japanese Zodiac Calculator (Eto)</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Calculate your Japanese zodiac sign (one of 12 animals) based on your birth date using traditional lunar calendar calculations.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Birth Date:</label>
+                    <input type="date" id="birthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="calculateEto()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Calculate Zodiac Sign
+                </button>
+
+                <div id="etoResult" class="result-panel">
+                    <div class="result-content" id="etoResultContent"></div>
+                    <div class="result-details" id="etoResultDetails"></div>
+                </div>
+                
+                <div id="etoError" class="error-panel">
+                    <div id="etoErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Election Age Checker Tool -->
+            <div id="election-tool" class="tool-panel hidden">
+                <h3 style="font-size: 24px; margin-bottom: 20px; color: var(--primary-navy); font-weight: bold;">🗳️ Election Age Checker</h3>
+                <p style="margin-bottom: 30px; color: var(--text-medium); line-height: 1.6;">
+                    Check if you are eligible to vote in the 2025 presidential election (must be 18 years or older) based on current election law.
+                </p>
+
+                <div class="form-group" style="margin-bottom: 25px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-dark);">Birth Date:</label>
+                    <input type="date" id="electionBirthDate" style="width: 100%; padding: 12px; border: 2px solid #d5d8dc; border-radius: 8px; font-size: 16px;">
+                </div>
+
+                <button onclick="checkElectionAge()" style="background: var(--primary-blue); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.2s ease;">
+                    Check Voting Eligibility
+                </button>
+
+                <div id="electionResult" class="result-panel">
+                    <div class="result-content" id="electionResultContent"></div>
+                    <div class="result-details" id="electionResultDetails"></div>
+                </div>
+                
+                <div id="electionError" class="error-panel">
+                    <div id="electionErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- Information Section -->
+            <section class="info-section" style="margin-top: 80px;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">📖 Service Guide & Tool Instructions</h2>
+                        <p class="section-subtitle">
+                            Detailed usage instructions and service guide for each tool.
+                        </p>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>📅 What is Japanese Era Converter?</h3>
+                            <p>
+                                The Japanese Era Converter helps convert between the Gregorian calendar and Japan's traditional era system. 
+                                It currently supports 5 major eras: Reiwa (令和), Heisei (平成), Showa (昭和), Taisho (大正), and Meiji (明治).
+                                Based on accurate historical date data, it can be safely used for document preparation and academic research.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🐉 How to Use Zodiac Calculator</h3>
+                            <p>
+                                The zodiac calculator determines your corresponding zodiac sign (one of 12 animals) when you enter your birth date. 
+                                It calculates based on the traditional lunar calendar starting point for more accurate results and provides 
+                                detailed information and cultural meanings for all 12 animals (rat, ox, tiger, rabbit, dragon, snake, horse, sheep, monkey, rooster, dog, pig).
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🗳️ Election Age Checker Guide</h3>
+                            <p>
+                                The Election Age Checker verifies if you are eligible to vote in the 2025 21st Presidential Election (must be 18 years or older). 
+                                It performs accurate age calculations according to current Public Official Election Act standards, 
+                                allowing you to check your voting eligibility in advance with clear results based on legal grounds.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🔒 Privacy Protection & Security</h3>
+                            <p>
+                                Our service does not collect any personal information from users. All calculations are processed directly in your browser, 
+                                and your input data is never transmitted externally, ensuring complete privacy protection.
+                                No registration or software installation required - use directly from your web browser.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>⚡ Accuracy and Reliability</h3>
+                            <p>
+                                All calculation algorithms are developed according to relevant laws and standard criteria. 
+                                We provide accurate results through continuous verification and updates, safe for academic and business use.
+                                For Japanese eras, calculations accurately reflect official start and end dates.
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3>🆓 Completely Free Service</h3>
+                            <p>
+                                All calculator tools are provided completely free of charge. 
+                                Anyone can use them freely without hidden costs or restrictions, and we continuously strive to improve our services.
+                                Optimized for all environments - mobile and desktop - for convenient use anytime, anywhere.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Detailed FAQ Section -->
+                    <div style="margin-top: 60px; background: white; padding: 40px; border-radius: 16px; border: 1px solid #d5d8dc; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <h3 style="font-size: 24px; font-weight: bold; color: var(--primary-navy); margin-bottom: 30px; text-align: center;">📋 Frequently Asked Questions (FAQ)</h3>
+                        
+                        <div style="display: grid; gap: 30px;">
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q: Is the Japanese era conversion accurate?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A: Yes, we calculate based on the exact start and end dates of all eras. We use accurate periods for Meiji (1868-1912), Taisho (1912-1926), Showa (1926-1989), Heisei (1989-2019), and Reiwa (2019-present).</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q: What does "lunar calendar basis" mean in zodiac calculation?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A: Traditionally, zodiac signs are calculated based on the lunar calendar starting point (usually around February 4th). For example, if born in January, the previous year's zodiac applies. This follows traditional Eastern calendar systems.</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q: Can the election age criteria change?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A: Currently, those 18 years or older are eligible to vote, as specified in the Public Official Election Act. If the law changes, we will update accordingly. It's set based on the 2025 presidential election.</p>
+                            </div>
+                            
+                            <div style="border-left: 4px solid var(--primary-blue); padding-left: 20px;">
+                                <h4 style="font-size: 18px; font-weight: 600; color: var(--text-dark); margin-bottom: 10px;">Q: Can I use this on mobile devices?</h4>
+                                <p style="color: var(--text-medium); line-height: 1.7;">A: Yes, it's available on all devices. You can use it immediately on smartphones, tablets, desktops, or any device with a web browser. Responsive design optimized for each screen size.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">Utility Calculator Collection - Integrated Service</h3>
+                <p class="footer-description">
+                    A comprehensive online service where you can conveniently use all calculation tools on one page.
+                </p>
+                <div class="footer-links">
+                    <p>📧 Contact: <a href="mailto:contact@utilities.mahalohana-bruce.com">contact@utilities.mahalohana-bruce.com</a></p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 Utility Calculator Collection. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTool(toolId) {
+            // Hide all tools
+            document.querySelectorAll('.tool-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tool
+            document.getElementById(toolId + '-tool').classList.remove('hidden');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            
+            // Hide all results
+            document.querySelectorAll('.result-panel, .error-panel').forEach(panel => {
+                panel.classList.remove('visible');
+            });
+        }
+
+        // Japanese Year Converter - Accurate Implementation
+        class JpYearConverterIntegrated {
+            constructor() {
+                this.eras = {
+                    reiwa: 2019,
+                    heisei: 1989,
+                    showa: 1926,
+                    taisho: 1912,
+                    meiji: 1868
+                };
+                
+                this.eraNames = {
+                    reiwa: "Reiwa (令和)",
+                    heisei: "Heisei (平成)",
+                    showa: "Showa (昭和)",
+                    taisho: "Taisho (大正)",
+                    meiji: "Meiji (明治)"
+                };
+
+                // Define exact end years for each era
+                this.eraEndYears = {
+                    meiji: 1912,   // Meiji 45 (ended July 30, 1912)
+                    taisho: 1926,  // Taisho 15 (ended December 25, 1926)
+                    showa: 1989,   // Showa 64 (ended January 7, 1989)
+                    heisei: 2019,  // Heisei 31 (ended April 30, 2019)
+                    reiwa: new Date().getFullYear() // Current era, ongoing
+                };
+                
+                this.init();
+            }
+
+            init() {
+                document.getElementById('conversionType').addEventListener('change', (e) => {
+                    const isAdToEra = e.target.value === 'ad-to-era';
+                    document.getElementById('adYearGroup').classList.toggle('hidden', !isAdToEra);
+                    document.getElementById('eraGroup').classList.toggle('hidden', isAdToEra);
+                    document.getElementById('eraYearGroup').classList.toggle('hidden', isAdToEra);
+                });
+            }
+
+            convertYear() {
+                const conversionType = document.getElementById('conversionType').value;
+                const resultPanel = document.getElementById('yearResult');
+                const errorPanel = document.getElementById('yearError');
+                
+                resultPanel.classList.remove('visible');
+                errorPanel.classList.remove('visible');
+                
+                try {
+                    if (conversionType === 'ad-to-era') {
+                        this.convertToWareki();
+                    } else {
+                        this.convertToSeireki();
+                    }
+                    resultPanel.classList.add('visible');
+                } catch (error) {
+                    document.getElementById('yearErrorContent').textContent = error.message;
+                    errorPanel.classList.add('visible');
+                }
+            }
+
+            convertToWareki() {
+                const adYear = parseInt(document.getElementById('adYear').value);
+                if (!adYear || adYear < 1868 || adYear > 2030) {
+                    throw new Error('Please enter a year between 1868 and 2030.');
+                }
+
+                // Sort eras by start year descending to find the correct era
+                const sortedEras = Object.entries(this.eras).sort((a, b) => b[1] - a[1]);
+                
+                for (const [era, start] of sortedEras) {
+                    if (adYear >= start) {
+                        const ey = adYear - start + 1;
+                        const eraName = this.eraNames[era];
+                        const endYear = this.eraEndYears[era];
+                        
+                        // Check if the year is within the era's valid range
+                        if (endYear && adYear >= endYear) {
+                            continue; // This era has ended, try the next one
+                        }
+                        
+                        document.getElementById('yearResultContent').innerHTML = 
+                            `<strong>Gregorian year ${adYear}</strong> corresponds to <strong>${eraName} ${ey}</strong>.`;
+                        
+                        document.getElementById('yearResultDetails').innerHTML = `
+                            <div class="result-item">
+                                <div class="label">Gregorian</div>
+                                <div class="value">${adYear}</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Japanese Era</div>
+                                <div class="value">${eraName} ${ey}</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="label">Era Period</div>
+                                <div class="value">${start} ~ ${endYear === new Date().getFullYear() ? 'Present' : endYear}</div>
+                            </div>
+                        `;
+                        return;
+                    }
+                }
+                
+                throw new Error('No corresponding era found for this year.');
+            }
+
+            convertToSeireki() {
+                const eraKey = document.getElementById('eraSelect').value;
+                const eraYear = parseInt(document.getElementById('eraYear').value);
+                
+                if (!eraYear || eraYear < 1) {
+                    throw new Error('Please enter a valid era year.');
+                }
+                
+                const start = this.eras[eraKey];
+                const endYear = this.eraEndYears[eraKey];
+                const maxYear = endYear - start + 1;
+                
+                if (eraYear > maxYear) {
+                    throw new Error(`${this.eraNames[eraKey]} only exists up to year ${maxYear}.`);
+                }
+                
+                const adYear = start + eraYear - 1;
+                const eraName = this.eraNames[eraKey];
+                
+                document.getElementById('yearResultContent').innerHTML = 
+                    `<strong>${eraName} ${eraYear}</strong> corresponds to <strong>Gregorian year ${adYear}</strong>.`;
+                
+                document.getElementById('yearResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Japanese Era</div>
+                        <div class="value">${eraName} ${eraYear}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Gregorian</div>
+                        <div class="value">${adYear}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Era Period</div>
+                        <div class="value">${start} ~ ${endYear === new Date().getFullYear() ? 'Present' : endYear}</div>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize the year converter
+        const jpYearConverter = new JpYearConverterIntegrated();
+
+        // Global function for the convert button
+        function convertYear() {
+            jpYearConverter.convertYear();
+        }
+
+        // Eto Calculator
+        const etoAnimals = [
+            { name: 'Rat', kanji: '子', description: 'Wise and intelligent personality' },
+            { name: 'Ox', kanji: '丑', description: 'Honest and hardworking personality' },
+            { name: 'Tiger', kanji: '寅', description: 'Brave and strong personality' },
+            { name: 'Rabbit', kanji: '卯', description: 'Gentle and delicate personality' },
+            { name: 'Dragon', kanji: '辰', description: 'Dynamic and charismatic personality' },
+            { name: 'Snake', kanji: '巳', description: 'Cautious and intellectual personality' },
+            { name: 'Horse', kanji: '午', description: 'Active and free personality' },
+            { name: 'Sheep', kanji: '未', description: 'Peaceful and artistic personality' },
+            { name: 'Monkey', kanji: '申', description: 'Witty and creative personality' },
+            { name: 'Rooster', kanji: '酉', description: 'Precise and responsible personality' },
+            { name: 'Dog', kanji: '戌', description: 'Loyal and honest personality' },
+            { name: 'Pig', kanji: '亥', description: 'Generous and happy personality' }
+        ];
+
+        function calculateEto() {
+            const birthDate = document.getElementById('birthDate').value;
+            const resultPanel = document.getElementById('etoResult');
+            const errorPanel = document.getElementById('etoError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('Please enter your birth date.');
+                }
+                
+                const date = new Date(birthDate);
+                let year = date.getFullYear();
+                
+                // Lunar calendar calculation (approximately February 4th basis)
+                if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() < 4)) {
+                    year -= 1;
+                }
+                
+                const etoIndex = (year - 4) % 12;
+                const animal = etoAnimals[etoIndex];
+                
+                document.getElementById('etoResultContent').innerHTML = 
+                    `Your zodiac sign is <strong>${animal.name} (${animal.kanji})</strong>`;
+                
+                document.getElementById('etoResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Birth Date</div>
+                        <div class="value">${new Date(birthDate).toLocaleDateString()}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Zodiac Year</div>
+                        <div class="value">${year}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Zodiac Animal</div>
+                        <div class="value">${animal.name} (${animal.kanji})</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Characteristics</div>
+                        <div class="value">${animal.description}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('etoErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+
+        // Election Age Checker
+        function checkElectionAge() {
+            const birthDate = document.getElementById('electionBirthDate').value;
+            const resultPanel = document.getElementById('electionResult');
+            const errorPanel = document.getElementById('electionError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('Please enter your birth date.');
+                }
+                
+                const birth = new Date(birthDate);
+                const electionDate = new Date('2025-03-09'); // 2025 Presidential Election
+                const age = Math.floor((electionDate - birth) / (365.25 * 24 * 60 * 60 * 1000));
+                
+                const isEligible = age >= 18;
+                const status = isEligible ? 'Eligible to Vote' : 'Not Eligible to Vote';
+                const message = isEligible ? 
+                    'You are eligible to vote in the 2025 presidential election.' : 
+                    'You must be 18 years or older to vote in the 2025 presidential election.';
+                
+                document.getElementById('electionResultContent').innerHTML = 
+                    `<strong>${status}</strong><br>${message}`;
+                
+                document.getElementById('electionResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">Birth Date</div>
+                        <div class="value">${birth.toLocaleDateString()}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Election Date</div>
+                        <div class="value">${electionDate.toLocaleDateString()}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Age on Election Day</div>
+                        <div class="value">${age} years old</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">Voting Status</div>
+                        <div class="value" style="color: ${isEligible ? 'green' : 'red'}; font-weight: bold;">${status}</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('electionErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+    </script>
+</body>
+</html>

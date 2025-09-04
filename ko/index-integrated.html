@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유틸리티 계산기 모음 | 통합 온라인 도구 서비스</title>
+    <meta name="description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기를 한 페이지에서 모두 이용할 수 있는 통합 온라인 도구 서비스입니다.">
+    <meta name="keywords" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기, 십이지, 레이와, 헤이세이, 쇼와, 투표권, 계산기, 통합">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Utilities Collection">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="유틸리티 계산기 모음 - 통합 온라인 도구">
+    <meta property="og:description" content="모든 계산 도구를 한 페이지에서 이용할 수 있는 통합 서비스">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ko/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
+
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
+    <link rel="stylesheet" href="/css/professional-design-system.css">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HS98ZL6343');
+    </script>
+
+    <style>
+        /* Integrated Tools Styles */
+        .tool-panel {
+            background: var(--bg-primary);
+            border: 1px solid #d5d8dc;
+            border-radius: var(--radius-xl);
+            padding: var(--space-8);
+            margin-bottom: var(--space-8);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .tool-panel.hidden {
+            display: none;
+        }
+
+        .tool-header-inline {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+            padding-bottom: var(--space-4);
+            border-bottom: 2px solid var(--primary-blue);
+        }
+
+        .tool-icon-inline {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--very-light-gray) 0%, var(--light-gray) 100%);
+            border-radius: var(--radius-lg);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .tool-title-inline {
+            font-size: var(--text-2xl);
+            font-weight: var(--font-bold);
+            color: var(--text-dark);
+            margin: 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-2);
+        }
+
+        .form-label {
+            font-weight: var(--font-semibold);
+            color: var(--text-dark);
+            font-size: var(--text-base);
+        }
+
+        .form-input, .form-select {
+            padding: var(--space-3);
+            border: 2px solid #d5d8dc;
+            border-radius: var(--radius-md);
+            font-size: var(--text-base);
+            transition: var(--transition);
+            background: var(--bg-primary);
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-button {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--text-white);
+            border: none;
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--radius-lg);
+            font-weight: var(--font-semibold);
+            font-size: var(--text-base);
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-button:hover {
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .result-panel {
+            background: linear-gradient(135deg, var(--very-light-gray) 0%, var(--light-gray) 100%);
+            border: 2px solid var(--success);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-top: var(--space-6);
+            display: none;
+        }
+
+        .result-panel.visible {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--success);
+            margin-bottom: var(--space-4);
+        }
+
+        .result-content {
+            font-size: var(--text-lg);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+            margin-top: var(--space-4);
+        }
+
+        .result-item {
+            background: var(--bg-primary);
+            padding: var(--space-4);
+            border-radius: var(--radius-md);
+            border: 1px solid #d5d8dc;
+        }
+
+        .result-item .label {
+            font-weight: var(--font-semibold);
+            color: var(--text-medium);
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-1);
+        }
+
+        .result-item .value {
+            font-weight: var(--font-bold);
+            font-size: var(--text-lg);
+            color: var(--primary-navy);
+        }
+
+        .error-panel {
+            background: #fee2e2;
+            border: 2px solid var(--error);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-top: var(--space-6);
+            color: var(--error);
+            display: none;
+        }
+
+        .error-panel.visible {
+            display: block;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: var(--space-2);
+            margin-bottom: var(--space-8);
+            overflow-x: auto;
+            padding: var(--space-2);
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+        }
+
+        .tab-button {
+            background: var(--bg-primary);
+            border: 2px solid #d5d8dc;
+            border-radius: var(--radius-md);
+            padding: var(--space-3) var(--space-5);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-weight: var(--font-semibold);
+            color: var(--text-dark);
+        }
+
+        .tab-button:hover {
+            border-color: var(--primary-blue);
+            background: var(--very-light-gray);
+        }
+
+        .tab-button.active {
+            background: var(--primary-blue);
+            color: var(--text-white);
+            border-color: var(--primary-blue);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-container {
+                flex-direction: column;
+            }
+
+            .tab-button {
+                text-align: center;
+            }
+
+            .tool-header-inline {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Bar -->
+    <div class="language-bar">
+        <div class="container">
+            <div class="language-selector">
+                <span class="language-label">🌍 언어 선택:</span>
+                <a href="/" class="language-link">자동 선택</a>
+                <a href="/en/" class="language-link">🇺🇸 English</a>
+                <a href="/ja/" class="language-link">🇯🇵 日本語</a>
+                <a href="/ko/" class="language-link current">🇰🇷 한국어</a>
+                <a href="/vi/" class="language-link">🇻🇳 Tiếng Việt</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="site-title">유틸리티 계산기 모음</h1>
+                <p class="site-description">모든 계산 도구를 한 페이지에서 통합 제공</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="container">
+        <div class="tabs-container">
+            <button class="tab-button active" onclick="showTool('jp-year')">📅 일본 연호 변환기</button>
+            <button class="tab-button" onclick="showTool('jp-eto')">🐉 간지 계산기</button>
+            <button class="tab-button" onclick="showTool('election-age')">🗳️ 선거 연령 확인기</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 일본 연호 변환기 -->
+            <div id="jp-year-tool" class="tool-panel">
+                <div class="tool-header-inline">
+                    <div class="tool-icon-inline">📅</div>
+                    <h2 class="tool-title-inline">일본 연호 변환기</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">변환 방향</label>
+                        <select id="conversionType" class="form-select">
+                            <option value="ad-to-era">서기 → 연호</option>
+                            <option value="era-to-ad">연호 → 서기</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="adYearGroup">
+                        <label class="form-label">서기 연도</label>
+                        <input type="number" id="adYear" class="form-input" placeholder="예: 2025" min="1868" max="2030">
+                    </div>
+                    <div class="form-group hidden" id="eraGroup">
+                        <label class="form-label">연호 선택</label>
+                        <select id="eraSelect" class="form-select">
+                            <option value="reiwa">레이와 (令和)</option>
+                            <option value="heisei">헤이세이 (平成)</option>
+                            <option value="showa">쇼와 (昭和)</option>
+                            <option value="taisho">다이쇼 (大正)</option>
+                            <option value="meiji">메이지 (明治)</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="eraYearGroup">
+                        <label class="form-label">연호 연수</label>
+                        <input type="number" id="eraYear" class="form-input" placeholder="예: 7" min="1">
+                    </div>
+                </div>
+                
+                <button class="form-button" onclick="convertYear()">변환하기</button>
+                
+                <div id="yearResult" class="result-panel">
+                    <div class="result-title">변환 결과</div>
+                    <div class="result-content" id="yearResultContent"></div>
+                    <div class="result-details" id="yearResultDetails"></div>
+                </div>
+                
+                <div id="yearError" class="error-panel">
+                    <div id="yearErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- 간지 계산기 -->
+            <div id="jp-eto-tool" class="tool-panel hidden">
+                <div class="tool-header-inline">
+                    <div class="tool-icon-inline">🐉</div>
+                    <h2 class="tool-title-inline">일본 간지 계산기 (십이지)</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">생년월일</label>
+                        <input type="date" id="birthDate" class="form-input">
+                    </div>
+                </div>
+                
+                <button class="form-button" onclick="calculateEto()">간지 계산하기</button>
+                
+                <div id="etoResult" class="result-panel">
+                    <div class="result-title">간지 계산 결과</div>
+                    <div class="result-content" id="etoResultContent"></div>
+                    <div class="result-details" id="etoResultDetails"></div>
+                </div>
+                
+                <div id="etoError" class="error-panel">
+                    <div id="etoErrorContent"></div>
+                </div>
+            </div>
+
+            <!-- 선거 연령 확인기 -->
+            <div id="election-age-tool" class="tool-panel hidden">
+                <div class="tool-header-inline">
+                    <div class="tool-icon-inline">🗳️</div>
+                    <h2 class="tool-title-inline">선거 연령 확인기</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">생년월일</label>
+                        <input type="date" id="electionBirthDate" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">선거일 (2025년 대선 기준)</label>
+                        <input type="date" id="electionDate" class="form-input" value="2025-03-09" readonly>
+                    </div>
+                </div>
+                
+                <button class="form-button" onclick="checkElectionAge()">투표 가능 여부 확인</button>
+                
+                <div id="electionResult" class="result-panel">
+                    <div class="result-title">선거 연령 확인 결과</div>
+                    <div class="result-content" id="electionResultContent"></div>
+                    <div class="result-details" id="electionResultDetails"></div>
+                </div>
+                
+                <div id="electionError" class="error-panel">
+                    <div id="electionErrorContent"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-title">유틸리티 계산기 모음 - 통합 서비스</h3>
+                <p class="footer-description">
+                    모든 계산 도구를 한 페이지에서 편리하게 이용할 수 있는 통합 온라인 서비스입니다.
+                </p>
+                <div class="footer-links">
+                    <p>📧 문의: <a href="mailto:contact@utilities.mahalohana-bruce.com">contact@utilities.mahalohana-bruce.com</a></p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 유틸리티 계산기 모음. 모든 권리 보유.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTool(toolId) {
+            // Hide all tools
+            document.querySelectorAll('.tool-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tool
+            document.getElementById(toolId + '-tool').classList.remove('hidden');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+            
+            // Hide all results
+            document.querySelectorAll('.result-panel, .error-panel').forEach(panel => {
+                panel.classList.remove('visible');
+            });
+        }
+
+        // Japanese Year Converter
+        const eraData = {
+            reiwa: { name: '레이와', kanji: '令和', start: 2019, end: null },
+            heisei: { name: '헤이세이', kanji: '平成', start: 1989, end: 2019 },
+            showa: { name: '쇼와', kanji: '昭和', start: 1926, end: 1989 },
+            taisho: { name: '다이쇼', kanji: '大正', start: 1912, end: 1926 },
+            meiji: { name: '메이지', kanji: '明治', start: 1868, end: 1912 }
+        };
+
+        document.getElementById('conversionType').addEventListener('change', function() {
+            const isAdToEra = this.value === 'ad-to-era';
+            document.getElementById('adYearGroup').classList.toggle('hidden', !isAdToEra);
+            document.getElementById('eraGroup').classList.toggle('hidden', isAdToEra);
+            document.getElementById('eraYearGroup').classList.toggle('hidden', isAdToEra);
+        });
+
+        function convertYear() {
+            const conversionType = document.getElementById('conversionType').value;
+            const resultPanel = document.getElementById('yearResult');
+            const errorPanel = document.getElementById('yearError');
+            
+            // Hide previous results
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (conversionType === 'ad-to-era') {
+                    const adYear = parseInt(document.getElementById('adYear').value);
+                    if (!adYear || adYear < 1868 || adYear > 2030) {
+                        throw new Error('1868년부터 2030년 사이의 연도를 입력해주세요.');
+                    }
+                    
+                    const era = getEraFromAD(adYear);
+                    const eraYear = adYear - era.start + 1;
+                    
+                    document.getElementById('yearResultContent').innerHTML = 
+                        `<strong>서기 ${adYear}년</strong>은 <strong>${era.name} ${eraYear}년 (${era.kanji} ${eraYear}년)</strong>입니다.`;
+                    
+                    document.getElementById('yearResultDetails').innerHTML = `
+                        <div class="result-item">
+                            <div class="label">서기</div>
+                            <div class="value">${adYear}년</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">연호</div>
+                            <div class="value">${era.name} ${eraYear}년</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">한자 표기</div>
+                            <div class="value">${era.kanji} ${eraYear}年</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">연호 기간</div>
+                            <div class="value">${era.start}년 ~ ${era.end || '현재'}</div>
+                        </div>
+                    `;
+                } else {
+                    const eraKey = document.getElementById('eraSelect').value;
+                    const eraYear = parseInt(document.getElementById('eraYear').value);
+                    const era = eraData[eraKey];
+                    
+                    if (!eraYear || eraYear < 1) {
+                        throw new Error('올바른 연호 연수를 입력해주세요.');
+                    }
+                    
+                    const adYear = era.start + eraYear - 1;
+                    
+                    if (era.end && adYear >= era.end) {
+                        throw new Error(`${era.name}는 ${era.end - era.start}년까지만 존재합니다.`);
+                    }
+                    
+                    document.getElementById('yearResultContent').innerHTML = 
+                        `<strong>${era.name} ${eraYear}년</strong>은 <strong>서기 ${adYear}년</strong>입니다.`;
+                    
+                    document.getElementById('yearResultDetails').innerHTML = `
+                        <div class="result-item">
+                            <div class="label">연호</div>
+                            <div class="value">${era.name} ${eraYear}년</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">한자 표기</div>
+                            <div class="value">${era.kanji} ${eraYear}年</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">서기</div>
+                            <div class="value">${adYear}년</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="label">연호 기간</div>
+                            <div class="value">${era.start}년 ~ ${era.end || '현재'}</div>
+                        </div>
+                    `;
+                }
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('yearErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+
+        function getEraFromAD(year) {
+            for (const [key, era] of Object.entries(eraData)) {
+                if (year >= era.start && (!era.end || year < era.end)) {
+                    return era;
+                }
+            }
+            throw new Error('해당 연도에 대한 연호를 찾을 수 없습니다.');
+        }
+
+        // Eto Calculator
+        const etoAnimals = [
+            { name: '쥐', kanji: '子', description: '지혜롭고 영리한 성격' },
+            { name: '소', kanji: '丑', description: '성실하고 근면한 성격' },
+            { name: '호랑이', kanji: '寅', description: '용감하고 강인한 성격' },
+            { name: '토끼', kanji: '卯', description: '온화하고 섬세한 성격' },
+            { name: '용', kanji: '辰', description: '역동적이고 카리스마 있는 성격' },
+            { name: '뱀', kanji: '巳', description: '신중하고 지적인 성격' },
+            { name: '말', kanji: '午', description: '활발하고 자유로운 성격' },
+            { name: '양', kanji: '未', description: '평화롭고 예술적인 성격' },
+            { name: '원숭이', kanji: '申', description: '재치있고 창의적인 성격' },
+            { name: '닭', kanji: '酉', description: '정확하고 책임감 있는 성격' },
+            { name: '개', kanji: '戌', description: '충직하고 정직한 성격' },
+            { name: '돼지', kanji: '亥', description: '관대하고 행복한 성격' }
+        ];
+
+        function calculateEto() {
+            const birthDate = document.getElementById('birthDate').value;
+            const resultPanel = document.getElementById('etoResult');
+            const errorPanel = document.getElementById('etoError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('생년월일을 입력해주세요.');
+                }
+                
+                const date = new Date(birthDate);
+                let year = date.getFullYear();
+                
+                // 입춘 기준 계산 (대략적으로 2월 4일 기준)
+                if (date.getMonth() === 0 || (date.getMonth() === 1 && date.getDate() < 4)) {
+                    year -= 1;
+                }
+                
+                const etoIndex = (year - 4) % 12;
+                const animal = etoAnimals[etoIndex];
+                
+                document.getElementById('etoResultContent').innerHTML = 
+                    `<strong>${year}년생</strong>의 십이지는 <strong>${animal.name} (${animal.kanji})</strong>입니다.`;
+                
+                document.getElementById('etoResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">십이지</div>
+                        <div class="value">${animal.name}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">한자</div>
+                        <div class="value">${animal.kanji}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">특징</div>
+                        <div class="value">${animal.description}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">기준 연도</div>
+                        <div class="value">${year}년 (입춘 기준)</div>
+                    </div>
+                `;
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('etoErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+
+        // Election Age Checker
+        function checkElectionAge() {
+            const birthDate = document.getElementById('electionBirthDate').value;
+            const electionDate = document.getElementById('electionDate').value;
+            const resultPanel = document.getElementById('electionResult');
+            const errorPanel = document.getElementById('electionError');
+            
+            resultPanel.classList.remove('visible');
+            errorPanel.classList.remove('visible');
+            
+            try {
+                if (!birthDate) {
+                    throw new Error('생년월일을 입력해주세요.');
+                }
+                
+                const birth = new Date(birthDate);
+                const election = new Date(electionDate);
+                const age = Math.floor((election - birth) / (365.25 * 24 * 60 * 60 * 1000));
+                const canVote = age >= 18;
+                
+                const resultClass = canVote ? 'success' : 'error';
+                const resultMessage = canVote ? '투표할 수 있습니다!' : '투표할 수 없습니다.';
+                const ageMessage = canVote ? 
+                    `만 ${age}세로 투표 연령(만 18세) 이상입니다.` : 
+                    `만 ${age}세로 투표 연령(만 18세)에 미달합니다.`;
+                
+                document.getElementById('electionResultContent').innerHTML = 
+                    `<strong>${resultMessage}</strong><br>${ageMessage}`;
+                
+                document.getElementById('electionResultDetails').innerHTML = `
+                    <div class="result-item">
+                        <div class="label">현재 나이</div>
+                        <div class="value">만 ${age}세</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">투표 가능 여부</div>
+                        <div class="value" style="color: ${canVote ? 'var(--success)' : 'var(--error)'}">
+                            ${canVote ? '가능' : '불가능'}
+                        </div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">선거일</div>
+                        <div class="value">${election.toLocaleDateString('ko-KR')}</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="label">법적 근거</div>
+                        <div class="value">공직선거법 (만 18세 이상)</div>
+                    </div>
+                `;
+                
+                if (canVote) {
+                    resultPanel.style.borderColor = 'var(--success)';
+                    document.querySelector('#electionResult .result-title').style.color = 'var(--success)';
+                } else {
+                    resultPanel.style.borderColor = 'var(--error)';
+                    document.querySelector('#electionResult .result-title').style.color = 'var(--error)';
+                }
+                
+                resultPanel.classList.add('visible');
+            } catch (error) {
+                document.getElementById('electionErrorContent').textContent = error.message;
+                errorPanel.classList.add('visible');
+            }
+        }
+    </script>
+</body>
+</html>

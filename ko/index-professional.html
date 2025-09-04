@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>전문 유틸리티 계산기 모음 | 전문가 온라인 도구 서비스</title>
-    <meta name="description" content="전문 온라인 계산기 도구 - 일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 정확하고 신뢰할 수 있는 유틸리티를 무료로 제공합니다.">
-    <meta name="keywords" content="전문 계산기, 일본 연호 변환기, 간지 계산기, 선거 연령 확인기, 신뢰성, 정확성">
+    <title>유틸리티 계산기 모음 | 전문 온라인 도구 서비스</title>
+    <meta name="description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 정확하고 신뢰할 수 있는 유틸리티 도구를 무료로 제공합니다.">
+    <meta name="keywords" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기, 십이지, 레이와, 헤이세이, 쇼와, 투표권, 계산기">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Utilities Collection">
     <meta name="language" content="Korean">
-    
 
     <!-- Open Graph -->
-    <meta property="og:title" content="전문 유틸리티 계산기 모음 - 전문가 온라인 도구 서비스">
-    <meta property="og:description" content="전문 온라인 계산기 도구를 무료로 제공합니다. 일본 연호 변환, 간지 계산, 선거 연령 확인 등">
-    <meta property="og:url" content="https://utilities.mahalohana-bruce.com">
+    <meta property="og:title" content="유틸리티 계산기 모음 - 전문 온라인 도구">
+    <meta property="og:description" content="일본 연호 변환기, 간지 계산기, 선거 연령 확인기 등 신뢰할 수 있는 도구들을 무료로 제공합니다.">
+    <meta property="og:url" content="https://utilities.mahalohana-bruce.com/ko/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="전문 유틸리티 계산기 모음 - 전문가 도구">
-    <meta name="twitter:description" content="전문 온라인 계산기 도구를 무료로 제공합니다.">
+    <meta name="twitter:title" content="유틸리티 계산기 모음 - 전문 온라인 도구">
+    <meta name="twitter:description" content="신뢰할 수 있는 온라인 계산기 도구를 무료로 제공합니다.">
     <meta name="twitter:image" content="https://utilities.mahalohana-bruce.com/favicon.png">
 
     <!-- Hreflang -->
@@ -31,23 +30,10 @@
     <link rel="alternate" hreflang="vi" href="https://utilities.mahalohana-bruce.com/vi/">
     <link rel="alternate" hreflang="x-default" href="https://utilities.mahalohana-bruce.com/">
 
-    <!-- Preconnect to external origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
-    <link rel="preconnect" href="https://www.clarity.ms">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico?v=2">
-    <link rel="icon" type="image/png" href="/favicon.png?v=2">
-    <link rel="canonical" href="https://utilities.mahalohana-bruce.com">
-
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/favicon.png" as="image" type="image/png">
-    
+    <link rel="canonical" href="https://utilities.mahalohana-bruce.com/ko/">
     <link rel="stylesheet" href="/css/professional-design-system.css">
-
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HS98ZL6343"></script>
@@ -60,42 +46,6 @@
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5508768187151867" crossorigin="anonymous"></script>
-
-    <script>
-        (function() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const langMap = {
-                'ko': '/ko/',
-                'ja': '/ja/',
-                'en': '/en/',
-                'vi': '/vi/',
-                'zh': '/ja/',
-                'zh-cn': '/ja/',
-                'zh-tw': '/ja/'
-            };
-
-            const shortLang = userLang.toLowerCase().substring(0, 2);
-            const fullLang = userLang.toLowerCase();
-
-            // Check if already on a language-specific page or exactly on root
-            const currentPath = window.location.pathname;
-            if (currentPath === '/' || currentPath === '/index.html') {
-                const targetLang = langMap[fullLang] || langMap[shortLang] || '/ko/';
-
-                // Add a small delay to allow page to load for SEO
-                setTimeout(() => {
-                    window.location.href = targetLang;
-                }, 100);
-            }
-        })();
-    </script>
-
-    <!-- Performance and SW Registration -->
-    <script src="/js/common/performance-utils.js"></script>
-    <script>
-        window.performanceUtils && window.performanceUtils.initPerformanceMonitoring();
-    </script>
-
 </head>
 <body>
     <!-- Language Bar -->
@@ -103,10 +53,10 @@
         <div class="container">
             <div class="language-selector">
                 <span class="language-label">🌍 언어 선택:</span>
-                <a href="/" class="language-link current">자동 선택</a>
+                <a href="/" class="language-link">자동 선택</a>
                 <a href="/en/" class="language-link">🇺🇸 English</a>
                 <a href="/ja/" class="language-link">🇯🇵 日本語</a>
-                <a href="/ko/" class="language-link">🇰🇷 한국어</a>
+                <a href="/ko/" class="language-link current">🇰🇷 한국어</a>
                 <a href="/vi/" class="language-link">🇻🇳 Tiếng Việt</a>
             </div>
         </div>
@@ -133,6 +83,7 @@
             </ul>
         </div>
     </nav>
+
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
@@ -157,7 +108,7 @@
                             <div class="tool-details">
                                 <h3 class="tool-title">일본 연호 변환기</h3>
                                 <p class="tool-description">
-                                    서력을 일본 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)로 변환하거나 그 반대로 변환할 수 있는 전문 도구입니다. 
+                                    서력을 일본 연호(레이와, 헤이세이, 쇼와, 다이쇼, 메이지)로 변환하거나 그 반대로 변환할 수 있는 도구입니다. 
                                     정확한 역사적 날짜 데이터를 바탕으로 하여 문서 작성이나 학술 연구에 안전하게 사용할 수 있습니다.
                                 </p>
                                 <div class="tool-features">
@@ -185,7 +136,7 @@
                             <div class="tool-details">
                                 <h3 class="tool-title">일본 간지 계산기 (십이지)</h3>
                                 <p class="tool-description">
-                                    생년월일을 입력하여 일본 십이지(간지)를 정확하게 확인할 수 있는 전문 계산기입니다. 
+                                    생년월일을 입력하여 일본 십이지(간지)를 정확하게 확인할 수 있는 계산기입니다. 
                                     전통적인 입춘 기준 계산법을 적용하여 정확한 결과를 제공하며, 12가지 동물의 상세한 정보와 문화적 배경도 함께 안내합니다.
                                 </p>
                                 <div class="tool-features">
@@ -213,7 +164,7 @@
                             <div class="tool-details">
                                 <h3 class="tool-title">선거 연령 확인기</h3>
                                 <p class="tool-description">
-                                    2025년 제21대 대통령 선거 기준으로 투표 가능한 연령(만 18세 이상)인지 확인할 수 있는 전문 도구입니다. 
+                                    2025년 제21대 대통령 선거 기준으로 투표 가능한 연령(만 18세 이상)인지 확인할 수 있는 도구입니다. 
                                     현행 선거법 기준에 따라 정확한 나이 계산을 수행하여 투표권 행사 여부를 미리 확인할 수 있습니다.
                                 </p>
                                 <div class="tool-features">
@@ -293,7 +244,7 @@
                 </p>
                 <div class="footer-links" id="support">
                     <p>📧 문의: <a href="mailto:contact@utilities.mahalohana-bruce.com">contact@utilities.mahalohana-bruce.com</a></p>
-                    <p>🌐 웹사이트: <a href="https://utilities.mahalohana-bruce.com/">utilities.mahalohana-bruce.com</a></p>
+                    <p>🌐 웹사이트: <a href="https://utilities.mahalohana-bruce.com/ko/">utilities.mahalohana-bruce.com</a></p>
                 </div>
                 <div class="footer-copyright">
                     <p>© 2025 유틸리티 계산기 모음. 모든 권리 보유.</p>
@@ -301,14 +252,14 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "유틸리티 계산기 모음",
-        "url": "https://utilities.mahalohana-bruce.com/",
+        "url": "https://utilities.mahalohana-bruce.com/ko/",
         "description": "정확하고 신뢰할 수 있는 온라인 계산기 도구 서비스",
         "provider": {
             "@type": "Organization",
@@ -318,12 +269,10 @@
         "inLanguage": "ko-KR",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://utilities.mahalohana-bruce.com/?q={search_term_string}",
+            "target": "https://utilities.mahalohana-bruce.com/ko/?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }
     </script>
-
-
 </body>
 </html>
