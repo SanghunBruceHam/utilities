@@ -1,6 +1,6 @@
 
 // Enhanced service worker for better caching and error prevention
-const CACHE_NAME = 'utilities-v3';
+const CACHE_NAME = 'utilities-v4';
 const urlsToCache = [
   '/',
   '/ko/',
@@ -49,26 +49,35 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   // Only handle GET requests
-  if (event.request.method !== 'GET') {
-    return;
-  }
-  
-  event.respondWith(
-    caches.match(event.request)
-      .then(function(response) {
-        // Return cached version or fetch from network
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).catch(function() {
-          // Return a basic fallback for navigation requests
-          if (event.request.mode === 'navigate') {
-            return new Response('Page not available offline', {
+  if (event.request.method !== 'GET') return;
+
+  const accept = event.request.headers.get('accept') || '';
+
+  // Network-first strategy for HTML/navigation to reflect updates promptly
+  if (event.request.mode === 'navigate' || accept.includes('text/html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(function(networkResponse) {
+          const copy = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+          return networkResponse;
+        })
+        .catch(function() {
+          return caches.match(event.request).then(function(response) {
+            return response || new Response('Page not available offline', {
               status: 200,
               headers: { 'Content-Type': 'text/html' }
             });
-          }
-        });
-      })
+          });
+        })
+    );
+    return;
+  }
+
+  // Cache-first for static assets (CSS/JS/images)
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
   );
 });

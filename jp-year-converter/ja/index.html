@@ -376,6 +376,21 @@
   <div overflow=""></div>
 </amp-ad>
 
+<script>
+  (function(){
+    var modeSelect = document.getElementById('mode');
+    var western = document.getElementById('western-inputs');
+    var japanese = document.getElementById('japanese-inputs');
+    if(!modeSelect||!western||!japanese) return;
+    function apply(){
+      var isToWareki = modeSelect.value === 'toWareki';
+      western.style.display = isToWareki ? 'block' : 'none';
+      japanese.style.display = isToWareki ? 'none' : 'block';
+    }
+    modeSelect.addEventListener('change', apply);
+    apply();
+  })();
+  </script>
 <script src="/js/calculators/jp-year-converter.js?v=3"></script>
 
 
